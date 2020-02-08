@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */; };
+		EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */; };
+		EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076623EF3F8500DF5CD2 /* ViewController.swift */; };
+		EED6076A23EF3F8500DF5CD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED6076823EF3F8500DF5CD2 /* Main.storyboard */; };
+		EED6076C23EF3F8900DF5CD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED6076B23EF3F8900DF5CD2 /* Assets.xcassets */; };
+		EED6076F23EF3F8900DF5CD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED6076D23EF3F8900DF5CD2 /* LaunchScreen.storyboard */; };
+		EED6077A23EF3F8900DF5CD2 /* FleaMarketOnlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6077923EF3F8900DF5CD2 /* FleaMarketOnlineTests.swift */; };
+		EED6078523EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6078423EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EED6077623EF3F8900DF5CD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EED6075723EF3F8500DF5CD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EED6075E23EF3F8500DF5CD2;
+			remoteInfo = FleaMarketOnline;
+		};
+		EED6078123EF3F8900DF5CD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EED6075723EF3F8500DF5CD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EED6075E23EF3F8500DF5CD2;
+			remoteInfo = FleaMarketOnline;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FleaMarketOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EED6076623EF3F8500DF5CD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EED6076923EF3F8500DF5CD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EED6076B23EF3F8900DF5CD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EED6076E23EF3F8900DF5CD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EED6077023EF3F8900DF5CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EED6077523EF3F8900DF5CD2 /* FleaMarketOnlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FleaMarketOnlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED6077923EF3F8900DF5CD2 /* FleaMarketOnlineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleaMarketOnlineTests.swift; sourceTree = "<group>"; };
+		EED6077B23EF3F8900DF5CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EED6078023EF3F8900DF5CD2 /* FleaMarketOnlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FleaMarketOnlineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED6078423EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleaMarketOnlineUITests.swift; sourceTree = "<group>"; };
+		EED6078623EF3F8900DF5CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EED6075C23EF3F8500DF5CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077223EF3F8900DF5CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077D23EF3F8900DF5CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EED6075623EF3F8500DF5CD2 = {
+			isa = PBXGroup;
+			children = (
+				EED6076123EF3F8500DF5CD2 /* FleaMarketOnline */,
+				EED6077823EF3F8900DF5CD2 /* FleaMarketOnlineTests */,
+				EED6078323EF3F8900DF5CD2 /* FleaMarketOnlineUITests */,
+				EED6076023EF3F8500DF5CD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EED6076023EF3F8500DF5CD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */,
+				EED6077523EF3F8900DF5CD2 /* FleaMarketOnlineTests.xctest */,
+				EED6078023EF3F8900DF5CD2 /* FleaMarketOnlineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EED6076123EF3F8500DF5CD2 /* FleaMarketOnline */ = {
+			isa = PBXGroup;
+			children = (
+				EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */,
+				EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */,
+				EED6076623EF3F8500DF5CD2 /* ViewController.swift */,
+				EED6076823EF3F8500DF5CD2 /* Main.storyboard */,
+				EED6076B23EF3F8900DF5CD2 /* Assets.xcassets */,
+				EED6076D23EF3F8900DF5CD2 /* LaunchScreen.storyboard */,
+				EED6077023EF3F8900DF5CD2 /* Info.plist */,
+			);
+			path = FleaMarketOnline;
+			sourceTree = "<group>";
+		};
+		EED6077823EF3F8900DF5CD2 /* FleaMarketOnlineTests */ = {
+			isa = PBXGroup;
+			children = (
+				EED6077923EF3F8900DF5CD2 /* FleaMarketOnlineTests.swift */,
+				EED6077B23EF3F8900DF5CD2 /* Info.plist */,
+			);
+			path = FleaMarketOnlineTests;
+			sourceTree = "<group>";
+		};
+		EED6078323EF3F8900DF5CD2 /* FleaMarketOnlineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EED6078423EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift */,
+				EED6078623EF3F8900DF5CD2 /* Info.plist */,
+			);
+			path = FleaMarketOnlineUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EED6075E23EF3F8500DF5CD2 /* FleaMarketOnline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EED6078923EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnline" */;
+			buildPhases = (
+				EED6075B23EF3F8500DF5CD2 /* Sources */,
+				EED6075C23EF3F8500DF5CD2 /* Frameworks */,
+				EED6075D23EF3F8500DF5CD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FleaMarketOnline;
+			productName = FleaMarketOnline;
+			productReference = EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EED6077423EF3F8900DF5CD2 /* FleaMarketOnlineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EED6078C23EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnlineTests" */;
+			buildPhases = (
+				EED6077123EF3F8900DF5CD2 /* Sources */,
+				EED6077223EF3F8900DF5CD2 /* Frameworks */,
+				EED6077323EF3F8900DF5CD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EED6077723EF3F8900DF5CD2 /* PBXTargetDependency */,
+			);
+			name = FleaMarketOnlineTests;
+			productName = FleaMarketOnlineTests;
+			productReference = EED6077523EF3F8900DF5CD2 /* FleaMarketOnlineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EED6077F23EF3F8900DF5CD2 /* FleaMarketOnlineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EED6078F23EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnlineUITests" */;
+			buildPhases = (
+				EED6077C23EF3F8900DF5CD2 /* Sources */,
+				EED6077D23EF3F8900DF5CD2 /* Frameworks */,
+				EED6077E23EF3F8900DF5CD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EED6078223EF3F8900DF5CD2 /* PBXTargetDependency */,
+			);
+			name = FleaMarketOnlineUITests;
+			productName = FleaMarketOnlineUITests;
+			productReference = EED6078023EF3F8900DF5CD2 /* FleaMarketOnlineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EED6075723EF3F8500DF5CD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = HEWZ;
+				TargetAttributes = {
+					EED6075E23EF3F8500DF5CD2 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					EED6077423EF3F8900DF5CD2 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = EED6075E23EF3F8500DF5CD2;
+					};
+					EED6077F23EF3F8900DF5CD2 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = EED6075E23EF3F8500DF5CD2;
+					};
+				};
+			};
+			buildConfigurationList = EED6075A23EF3F8500DF5CD2 /* Build configuration list for PBXProject "FleaMarketOnline" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EED6075623EF3F8500DF5CD2;
+			productRefGroup = EED6076023EF3F8500DF5CD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EED6075E23EF3F8500DF5CD2 /* FleaMarketOnline */,
+				EED6077423EF3F8900DF5CD2 /* FleaMarketOnlineTests */,
+				EED6077F23EF3F8900DF5CD2 /* FleaMarketOnlineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EED6075D23EF3F8500DF5CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED6076F23EF3F8900DF5CD2 /* LaunchScreen.storyboard in Resources */,
+				EED6076C23EF3F8900DF5CD2 /* Assets.xcassets in Resources */,
+				EED6076A23EF3F8500DF5CD2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077323EF3F8900DF5CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077E23EF3F8900DF5CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EED6075B23EF3F8500DF5CD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */,
+				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
+				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077123EF3F8900DF5CD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED6077A23EF3F8900DF5CD2 /* FleaMarketOnlineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED6077C23EF3F8900DF5CD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED6078523EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EED6077723EF3F8900DF5CD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EED6075E23EF3F8500DF5CD2 /* FleaMarketOnline */;
+			targetProxy = EED6077623EF3F8900DF5CD2 /* PBXContainerItemProxy */;
+		};
+		EED6078223EF3F8900DF5CD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EED6075E23EF3F8500DF5CD2 /* FleaMarketOnline */;
+			targetProxy = EED6078123EF3F8900DF5CD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EED6076823EF3F8500DF5CD2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EED6076923EF3F8500DF5CD2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EED6076D23EF3F8900DF5CD2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EED6076E23EF3F8900DF5CD2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EED6078723EF3F8900DF5CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EED6078823EF3F8900DF5CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EED6078A23EF3F8900DF5CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnline/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EED6078B23EF3F8900DF5CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnline/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EED6078D23EF3F8900DF5CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnlineTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnlineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FleaMarketOnline.app/FleaMarketOnline";
+			};
+			name = Debug;
+		};
+		EED6078E23EF3F8900DF5CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnlineTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnlineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FleaMarketOnline.app/FleaMarketOnline";
+			};
+			name = Release;
+		};
+		EED6079023EF3F8900DF5CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnlineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnlineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FleaMarketOnline;
+			};
+			name = Debug;
+		};
+		EED6079123EF3F8900DF5CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FleaMarketOnlineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hewz.FleaMarketOnlineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FleaMarketOnline;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EED6075A23EF3F8500DF5CD2 /* Build configuration list for PBXProject "FleaMarketOnline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED6078723EF3F8900DF5CD2 /* Debug */,
+				EED6078823EF3F8900DF5CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EED6078923EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED6078A23EF3F8900DF5CD2 /* Debug */,
+				EED6078B23EF3F8900DF5CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EED6078C23EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnlineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED6078D23EF3F8900DF5CD2 /* Debug */,
+				EED6078E23EF3F8900DF5CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EED6078F23EF3F8900DF5CD2 /* Build configuration list for PBXNativeTarget "FleaMarketOnlineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED6079023EF3F8900DF5CD2 /* Debug */,
+				EED6079123EF3F8900DF5CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EED6075723EF3F8500DF5CD2 /* Project object */;
+}

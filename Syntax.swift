@@ -21,3 +21,11 @@ import Foundation
 
 //Write to firebase
 
+
+
+
+/*************************   References *********************/
+
+
+//set up the login page
+// https://medium.com/@ashikabala01/how-to-build-login-and-sign-up-functionality-for-your-ios-app-using-firebase-within-15-mins-df4731faf2f7

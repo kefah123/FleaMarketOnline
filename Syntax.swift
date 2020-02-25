@@ -31,9 +31,9 @@ import Foundation
 // https://medium.com/@ashikabala01/how-to-build-login-and-sign-up-functionality-for-your-ios-app-using-firebase-within-15-mins-df4731faf2f7
 
 //firebase auth
-https://www.youtube.com/watch?v=1HN7usMROt8
+//https://www.youtube.com/watch?v=1HN7usMROt8
 
 
 /*************************  Config update *********************/
 //02/24, update pods for firestore, auth, core
-//02/25, product->shcame->firecore
+//02/25, product->shcame->firecore, back again

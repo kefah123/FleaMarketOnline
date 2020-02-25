@@ -42,7 +42,7 @@
 		<key>FirebaseCore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
+			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>

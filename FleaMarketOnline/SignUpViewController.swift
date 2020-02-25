@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import FirebaseDatabase
 import Firebase
 import FirebaseAuth
+import FirebaseCore
 import FirebaseFirestore
 class SignUpViewController: UIViewController {
 
@@ -88,18 +88,18 @@ class SignUpViewController: UIViewController {
                     let db = Firestore.firestore()
                     db.collection("users").addDocument(
                         data: ["firstname":firstName,
-                               "lastname":lastName
-                               "email":email
-                               "password":password
-                            "id":result!.user.uid)
+                               "lastname":lastName,
+                               "email":email,
+                               "password":password,
+                               "id":result!.user.uid ])
                     {(error) in
                             if error != nil{
                                 self.errorLabel.text = "Cannot create user in database "
                                 self.errorLabel.alpha = 1
                             }
                     }
-                }
                 
+            }
             }
             // transfer to next view
             self.transitions()

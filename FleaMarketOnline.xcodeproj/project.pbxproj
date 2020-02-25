@@ -11,6 +11,7 @@
 		5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */; };
 		5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DC9240411AD0041FC73 /* HomeViewController.swift */; };
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
+		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
 		7F9492B45568F532460098D9 /* Pods_FleaMarketOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2621BD0678E0E1B74711F9AD /* Pods_FleaMarketOnline.framework */; };
 		90A5467AC191D9A0941BAACD /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */; };
 		A5286DF363293B7773810EB6 /* Pods_FleaMarketOnlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */; };
@@ -53,6 +54,7 @@
 		5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5FB88DC9240411AD0041FC73 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
 		6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleaMarketOnlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988FE090E1D241C874BA4CAD /* Pods-FleaMarketOnlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnlineTests.debug.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnlineTests/Pods-FleaMarketOnlineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */,
 				5FB88DC9240411AD0041FC73 /* HomeViewController.swift */,
 				5FB88DCB240412E90041FC73 /* LoginViewController.swift */,
+				5FB88DCD2404BD3C0041FC73 /* ut.swift */,
 			);
 			path = FleaMarketOnline;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */,
 				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
+				5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */,
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
 				5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */,
 				5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */,

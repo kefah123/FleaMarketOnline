@@ -65,6 +65,7 @@ class SignUpViewController: UIViewController {
         }
         return nil
     }
+    
     @IBAction func signUpTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil{
@@ -78,10 +79,11 @@ class SignUpViewController: UIViewController {
             let email = emailTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             //create a user
-            Auth.auth().createUser(withEmail: "test", password: "test") { (result, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 //if there is an error
                 if error != nil {
-                    self.errorLabel.text = "Cannot create user "
+                    print(error!)
+                    self.errorLabel.text = ""
                     self.errorLabel.alpha = 1
                 }else{
                     //create an instance for new user

@@ -25,6 +25,6 @@ class ViewController: UIViewController {
         Utilities.styleFilledButton(signUpButton)
     }
 
-   
 }
 
+print(123)

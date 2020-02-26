@@ -6,9 +6,11 @@ target 'FleaMarketOnline' do
   use_frameworks!
 
   # Pods for FleaMarketOnline
-  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
   target 'FleaMarketOnlineTests' do
     inherit! :search_paths

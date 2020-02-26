@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         let ref = Database.database().reference();
         ref.child("id/name").setValue("key")
+    
     }
 
    

@@ -26,5 +26,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-print(123)

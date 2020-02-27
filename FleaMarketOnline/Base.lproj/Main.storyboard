@@ -7,6 +7,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Chat-->
+        <scene sceneID="rOS-zA-1E3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="tUN-U3-GSd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2rh-qr-c56"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSY-5i-rZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="583"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="NEV-Cx-O1M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="lmW-0n-fd8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dOn-9q-Bjj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hAP-a0-3ke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410" y="504"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -40,12 +60,38 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31t-hv-w7V">
+                                <rect key="frame" x="166" y="84" width="82" height="30"/>
+                                <state key="normal" title="Profile Page"/>
+                                <connections>
+                                    <segue destination="lmW-0n-fd8" kind="show" id="N9y-7U-c14"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1K-hO-24o">
+                                <rect key="frame" x="173" y="214" width="68" height="30"/>
+                                <state key="normal" title="Cart Page"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-Ra-j4F">
+                                <rect key="frame" x="172" y="384" width="71" height="30"/>
+                                <state key="normal" title="Chat Page"/>
+                                <connections>
+                                    <segue destination="tUN-U3-GSd" kind="show" id="vJu-Js-DHr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twE-U2-O8N">
+                                <rect key="frame" x="157" y="594" width="79" height="30"/>
+                                <state key="normal" title="Home Page"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="twE-U2-O8N" firstAttribute="top" secondItem="GRh-Ra-j4F" secondAttribute="bottom" constant="180" id="0TR-Mn-4mP"/>
+                            <constraint firstItem="GRh-Ra-j4F" firstAttribute="top" secondItem="X1K-hO-24o" secondAttribute="bottom" constant="140" id="5KC-Kb-fB6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MbF-yL-w1J" secondAttribute="trailing" constant="40" id="OFm-tT-iB1"/>
                             <constraint firstItem="MbF-yL-w1J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="StM-Dc-oh3"/>
+                            <constraint firstItem="31t-hv-w7V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="bVF-Tn-jPL"/>
                             <constraint firstItem="MbF-yL-w1J" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-40" id="cpW-BY-I6y"/>
+                            <constraint firstItem="X1K-hO-24o" firstAttribute="top" secondItem="31t-hv-w7V" secondAttribute="bottom" constant="100" id="wbF-kp-Kcs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -259,7 +305,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skl-CK-pRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
+            <point key="canvasLocation" x="9" y="90"/>
         </scene>
     </scenes>
 </document>

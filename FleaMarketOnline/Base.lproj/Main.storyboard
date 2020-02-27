@@ -19,7 +19,7 @@
                                 <rect key="frame" x="164" y="133" width="86" height="30"/>
                                 <state key="normal" title="LoginSignup"/>
                                 <connections>
-                                    <segue destination="7CZ-oj-0rq" kind="show" id="C9C-L6-IuZ"/>
+                                    <segue destination="7CZ-oj-0rq" kind="show" id="cjg-bG-DpE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5Z-2B-dli">

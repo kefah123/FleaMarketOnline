@@ -12,13 +12,15 @@
 		5F4F30D224081565001578A1 /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30D124081565001578A1 /* LoginSignUp.storyboard */; };
 		5F4F30D424081792001578A1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30D324081792001578A1 /* Home.storyboard */; };
 		5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */; };
+		5F4F30DC24082485001578A1 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30DB24082485001578A1 /* Cart.storyboard */; };
+		5F4F30DE24082494001578A1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30DD24082494001578A1 /* CartViewController.swift */; };
 		5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DC9240411AD0041FC73 /* HomeViewController.swift */; };
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
 		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
 		7F9492B45568F532460098D9 /* Pods_FleaMarketOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2621BD0678E0E1B74711F9AD /* Pods_FleaMarketOnline.framework */; };
 		90A5467AC191D9A0941BAACD /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */; };
 		A5286DF363293B7773810EB6 /* Pods_FleaMarketOnlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */; };
-		E8CC40922408227400613880 /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CC40912408227400613880 /* ShoppingCart.storyboard */; };
+		E8CC4094240822D800613880 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8CC4093240822D800613880 /* Cart.storyboard */; };
 		EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB565A02406C4FC001B0D8D /* Chat.storyboard */; };
 		EEB565A32406C537001B0D8D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB565A22406C537001B0D8D /* ChatViewController.swift */; };
 		EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */; };
@@ -63,6 +65,8 @@
 		5F4F30D124081565001578A1 /* LoginSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
 		5F4F30D324081792001578A1 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMenuViewController.swift; sourceTree = "<group>"; };
+		5F4F30DB24082485001578A1 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		5F4F30DD24082494001578A1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		5FB88DC9240411AD0041FC73 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
@@ -71,7 +75,7 @@
 		BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD012FE40A0373D6ACDEFDC0 /* Pods-FleaMarketOnlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnlineTests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnlineTests/Pods-FleaMarketOnlineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DAECFC00DB49FE958E1CD916 /* Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnline-FleaMarketOnlineUITests/Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E8CC40912408227400613880 /* ShoppingCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingCart.storyboard; sourceTree = "<group>"; };
+		E8CC4093240822D800613880 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		EEB565A02406C4FC001B0D8D /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		EEB565A22406C537001B0D8D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FleaMarketOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,10 +190,11 @@
 				5FB88DC9240411AD0041FC73 /* HomeViewController.swift */,
 				5FB88DCB240412E90041FC73 /* LoginViewController.swift */,
 				5FB88DCD2404BD3C0041FC73 /* ut.swift */,
-				E8CC40912408227400613880 /* ShoppingCart.storyboard */,
 				5F4F30D124081565001578A1 /* LoginSignUp.storyboard */,
 				5F4F30D324081792001578A1 /* Home.storyboard */,
 				5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */,
+				5F4F30DB24082485001578A1 /* Cart.storyboard */,
+				5F4F30DD24082494001578A1 /* CartViewController.swift */,
 			);
 			path = FleaMarketOnline;
 			sourceTree = "<group>";
@@ -322,13 +327,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */,
+				E8CC4094240822D800613880 /* Cart.storyboard in Resources */,
 				5F4F30D224081565001578A1 /* LoginSignUp.storyboard in Resources */,
 				EED6076F23EF3F8900DF5CD2 /* LaunchScreen.storyboard in Resources */,
 				EED6079323EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */,
-				E8CC40922408227400613880 /* ShoppingCart.storyboard in Resources */,
 				EFE03BC0240606C400CBEADC /* Profile.storyboard in Resources */,
 				EED6076C23EF3F8900DF5CD2 /* Assets.xcassets in Resources */,
 				EED6076A23EF3F8500DF5CD2 /* Main.storyboard in Resources */,
+				5F4F30DC24082485001578A1 /* Cart.storyboard in Resources */,
 				5F4F30D424081792001578A1 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +469,7 @@
 				EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */,
 				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
+				5F4F30DE24082494001578A1 /* CartViewController.swift in Sources */,
 				5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */,
 				5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */,
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,

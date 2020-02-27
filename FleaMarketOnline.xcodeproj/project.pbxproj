@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5F10201423EF4FA70093D31A /* Syntax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F10201323EF4FA70093D31A /* Syntax.swift */; };
 		5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */; };
+		5F4F30D224081565001578A1 /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30D124081565001578A1 /* LoginSignUp.storyboard */; };
+		5F4F30D424081792001578A1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30D324081792001578A1 /* Home.storyboard */; };
+		5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */; };
 		5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DC9240411AD0041FC73 /* HomeViewController.swift */; };
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
 		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
@@ -56,6 +59,9 @@
 		3F0279646F31CA0F8BAB9883 /* Pods-FleaMarketOnline-FleaMarketOnlineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnline-FleaMarketOnlineUITests.debug.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnline-FleaMarketOnlineUITests/Pods-FleaMarketOnline-FleaMarketOnlineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F10201323EF4FA70093D31A /* Syntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syntax.swift; sourceTree = "<group>"; };
 		5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5F4F30D124081565001578A1 /* LoginSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
+		5F4F30D324081792001578A1 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMenuViewController.swift; sourceTree = "<group>"; };
 		5FB88DC9240411AD0041FC73 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
@@ -178,6 +184,9 @@
 				5FB88DC9240411AD0041FC73 /* HomeViewController.swift */,
 				5FB88DCB240412E90041FC73 /* LoginViewController.swift */,
 				5FB88DCD2404BD3C0041FC73 /* ut.swift */,
+				5F4F30D124081565001578A1 /* LoginSignUp.storyboard */,
+				5F4F30D324081792001578A1 /* Home.storyboard */,
+				5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */,
 			);
 			path = FleaMarketOnline;
 			sourceTree = "<group>";
@@ -310,11 +319,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */,
+				5F4F30D224081565001578A1 /* LoginSignUp.storyboard in Resources */,
 				EED6076F23EF3F8900DF5CD2 /* LaunchScreen.storyboard in Resources */,
 				EED6079323EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */,
 				EFE03BC0240606C400CBEADC /* Profile.storyboard in Resources */,
 				EED6076C23EF3F8900DF5CD2 /* Assets.xcassets in Resources */,
 				EED6076A23EF3F8500DF5CD2 /* Main.storyboard in Resources */,
+				5F4F30D424081792001578A1 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +460,7 @@
 				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
 				5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */,
+				5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */,
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
 				EFE03BC2240606FF00CBEADC /* ProfileViewController.swift in Sources */,
 				5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */,

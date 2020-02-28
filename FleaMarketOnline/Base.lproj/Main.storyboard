@@ -32,6 +32,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaK-Os-ryC">
                                 <rect key="frame" x="190" y="333" width="34" height="30"/>
                                 <state key="normal" title="Cart "/>
+                                <connections>
+                                    <segue destination="K82-eg-jrO" kind="show" id="nz9-id-rnX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yms-Ai-7QH">
                                 <rect key="frame" x="190.5" y="433" width="33" height="30"/>
@@ -95,6 +98,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OgP-PK-Jk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1775" y="-4"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="FxI-rs-G3A">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="K82-eg-jrO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Y5-jE-6AH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NwF-oX-QRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="113"/>
         </scene>
         <!--Chat-->
         <scene sceneID="nEs-hC-r4R">

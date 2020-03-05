@@ -7,7 +7,10 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -40,5 +43,16 @@ class LoginViewController: UIViewController {
     */
 
     @IBAction func loginTapped(_ sender: Any) {
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //sign in user
+        Auth.auth().signIn(withEmail: email, password: password){
+            (result,error) in
+            if error != nil{
+                //cannot sign in
+                self.errorLabel.text =  error!.localizedDescription
+                self.errorLabel.alpha = 1
+            }
+        }
     }
 }

@@ -19,8 +19,8 @@ import Foundation
 
 /************************ *   Firebase **********************/
 
-//Write to firebase
-
+//Read and Write to firebase
+//https://firebase.google.com/docs/database/ios/read-and-write
 
 
 

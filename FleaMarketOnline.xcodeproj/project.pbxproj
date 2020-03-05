@@ -20,8 +20,8 @@
 		7F9492B45568F532460098D9 /* Pods_FleaMarketOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2621BD0678E0E1B74711F9AD /* Pods_FleaMarketOnline.framework */; };
 		90A5467AC191D9A0941BAACD /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */; };
 		A5286DF363293B7773810EB6 /* Pods_FleaMarketOnlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */; };
+		EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A6E2411217800A7C3A1 /* ChatViewController.swift */; };
 		EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB565A02406C4FC001B0D8D /* Chat.storyboard */; };
-		EEB565A32406C537001B0D8D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB565A22406C537001B0D8D /* ChatViewController.swift */; };
 		EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */; };
 		EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */; };
 		EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076623EF3F8500DF5CD2 /* ViewController.swift */; };
@@ -75,8 +75,8 @@
 		CD012FE40A0373D6ACDEFDC0 /* Pods-FleaMarketOnlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnlineTests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnlineTests/Pods-FleaMarketOnlineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DAECFC00DB49FE958E1CD916 /* Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnline-FleaMarketOnlineUITests/Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E8CC4093240822D800613880 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		EE982A6E2411217800A7C3A1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EEB565A02406C4FC001B0D8D /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		EEB565A22406C537001B0D8D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FleaMarketOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				EED6076D23EF3F8900DF5CD2 /* LaunchScreen.storyboard */,
 				EFE03BC1240606FF00CBEADC /* ProfileViewController.swift */,
 				EFE03BBF240606C400CBEADC /* Profile.storyboard */,
-				EEB565A22406C537001B0D8D /* ChatViewController.swift */,
+				EE982A6E2411217800A7C3A1 /* ChatViewController.swift */,
 				EEB565A02406C4FC001B0D8D /* Chat.storyboard */,
 				EED6077023EF3F8900DF5CD2 /* Info.plist */,
 				5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */,
@@ -482,7 +482,7 @@
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
 				EFE03BC2240606FF00CBEADC /* ProfileViewController.swift in Sources */,
 				5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */,
-				EEB565A32406C537001B0D8D /* ChatViewController.swift in Sources */,
+				EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */,
 				5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

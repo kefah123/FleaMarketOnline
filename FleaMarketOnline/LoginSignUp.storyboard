@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-VB-luA">
-                                <rect key="frame" x="40" y="200" width="334" height="210"/>
+                                <rect key="frame" x="40" y="200" width="334" height="200.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZG-jp-SUN">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -87,8 +87,9 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiw-kn-vdc">
-                                        <rect key="frame" x="0.0" y="120" width="334" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="334" height="40"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cHs-Qk-VWy"/>
                                             <constraint firstAttribute="height" constant="40" id="ohZ-uh-NWC"/>
                                         </constraints>
                                         <state key="normal" title="Log in"/>
@@ -96,8 +97,8 @@
                                             <action selector="loginTapped:" destination="VWt-H9-a98" eventType="touchUpInside" id="qyy-LO-Bds"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRQ-sB-ngP">
-                                        <rect key="frame" x="0.0" y="170" width="334" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRQ-sB-ngP">
+                                        <rect key="frame" x="0.0" y="180" width="334" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pkB-Zd-Pvp"/>
                                         </constraints>
@@ -205,7 +206,7 @@
                                             <action selector="signUpTapped:" destination="aTN-uD-B5Z" eventType="touchUpInside" id="baw-1M-zng"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-gi-Fbu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-gi-Fbu">
                                         <rect key="frame" x="0.0" y="276" width="334" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

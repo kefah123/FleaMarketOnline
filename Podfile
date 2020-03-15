@@ -11,6 +11,7 @@ target 'FleaMarketOnline' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'MessageKit'
 
   target 'FleaMarketOnlineTests' do
     inherit! :search_paths

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatViewController: UITableViewController {
 
@@ -19,6 +20,26 @@ class ChatViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil,
+                            afterDelay: 0)
+        } else {
+            Database.database().reference().child("users")
+        }
+    }
+    
+    @objc func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError as NSError {
+            print("Error signing out: %@", logoutError)
+        }
+        let loginController = LoginViewController()
+        present(loginController, animated: true, completion: nil)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -32,15 +53,15 @@ class ChatViewController: UITableViewController {
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "dummy text"
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

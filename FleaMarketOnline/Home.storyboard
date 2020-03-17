@@ -10,6 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qF0-e3-6qd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpr-1W-xyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="Lh7-2N-8Fc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNS-qn-2YZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -19,13 +20,13 @@
                         <segue destination="tvY-jH-98W" kind="relationship" relationship="rootViewController" id="NPH-kG-sZS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dpr-1W-xyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-614" y="113"/>
         </scene>
         <!--Home-->
         <scene sceneID="Sym-O8-k4S">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vdf-KN-SGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -41,46 +42,42 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3t-Mj-pow">
-                                <rect key="frame" x="361" y="93" width="37" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="1"/>
-                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Button" image="plus" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="y0o-R6-46P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="doc.text.fill" catalog="system" id="4EO-8k-RVB"/>
-                    <navigationItem key="navigationItem" id="BpL-Ki-SPz"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BpL-Ki-SPz">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="nTD-Wa-qrE">
+                            <connections>
+                                <segue destination="YjX-Te-tng" kind="show" id="rCI-OS-LNX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166.66666666666669" y="112.5"/>
+            <point key="canvasLocation" x="178" y="113"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="7Qk-do-Y6N">
+        <!--Compose View Controller-->
+        <scene sceneID="Csf-Gv-xbX">
             <objects>
-                <viewController id="HO4-v8-hFZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HiM-YG-JFk">
+                <viewController id="YjX-Te-tng" customClass="ComposeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yXh-aM-fWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Seo-aO-dnn"/>
+                        <viewLayoutGuide key="safeArea" id="FbO-CI-g2B"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UpO-bY-dEv"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NTA-vi-SUM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ec4-Io-wyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="-145"/>
+            <point key="canvasLocation" x="1049" y="120"/>
         </scene>
     </scenes>
     <resources>
         <image name="doc.text.fill" catalog="system" width="56" height="64"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>

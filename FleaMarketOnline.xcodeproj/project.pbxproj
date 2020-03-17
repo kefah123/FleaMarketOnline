@@ -14,6 +14,7 @@
 		5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */; };
 		5F4F30E22409773D001578A1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30E12409773D001578A1 /* CartViewController.swift */; };
 		5F4F30E424097752001578A1 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30E324097752001578A1 /* Cart.storyboard */; };
+		5F4F30EA24214BEA001578A1 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30E924214BEA001578A1 /* ComposeViewController.swift */; };
 		5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DC9240411AD0041FC73 /* HomeViewController.swift */; };
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
 		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
@@ -67,6 +68,7 @@
 		5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMenuViewController.swift; sourceTree = "<group>"; };
 		5F4F30E12409773D001578A1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		5F4F30E324097752001578A1 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		5F4F30E924214BEA001578A1 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		5FB88DC9240411AD0041FC73 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				5F4F30D5240818F0001578A1 /* TempMenuViewController.swift */,
 				5F4F30E12409773D001578A1 /* CartViewController.swift */,
 				5F4F30E324097752001578A1 /* Cart.storyboard */,
+				5F4F30E924214BEA001578A1 /* ComposeViewController.swift */,
 			);
 			path = FleaMarketOnline;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */,
 				EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */,
 				5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */,
+				5F4F30EA24214BEA001578A1 /* ComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

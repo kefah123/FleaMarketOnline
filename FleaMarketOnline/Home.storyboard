@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="Sym-O8-k4S">
             <objects>
                 <viewController id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,10 +17,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="y0o-R6-46P"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="doc.text.fill" catalog="system" id="4EO-8k-RVB"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="167" y="113"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="doc.text.fill" catalog="system" width="56" height="64"/>
+    </resources>
 </document>

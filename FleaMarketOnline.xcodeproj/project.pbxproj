@@ -15,6 +15,8 @@
 		5F4F30E22409773D001578A1 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30E12409773D001578A1 /* CartViewController.swift */; };
 		5F4F30E424097752001578A1 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4F30E324097752001578A1 /* Cart.storyboard */; };
 		5F4F30EA24214BEA001578A1 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30E924214BEA001578A1 /* ComposeViewController.swift */; };
+		5F4F30EC2421664F001578A1 /* CartItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30EB2421664F001578A1 /* CartItemStore.swift */; };
+		5F4F30EE2421666E001578A1 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F30ED2421666E001578A1 /* CartItem.swift */; };
 		5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DC9240411AD0041FC73 /* HomeViewController.swift */; };
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
 		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
@@ -69,6 +71,8 @@
 		5F4F30E12409773D001578A1 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		5F4F30E324097752001578A1 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		5F4F30E924214BEA001578A1 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		5F4F30EB2421664F001578A1 /* CartItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemStore.swift; sourceTree = "<group>"; };
+		5F4F30ED2421666E001578A1 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		5FB88DC9240411AD0041FC73 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				5F4F30E12409773D001578A1 /* CartViewController.swift */,
 				5F4F30E324097752001578A1 /* Cart.storyboard */,
 				5F4F30E924214BEA001578A1 /* ComposeViewController.swift */,
+				5F4F30EB2421664F001578A1 /* CartItemStore.swift */,
+				5F4F30ED2421666E001578A1 /* CartItem.swift */,
 			);
 			path = FleaMarketOnline;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 			files = (
 				5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */,
 				EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */,
+				5F4F30EE2421666E001578A1 /* CartItem.swift in Sources */,
 				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
 				5F4F30E22409773D001578A1 /* CartViewController.swift in Sources */,
@@ -487,6 +494,7 @@
 				5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */,
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
 				EFE03BC2240606FF00CBEADC /* ProfileViewController.swift in Sources */,
+				5F4F30EC2421664F001578A1 /* CartItemStore.swift in Sources */,
 				5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */,
 				EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */,
 				EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */,

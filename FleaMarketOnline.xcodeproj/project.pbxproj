@@ -23,6 +23,7 @@
 		7F9492B45568F532460098D9 /* Pods_FleaMarketOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2621BD0678E0E1B74711F9AD /* Pods_FleaMarketOnline.framework */; };
 		90A5467AC191D9A0941BAACD /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */; };
 		A5286DF363293B7773810EB6 /* Pods_FleaMarketOnlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */; };
+		EE3D824B242869F400FC6335 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D824A242869F400FC6335 /* User.swift */; };
 		EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A6E2411217800A7C3A1 /* ChatViewController.swift */; };
 		EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */; };
 		EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB565A02406C4FC001B0D8D /* Chat.storyboard */; };
@@ -82,6 +83,7 @@
 		CD012FE40A0373D6ACDEFDC0 /* Pods-FleaMarketOnlineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnlineTests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnlineTests/Pods-FleaMarketOnlineTests.release.xcconfig"; sourceTree = "<group>"; };
 		DAECFC00DB49FE958E1CD916 /* Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnline-FleaMarketOnlineUITests/Pods-FleaMarketOnline-FleaMarketOnlineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E8CC4093240822D800613880 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		EE3D824A242869F400FC6335 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE982A6E2411217800A7C3A1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EEB565A02406C4FC001B0D8D /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				EEB565A02406C4FC001B0D8D /* Chat.storyboard */,
 				EED6077023EF3F8900DF5CD2 /* Info.plist */,
 				5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */,
+				EE3D824A242869F400FC6335 /* User.swift */,
 				5FB88DC9240411AD0041FC73 /* HomeViewController.swift */,
 				5FB88DCB240412E90041FC73 /* LoginViewController.swift */,
 				5FB88DCD2404BD3C0041FC73 /* ut.swift */,
@@ -491,6 +494,7 @@
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
 				5F4F30E22409773D001578A1 /* CartViewController.swift in Sources */,
 				5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */,
+				EE3D824B242869F400FC6335 /* User.swift in Sources */,
 				5F4F30D6240818F0001578A1 /* TempMenuViewController.swift in Sources */,
 				EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */,
 				EFE03BC2240606FF00CBEADC /* ProfileViewController.swift in Sources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGR-Qn-F9s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGR-Qn-F9s">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,6 +59,7 @@
                                             <outlet property="dateView" destination="F4X-Qx-oGA" id="T7c-7d-wfu"/>
                                             <outlet property="messageView" destination="xzk-mT-8uJ" id="H1r-Hc-Ywx"/>
                                             <outlet property="userNameView" destination="5r2-CI-Jw2" id="ZuO-q0-IbA"/>
+                                            <segue destination="zW2-to-Crr" kind="show" id="Acd-q2-Dhc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -89,6 +90,35 @@
                 </tableView>
             </objects>
             <point key="canvasLocation" x="-372" y="-161.46926536731635"/>
+        </scene>
+        <!--Chat Log Controller-->
+        <scene sceneID="eh2-N6-tNN">
+            <objects>
+                <viewController id="zW2-to-Crr" customClass="ChatLogController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DBj-gz-XBG" customClass="ChatTableViewCell" customModule="FleaMarketOnline" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSS-nU-SBe">
+                                <rect key="frame" x="0.0" y="558" width="375" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G4l-95-SEJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uwt-Je-SNu"/>
+                    <connections>
+                        <outlet property="messageTextView" destination="GSS-nU-SBe" id="QhN-vd-a90"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7h-uD-zRs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551.20000000000005" y="-173.16341829085459"/>
         </scene>
     </scenes>
 </document>

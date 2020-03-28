@@ -41,6 +41,7 @@ class ChatViewController: UIViewController {
     }, withCancel: nil)
 
 }*/
+
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil,

@@ -27,6 +27,7 @@
 		EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A6E2411217800A7C3A1 /* ChatViewController.swift */; };
 		EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */; };
 		EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB565A02406C4FC001B0D8D /* Chat.storyboard */; };
+		EEB75B25242C561C007F6573 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB75B24242C561C007F6573 /* ChatLogController.swift */; };
 		EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */; };
 		EED6076523EF3F8500DF5CD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */; };
 		EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076623EF3F8500DF5CD2 /* ViewController.swift */; };
@@ -87,6 +88,7 @@
 		EE982A6E2411217800A7C3A1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EEB565A02406C4FC001B0D8D /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		EEB75B24242C561C007F6573 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FleaMarketOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				EE982A6E2411217800A7C3A1 /* ChatViewController.swift */,
 				EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */,
 				EEB565A02406C4FC001B0D8D /* Chat.storyboard */,
+				EEB75B24242C561C007F6573 /* ChatLogController.swift */,
 				EED6077023EF3F8900DF5CD2 /* Info.plist */,
 				5F1020CF23FEE3A50093D31A /* SignUpViewController.swift */,
 				EE3D824A242869F400FC6335 /* User.swift */,
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB75B25242C561C007F6573 /* ChatLogController.swift in Sources */,
 				5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */,
 				EED6076723EF3F8500DF5CD2 /* ViewController.swift in Sources */,
 				5F4F30EE2421666E001578A1 /* CartItem.swift in Sources */,

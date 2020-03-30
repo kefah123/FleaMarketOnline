@@ -7,24 +7,35 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ComposeViewController: UIViewController {
 
+    
+    @IBOutlet weak var contectTF: UITextField!
+    @IBOutlet weak var descriptionTF: UITextField!
+    @IBOutlet weak var priceTF: UITextField!
+    @IBOutlet weak var sbTF: UITextField!
+    @IBOutlet weak var nameTF: UITextField!
+    var ref:DatabaseReference?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
+    }
+    @IBAction func addPost(_ sender: Any) {
+        //post data to database
+        ref?.child("Posts").childByAutoId().setValue(nameTF.text! + priceTF.text! + sbTF.text! + contectTF.text! + descriptionTF.text!)
+        //dismiss
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension ComposeViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    */
-
 }

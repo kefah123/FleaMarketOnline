@@ -10,7 +10,6 @@
         <!--Navigation Controller-->
         <scene sceneID="qF0-e3-6qd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dpr-1W-xyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="Lh7-2N-8Fc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNS-qn-2YZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -20,25 +19,35 @@
                         <segue destination="tvY-jH-98W" kind="relationship" relationship="rootViewController" id="NPH-kG-sZS"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpr-1W-xyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-614" y="113"/>
         </scene>
         <!--Home-->
         <scene sceneID="Sym-O8-k4S">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vdf-KN-SGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sjd-vm-MD6">
-                                <rect key="frame" x="103" y="132" width="291" height="681"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="bwI-mR-jMe">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bwI-mR-jMe" id="Ltk-jU-1y5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="DFc-aj-Fd7">
-                                <rect key="frame" x="103" y="88" width="249" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -49,32 +58,86 @@
                     <tabBarItem key="tabBarItem" title="Home" image="doc.text.fill" catalog="system" id="4EO-8k-RVB"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BpL-Ki-SPz">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="nTD-Wa-qrE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="nTD-Wa-qrE">
                             <connections>
                                 <segue destination="YjX-Te-tng" kind="show" id="rCI-OS-LNX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="sjd-vm-MD6" id="g2x-jX-xx1"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="178" y="113"/>
+            <point key="canvasLocation" x="176.81159420289856" y="112.5"/>
         </scene>
-        <!--Compose View Controller-->
+        <!--Compose An item Now-->
         <scene sceneID="Csf-Gv-xbX">
             <objects>
                 <viewController id="YjX-Te-tng" customClass="ComposeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yXh-aM-fWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Js-2DC">
+                                <rect key="frame" x="20" y="88" width="414" height="170"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2px-zS-kM8">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject/Usage " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEZ-b2-M3C">
+                                        <rect key="frame" x="0.0" y="34" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price in $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yul-a8-zlW">
+                                        <rect key="frame" x="0.0" y="68" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contect information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fA-O2-hsP">
+                                        <rect key="frame" x="0.0" y="102" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJh-sg-Hgk">
+                                        <rect key="frame" x="0.0" y="136" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Juf-Js-2DC" firstAttribute="leading" secondItem="FbO-CI-g2B" secondAttribute="leading" constant="20" id="8wv-qR-IpG"/>
+                            <constraint firstAttribute="trailing" secondItem="Juf-Js-2DC" secondAttribute="trailing" constant="-20" id="Fh3-4p-HsG"/>
+                            <constraint firstItem="Juf-Js-2DC" firstAttribute="top" secondItem="FbO-CI-g2B" secondAttribute="top" id="ZcR-nP-Th3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FbO-CI-g2B"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UpO-bY-dEv"/>
+                    <navigationItem key="navigationItem" title="Compose An item Now" id="UpO-bY-dEv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ljB-0K-qvG">
+                            <connections>
+                                <action selector="addPost:" destination="YjX-Te-tng" id="QZv-b5-P8R"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contectTF" destination="5fA-O2-hsP" id="EgE-ZH-UsN"/>
+                        <outlet property="descriptionTF" destination="AJh-sg-Hgk" id="BaB-ID-KRS"/>
+                        <outlet property="nameTF" destination="2px-zS-kM8" id="w9Z-iL-qBN"/>
+                        <outlet property="priceTF" destination="yul-a8-zlW" id="vCr-xB-hC9"/>
+                        <outlet property="sbTF" destination="JEZ-b2-M3C" id="YQO-tc-6lA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ec4-Io-wyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="120"/>
+            <point key="canvasLocation" x="1486.9565217391305" y="124.55357142857142"/>
         </scene>
     </scenes>
     <resources>

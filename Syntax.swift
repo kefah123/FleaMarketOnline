@@ -22,7 +22,19 @@ import Foundation
 //Read and Write to firebase
 //https://firebase.google.com/docs/database/ios/read-and-write
 
-
+//Fire base auth
+//if Auth.auth().currentUser != nil {
+//  print("you are signed in")
+//  print (Auth.auth().currentUser?.uid)
+//  let uid = Auth.auth().currentUser?.uid
+//  // do something with uid
+//} else {
+//  print("you are not  signed in")
+//  let signOrLog = ViewController()
+//  let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
+//  self.present(signOrLogNavigationController,animated: true, completion: nil)
+//  return
+//}
 
 /*************************   References *********************/
 

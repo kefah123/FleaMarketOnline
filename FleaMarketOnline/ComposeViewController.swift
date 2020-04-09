@@ -39,15 +39,18 @@ class ComposeViewController: UIViewController {
           print("you are signed in")
           print (Auth.auth().currentUser?.uid)
           let uid = Auth.auth().currentUser?.uid
+            let name = Auth.auth().currentUser?.displayName
+          print(name)
           //post data to database
           var valueArr = [String]()
             valueArr.append(nameTF.text!)
+            valueArr.append(uid!)
             valueArr.append(priceTF.text!)
             valueArr.append(sbTF.text!)
             valueArr.append(contectTF.text!)
             valueArr.append(descriptionTF.text!)
-         
-          ref?.child("Posts").child(uid!).setValue(valueArr)
+
+            ref?.child("Posts").childByAutoId().setValue(valueArr)
           //dismiss
           presentingViewController?.dismiss(animated: true, completion: nil)
         } else {

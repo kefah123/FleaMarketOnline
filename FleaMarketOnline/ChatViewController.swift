@@ -12,6 +12,7 @@ import Firebase
 class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var allUsers = [User]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +21,12 @@ class ChatViewController: UIViewController {
     
     func createUsers() -> [User] {
         var tempUsers = [User]()
-        let newUser = User(name:"John",email:"john@gmail.com",date:"3/20/2020")
-        tempUsers.append(newUser)
-        tempUsers.append(newUser)
-        tempUsers.append(newUser)
+        tempUsers.append(User(random: true))
+        tempUsers.append(User(random: true))
+        tempUsers.append(User(random: true))
         return tempUsers
     }
+    
     /* TODO: fix fetch user to retrieve user info
     func fetchUser() {
     Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
@@ -74,6 +75,16 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "chatLogSegue"?:
+    if let row = tableView.indexPathForSelectedRow?.row {
+        let selectedUser = allUsers[row]
+        let nextViewController = segue.destination as! ChatLogController
+        nextViewController.user = selectedUser
+    } default:
+    preconditionFailure("Unexpected segue identifier.") }
     
 }
 
+}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGR-Qn-F9s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGR-Qn-F9s">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,7 +59,7 @@
                                             <outlet property="dateView" destination="F4X-Qx-oGA" id="T7c-7d-wfu"/>
                                             <outlet property="messageView" destination="xzk-mT-8uJ" id="H1r-Hc-Ywx"/>
                                             <outlet property="userNameView" destination="5r2-CI-Jw2" id="ZuO-q0-IbA"/>
-                                            <segue destination="zW2-to-Crr" kind="show" id="Acd-q2-Dhc"/>
+                                            <segue destination="zW2-to-Crr" kind="show" identifier="chatLogSegue" id="Acd-q2-Dhc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -96,26 +96,53 @@
         <!--Chat Log Controller-->
         <scene sceneID="eh2-N6-tNN">
             <objects>
-                <viewController id="zW2-to-Crr" customClass="ChatLogController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatLogController" id="zW2-to-Crr" customClass="ChatLogController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DBj-gz-XBG" customClass="ChatTableViewCell" customModule="FleaMarketOnline" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSS-nU-SBe">
-                                <rect key="frame" x="0.0" y="558" width="375" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ek-Ps-rfv">
+                                <rect key="frame" x="0.0" y="602" width="375" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pev-kg-OEh">
+                                        <rect key="frame" x="329" y="5" width="36" height="30"/>
+                                        <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="zW2-to-Crr" eventType="touchUpInside" id="JGc-bZ-bMg"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CKS-y8-zd6">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="45"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Pev-kg-OEh" secondAttribute="trailing" constant="10" id="2Ks-bS-WuL"/>
+                                    <constraint firstItem="CKS-y8-zd6" firstAttribute="leading" secondItem="2Ek-Ps-rfv" secondAttribute="leading" id="6eQ-tM-avC"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKS-y8-zd6" secondAttribute="bottom" id="LIw-mU-eCJ"/>
+                                    <constraint firstItem="CKS-y8-zd6" firstAttribute="top" secondItem="2Ek-Ps-rfv" secondAttribute="top" id="Xxp-nn-Z4V"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pev-kg-OEh" secondAttribute="bottom" constant="10" id="j2U-xY-dDf"/>
+                                    <constraint firstItem="CKS-y8-zd6" firstAttribute="top" secondItem="Pev-kg-OEh" secondAttribute="top" constant="-5" id="v1g-q7-TrO"/>
+                                    <constraint firstItem="Pev-kg-OEh" firstAttribute="leading" secondItem="CKS-y8-zd6" secondAttribute="trailing" constant="2" id="xBR-6W-Ir6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2Ek-Ps-rfv" firstAttribute="trailing" secondItem="G4l-95-SEJ" secondAttribute="trailing" id="bQP-Jc-INE"/>
+                            <constraint firstItem="2Ek-Ps-rfv" firstAttribute="leading" secondItem="G4l-95-SEJ" secondAttribute="leading" id="cmH-Vf-ZF2"/>
+                            <constraint firstItem="2Ek-Ps-rfv" firstAttribute="bottom" secondItem="G4l-95-SEJ" secondAttribute="bottom" id="o34-wl-GbY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G4l-95-SEJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uwt-Je-SNu"/>
                     <connections>
-                        <outlet property="messageTextView" destination="GSS-nU-SBe" id="QhN-vd-a90"/>
+                        <outlet property="messageInput" destination="CKS-y8-zd6" id="xG4-cj-YOq"/>
+                        <outlet property="sendContainerView" destination="2Ek-Ps-rfv" id="PAL-QN-2Xd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7h-uD-zRs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -124,6 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

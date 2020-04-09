@@ -19,6 +19,7 @@ class Profile: UITabBarController {
         checkLoggedInUserStatus()
     }
     fileprivate func checkLoggedInUserStatus(){
+        
         if Auth.auth().currentUser == nil{
             DispatchQueue.main.async {
                 let signOrLog = ViewController()

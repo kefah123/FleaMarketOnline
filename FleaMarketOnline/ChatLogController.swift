@@ -52,6 +52,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
        // let toId = user!.id!
         let values = ["text":messageInput.text!]//,"toId":toId]
         childRef.updateChildValues(values)
+        messageInput.text=""
         
     }
     

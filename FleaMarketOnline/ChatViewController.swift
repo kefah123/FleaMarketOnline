@@ -24,6 +24,7 @@ class ChatViewController: UIViewController {
         tempUsers.append(User(random: true))
         tempUsers.append(User(random: true))
         tempUsers.append(User(random: true))
+        Database.database().reference().child("users").setValue(["username": tempUsers[0]])
         return tempUsers
     }
     

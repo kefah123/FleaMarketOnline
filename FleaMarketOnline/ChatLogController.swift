@@ -49,8 +49,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBAction func sendMessage(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-       // let toId = user!.id!
-        let values = ["text":messageInput.text!]//,"toId":toId]
+        //let toId = user!.id!
+        let values = ["text":messageInput.text!]//,toId":toId]
         childRef.updateChildValues(values)
         messageInput.text=""
         

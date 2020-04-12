@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         ref = Database.database().reference()
+        //read data from data base
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: {(snapshot) in
             let post = snapshot.value as? [String]
             if let actualPost = post{
@@ -31,6 +32,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Post count : ",  postData.count)
+        
         return postData.count
     }
     
@@ -38,6 +40,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
         print(postData[indexPath.row])
         cell.textLabel?.text = postData[indexPath.row][0]
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

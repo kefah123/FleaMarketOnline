@@ -52,7 +52,7 @@ class ComposeViewController: UIViewController {
 
             ref?.child("Posts").childByAutoId().setValue(valueArr)
           //dismiss
-          presentingViewController?.dismiss(animated: true, completion: nil)
+          self.navigationController?.popViewController(animated: true)
         } else {
           print("you are not  signed in")
           let signOrLog = ViewController()

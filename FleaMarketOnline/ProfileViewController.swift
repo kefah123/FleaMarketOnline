@@ -2,21 +2,19 @@
 //  ProfileViewController.swift
 //  FleaMarketOnline
 //
-//  Created by 吴亨俊 on 2/25/20.
+//  Created by 吴亨俊 on 4/13/20.
 //  Copyright © 2020 HEWZ. All rights reserved.
 //
-
-import SwiftUI
 import UIKit
 import FirebaseAuth
 
-class Profile: UITabBarController {
+class ProfileViewController: UITabBarController {
+    
+    @IBOutlet weak var editButton: UIButton!
+    
     override func viewDidLoad() {
-
-        
-        
         super.viewDidLoad()
-        checkLoggedInUserStatus()
+//        checkLoggedInUserStatus()
     }
     fileprivate func checkLoggedInUserStatus(){
         
@@ -30,14 +28,4 @@ class Profile: UITabBarController {
         }
     }
 }
-struct ProfileViewController: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
 
-struct ProfileViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileViewController()
-    }
-}

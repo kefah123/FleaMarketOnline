@@ -10,7 +10,7 @@
         <!--Profile-->
         <scene sceneID="IQp-2O-MAk">
             <objects>
-                <viewController id="Bb3-aS-7pj" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="Bb3-aS-7pj" customClass="ProfileViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zlT-hQ-Rgh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -117,6 +117,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAm-Ar-g6q">
+                                                <rect key="frame" x="196" y="392" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Edit"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.73693013191223145" green="0.93217271566390991" blue="0.89405304193496704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -176,6 +181,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="ZH1-LI-7bM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="editButton" destination="SAm-Ar-g6q" id="bSP-UN-Aco"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sa-Cv-c6L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

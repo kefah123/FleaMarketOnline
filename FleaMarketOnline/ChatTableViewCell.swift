@@ -18,7 +18,12 @@ class ChatTableViewCell: UITableViewCell {
         userNameView.text = user.name
         dateView.text = user.date
         messageView.text = user.email
-        
     }
+    func setMessage(message:Message,name:String){
+        userNameView.text = name
+       // dateView.text = String(describing:message.timestamp)
+        messageView.text = message.text
+    }
+    
 
 }

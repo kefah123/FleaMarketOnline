@@ -26,6 +26,7 @@
 		EE3D824B242869F400FC6335 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D824A242869F400FC6335 /* User.swift */; };
 		EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A6E2411217800A7C3A1 /* ChatViewController.swift */; };
 		EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */; };
+		EEAD00B82443C9FD0071498A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAD00B72443C9FD0071498A /* Message.swift */; };
 		EEB565A12406C4FC001B0D8D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB565A02406C4FC001B0D8D /* Chat.storyboard */; };
 		EEB75B25242C561C007F6573 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB75B24242C561C007F6573 /* ChatLogController.swift */; };
 		EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */; };
@@ -87,6 +88,7 @@
 		EE3D824A242869F400FC6335 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE982A6E2411217800A7C3A1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		EEAD00B72443C9FD0071498A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEB565A02406C4FC001B0D8D /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		EEB75B24242C561C007F6573 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		EED6075F23EF3F8500DF5CD2 /* FleaMarketOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FleaMarketOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 				EED6076823EF3F8500DF5CD2 /* Main.storyboard */,
 				EED6076B23EF3F8900DF5CD2 /* Assets.xcassets */,
 				EED6076D23EF3F8900DF5CD2 /* LaunchScreen.storyboard */,
+				EEAD00B72443C9FD0071498A /* Message.swift */,
 				EFE03BC1240606FF00CBEADC /* ProfileViewController.swift */,
 				EFE03BBF240606C400CBEADC /* Profile.storyboard */,
 				EE982A6E2411217800A7C3A1 /* ChatViewController.swift */,
@@ -497,6 +500,7 @@
 				5F4F30EE2421666E001578A1 /* CartItem.swift in Sources */,
 				EED6076323EF3F8500DF5CD2 /* AppDelegate.swift in Sources */,
 				5F10201423EF4FA70093D31A /* Syntax.swift in Sources */,
+				EEAD00B82443C9FD0071498A /* Message.swift in Sources */,
 				5F4F30E22409773D001578A1 /* CartViewController.swift in Sources */,
 				5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */,
 				EE3D824B242869F400FC6335 /* User.swift in Sources */,

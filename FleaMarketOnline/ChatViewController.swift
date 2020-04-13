@@ -12,11 +12,15 @@ import Firebase
 class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var allUsers = [User]()
+    var ref = Database.database().reference()
+    var messages = [Message]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allUsers = createUsers()
+        //allUsers = createUsers()
+        fetchUser()
+        observeMessages()
     }
     
     func createUsers() -> [User] {
@@ -24,25 +28,48 @@ class ChatViewController: UIViewController {
         tempUsers.append(User(random: true))
         tempUsers.append(User(random: true))
         tempUsers.append(User(random: true))
-        Database.database().reference().child("users").setValue(["username": tempUsers[0]])
+        let userRef = ref.child("users").childByAutoId()
+        let values = ["name": tempUsers[2].name!,"email":tempUsers[2].email!]
+            userRef.updateChildValues(values)
         return tempUsers
     }
     
-    /* TODO: fix fetch user to retrieve user info
+
     func fetchUser() {
     Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-        if let dictionary = snapshot.value as? [String: AnyObject] {
+        if let dictionary = snapshot.value as? NSDictionary {
             let user = User()
-            user.setValuesForKeys(dictionary)
-            self.users.append(user)
+            user.id = snapshot.key
+            user.name = dictionary["name"] as? String ?? ""
+            user.email = dictionary["email"] as? String ?? ""
+            self.allUsers.append(user)
+            
           //  print(user.name ?? "User instance is nil", user.email ?? "User instance is nil")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }, withCancel: nil)
-
-}*/
+}
+    
+    func observeMessages() {
+        let ref = Database.database().reference().child("messages")
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? NSDictionary {
+            let message = Message()
+                message.fromId = dictionary["fromId"] as? String ?? ""
+                message.text = dictionary["text"] as? String ?? ""
+                message.timestamp = dictionary["timestamp"] as? Int ?? 0
+                message.toId = dictionary["fromId"] as? String ?? ""
+                self.messages.append(message)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }, withCancel: nil)
+    }
+    
 
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
@@ -66,13 +93,24 @@ class ChatViewController: UIViewController {
 //Displaying number of cells and setting content of cells
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allUsers.count
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = allUsers[indexPath.row]
+        let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
-        cell.setUser(user:user)
+
+        if let toId = message.toId {
+            let ref = Database.database().reference().child("users").child(toId)
+            ref.observeSingleEvent(of: .value, with: {(snapshot) in
+                if let dictionary = snapshot.value as? NSDictionary {
+                   let name = dictionary["name"] as? String ?? ""
+                    cell.setMessage(message:message,name:name)
+                }
+            })
+        }
+     
+
         return cell
     }
     

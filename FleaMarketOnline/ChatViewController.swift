@@ -99,13 +99,15 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
-
+       // let user = allUsers[indexPath.row]
+      //  cell.setUser(user:user)
         if let toId = message.toId {
             let ref = Database.database().reference().child("users").child(toId)
             ref.observeSingleEvent(of: .value, with: {(snapshot) in
                 if let dictionary = snapshot.value as? NSDictionary {
                    let name = dictionary["name"] as? String ?? ""
-                    cell.setMessage(message:message,name:name)
+                    let timestampDate = NSDate(timeIntervalSince1970: TimeInterval(message.timestamp ?? 0))
+                cell.setMessage(message:message,name:name,date:timestampDate)
                 }
             })
         }

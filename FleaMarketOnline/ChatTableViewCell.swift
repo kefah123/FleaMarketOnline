@@ -18,7 +18,16 @@ class ChatTableViewCell: UITableViewCell {
         userNameView.text = user.name
         dateView.text = user.date
         messageView.text = user.email
-        
     }
+    func setMessage(message:Message,name:String,date:NSDate){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        userNameView.text = name
+        dateView.text = dateFormatter.string(from: date as Date)
+        messageView.text = message.text
+        dateView.textColor = UIColor.lightGray
+        dateView.font = UIFont.systemFont(ofSize: 13)
+    }
+    
 
 }

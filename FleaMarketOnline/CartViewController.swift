@@ -30,17 +30,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cartTableView.dataSource = self
         //Set the firebase reference
         ref = Database.database().reference()
-        //Retrieve the posts and listen for changes
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-            //code to execute when a child is added user "Posts"
-            //take the value from the snapshot and added it to the post data array
             let post = snapshot.value as? [String]
             print(post)
             if let actualPost = post{
-//                //append the data to our postData array
+                print(actualPost[6])
+                if actualPost[6] == "true"{
+                    self.postData.append(actualPost)
+                    self.cartTableView.reloadData()
+                }
                 
-                self.postData.append(actualPost)
-                self.cartTableView.reloadData()
             }
                }){ (error) in
                print(error.localizedDescription)

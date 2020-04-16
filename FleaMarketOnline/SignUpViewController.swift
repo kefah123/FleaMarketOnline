@@ -11,8 +11,9 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
-class SignUpViewController: UIViewController {
 
+class SignUpViewController: UIViewController {
+    var ref:DatabaseReference?
     @IBOutlet weak var firstNameTextfield: UITextField!
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -24,7 +25,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
         setUpElements()
     }
@@ -38,17 +39,7 @@ class SignUpViewController: UIViewController {
         Utilities.styleFilledButton(signUpButton)
         
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    //validation, check everything in the text field is in good types
-    //or it will return errors meesags
     func validateFields() -> String?{
         //check if all fields are filled
         if (firstNameTextfield.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -88,8 +79,8 @@ class SignUpViewController: UIViewController {
                 }else{
                     //create an instance for new user
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(
-                        data: ["firstname":firstName,
+                    db.collection("users").document(result!.user.uid).setData(
+                        ["firstname":firstName,
                                "lastname":lastName,
                                "email":email,
                                "password":password,

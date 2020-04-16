@@ -15,34 +15,29 @@ class HomeCellViewController: UIViewController {
     var getSB = String()
     var getContect = String()
     var getDescibption = String()
-    
-    @IBOutlet weak var Name: UILabel!
-    @IBOutlet weak var Seller: UILabel!
-    @IBOutlet weak var Price: UILabel!
-    @IBOutlet weak var SB: UILabel!
-    @IBOutlet weak var Contect: UILabel!
-    @IBOutlet weak var Description: UILabel!
-    @IBOutlet weak var AddtoCart: UIButton!
+
+    @IBOutlet weak var nameLB: UILabel!
+    @IBOutlet weak var sellerLB: UILabel!
+    @IBOutlet weak var priceLB: UILabel!
+    @IBOutlet weak var subjectLB: UILabel!
+    @IBOutlet weak var contactLB: UILabel!
+    @IBOutlet weak var descriptionLB: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Name.text! = "Name :" + getName
-        Seller.text! = "Seller : " + getSeller
-        Price.text! = "Price : " + getPrice
-        SB.text! = "Subject / Usage : " + getSB
-        Contect.text! = "Contect : " + getContect
-        Description.text! = "Description : " + getDescibption
+        nameLB.text! = getName
+        sellerLB.text! = getSeller
+        priceLB.text! =  getPrice
+        subjectLB.text! = getSB
+        contactLB.text! =  getContect
+        descriptionLB.text! =  getDescibption
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addToCartAction(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func buyItNowAction(_ sender: Any) {
+    }
+    
 }

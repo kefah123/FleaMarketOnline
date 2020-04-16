@@ -49,6 +49,8 @@ class ComposeViewController: UIViewController {
             valueArr.append(sbTF.text!)
             valueArr.append(contectTF.text!)
             valueArr.append(descriptionTF.text!)
+            valueArr.append("false")
+            valueArr.append("false")
 
             ref?.child("Posts").childByAutoId().setValue(valueArr)
           //dismiss

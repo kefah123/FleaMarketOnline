@@ -18,11 +18,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         let ref = Database.database().reference();
         ref.child("id/name").setValue("key")
-//        setElement()
+        setElement()
     }
-//    func setElement(){
-//        Utilities.styleFilledButton(logInButton)
-//        Utilities.styleFilledButton(signUpButton)
-//    }
+    func setElement(){
+        Utilities.styleFilledButton(logInButton)
+        Utilities.styleFilledButton(signUpButton)
+    }
 
 }

@@ -26,6 +26,11 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        firstNameTextfield.resignFirstResponder()
+        lastNameTextfield.resignFirstResponder()
+        emailTextfield.resignFirstResponder()
+        passwordTextfield.resignFirstResponder()
+   
         // Do any additional setup after loading the view.
         setUpElements()
     }
@@ -52,7 +57,7 @@ class SignUpViewController: UIViewController {
         //check if all password is secure
         let cleanPw = passwordTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if Utilities.isPasswordValid(cleanPw) == false {
-            return "Please make sure your password be at least 8 characters with a special character and a number "
+            return "Password should be at least 8 characters with a special character and a number "
         }
         return nil
     }
@@ -98,7 +103,9 @@ class SignUpViewController: UIViewController {
             self.transitions()
         }
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func transitions(){
         

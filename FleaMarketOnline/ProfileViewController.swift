@@ -48,9 +48,12 @@ class ProfileViewController: UIViewController {
         
         if Auth.auth().currentUser == nil{
             DispatchQueue.main.async {
-                let signOrLog = ViewController()
-                let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
-                self.present(signOrLogNavigationController,animated: true, completion: nil)
+                print("you are not  signed in")
+                let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+
+                let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+
+                self.navigationController?.pushViewController(vc, animated: true)
                 return
             }
         }

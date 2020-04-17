@@ -25,9 +25,9 @@ class ComposeViewController: UIViewController {
           print (Auth.auth().currentUser?.uid)
         } else {
           print("you are not  signed in")
-            var sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
 
-            var vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
 
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -38,7 +38,7 @@ class ComposeViewController: UIViewController {
           return
         }
         super.viewDidLoad()
-        ref = Database.database().reference()
+       
         // Do any additional setup after loading the view.
     }
     @IBAction func addPost(_ sender: Any) {

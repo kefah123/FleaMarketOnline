@@ -20,6 +20,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     var ref:DatabaseReference?
     override func viewDidLoad() {
+        ref = Database.database().reference()
         if Auth.auth().currentUser != nil {
           print("you are signed in")
   
@@ -29,11 +30,7 @@ class ComposeViewController: UIViewController {
             let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
             let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.navigationController?.pushViewController(vc, animated: true)
-           
-//          let signOrLog = ViewController()
-//          let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
-//
-//          self.present(signOrLogNavigationController,animated: true, completion: nil)
+
           return
         }
         
@@ -58,6 +55,7 @@ class ComposeViewController: UIViewController {
             valueArr.append(descriptionTF.text!)
             valueArr.append("false")
             valueArr.append("false")
+            print(valueArr)
 
             ref?.child("Posts").childByAutoId().setValue(valueArr)
           //dismiss
@@ -80,4 +78,5 @@ extension ComposeViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+    
 }

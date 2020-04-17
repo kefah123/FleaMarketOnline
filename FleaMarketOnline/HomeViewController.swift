@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-
+        
             
         self.tableView.reloadData()
         super.viewDidLoad()

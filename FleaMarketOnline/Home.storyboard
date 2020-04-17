@@ -27,7 +27,7 @@
         <!--Home-->
         <scene sceneID="Sym-O8-k4S">
             <objects>
-                <viewController id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vdf-KN-SGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +280,7 @@
         <!--Compose An item Now-->
         <scene sceneID="Csf-Gv-xbX">
             <objects>
-                <viewController id="YjX-Te-tng" customClass="ComposeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="compose" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YjX-Te-tng" customClass="ComposeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yXh-aM-fWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

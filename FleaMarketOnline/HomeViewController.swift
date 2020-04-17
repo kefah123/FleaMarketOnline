@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var postData = [[String]]()
 
@@ -16,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+
+            
         self.tableView.reloadData()
         super.viewDidLoad()
         tableView.delegate = self

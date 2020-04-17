@@ -12,7 +12,7 @@ import Firebase
 
 class ComposeViewController: UIViewController {
 
-    
+    var dataStore = UserDefaults.standard
     @IBOutlet weak var contectTF: UITextField!
     @IBOutlet weak var descriptionTF: UITextField!
     @IBOutlet weak var priceTF: UITextField!
@@ -22,21 +22,21 @@ class ComposeViewController: UIViewController {
     override func viewDidLoad() {
         if Auth.auth().currentUser != nil {
           print("you are signed in")
-          print (Auth.auth().currentUser?.uid)
+  
         } else {
           print("you are not  signed in")
+            dataStore.set("compose", forKey: "status")
             let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-
             let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-
             self.navigationController?.pushViewController(vc, animated: true)
-            
+           
 //          let signOrLog = ViewController()
 //          let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
 //
 //          self.present(signOrLogNavigationController,animated: true, completion: nil)
           return
         }
+        
         super.viewDidLoad()
        
         // Do any additional setup after loading the view.
@@ -44,10 +44,10 @@ class ComposeViewController: UIViewController {
     @IBAction func addPost(_ sender: Any) {
         if Auth.auth().currentUser != nil {
           print("you are signed in")
-          print (Auth.auth().currentUser?.uid)
+
           let uid = Auth.auth().currentUser?.uid
             let name = Auth.auth().currentUser?.displayName
-          print(name)
+  
           //post data to database
           var valueArr = [String]()
             valueArr.append(nameTF.text!)

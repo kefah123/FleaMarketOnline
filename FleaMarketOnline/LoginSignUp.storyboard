@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-VB-luA">
-                                <rect key="frame" x="40" y="288" width="334" height="220"/>
+                                <rect key="frame" x="40" y="148" width="334" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZG-jp-SUN">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -84,7 +84,7 @@
                                             <constraint firstAttribute="height" constant="40" id="N28-Td-awC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiw-kn-vdc">
                                         <rect key="frame" x="0.0" y="120" width="334" height="40"/>
@@ -112,7 +112,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="2YX-24-bBX" firstAttribute="trailing" secondItem="UVB-VB-luA" secondAttribute="trailing" constant="40" id="Y8v-nj-354"/>
-                            <constraint firstItem="UVB-VB-luA" firstAttribute="top" secondItem="2YX-24-bBX" secondAttribute="top" constant="200" id="fuW-Ax-eoS"/>
+                            <constraint firstItem="UVB-VB-luA" firstAttribute="top" secondItem="2YX-24-bBX" secondAttribute="top" constant="60" id="fuW-Ax-eoS"/>
                             <constraint firstItem="UVB-VB-luA" firstAttribute="leading" secondItem="2YX-24-bBX" secondAttribute="leading" constant="40" id="iHJ-v8-oR9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2YX-24-bBX"/>

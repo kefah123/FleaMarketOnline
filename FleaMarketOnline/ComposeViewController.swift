@@ -25,9 +25,16 @@ class ComposeViewController: UIViewController {
           print (Auth.auth().currentUser?.uid)
         } else {
           print("you are not  signed in")
-          let signOrLog = ViewController()
-          let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
-          self.present(signOrLogNavigationController,animated: true, completion: nil)
+            var sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+
+            var vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+//          let signOrLog = ViewController()
+//          let signOrLogNavigationController = UINavigationController(rootViewController: signOrLog)
+//
+//          self.present(signOrLogNavigationController,animated: true, completion: nil)
           return
         }
         super.viewDidLoad()

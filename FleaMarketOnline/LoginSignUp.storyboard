@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="eqw-7M-E8Q">
             <objects>
-                <viewController id="p1o-4J-dD5" customClass="ViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p1o-4J-dD5" customClass="ViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="90v-72-nfd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avb-Aj-Vdm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="90.401785714285708"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="90.401785714285708"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="hbt-Of-U0N">
@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-VB-luA">
-                                <rect key="frame" x="40" y="200" width="334" height="200.5"/>
+                                <rect key="frame" x="40" y="200" width="334" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZG-jp-SUN">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -98,7 +98,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRQ-sB-ngP">
-                                        <rect key="frame" x="0.0" y="180" width="334" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="180" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pkB-Zd-Pvp"/>
                                         </constraints>
@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6I-fz-ITm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783" y="367"/>
+            <point key="canvasLocation" x="2692.753623188406" y="366.96428571428572"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="YHt-DG-txY">
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVQ-mA-yms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2642" y="133"/>
+            <point key="canvasLocation" x="3550.7246376811595" y="132.58928571428572"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="EwI-11-wKx">
@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8N-SM-gAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783" y="-421"/>
+            <point key="canvasLocation" x="2692.753623188406" y="-421.20535714285711"/>
         </scene>
     </scenes>
 </document>

@@ -77,7 +77,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         fromId = "-M4joH77M1MuPS7j9w0r"
         let userMessagesRef = Database.database().reference().child("user-messages").child(fromId!)
         let messageId = childRef.key
-            userMessagesRef.updateChildValues(["1":messageId!])
+            userMessagesRef.updateChildValues([messageId!:1])
         }
         messageInput.text=""
         

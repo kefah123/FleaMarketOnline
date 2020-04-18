@@ -83,6 +83,16 @@ class SignUpViewController: UIViewController {
                     self.errorLabel.text = ""
                     self.errorLabel.alpha = 1
                 }else{
+                    //make a copy of user to the firebase realtime database
+                    var ref:DatabaseReference?
+                    ref = Database.database().reference()
+
+                    ref?.child("users").child(result!.user.uid).setValue(
+                        ["firstName" : firstName,
+                         "lastName" : lastName,
+                         "email" : email,
+                         "password" : password
+                        ])
                     //create an instance for new user
                     let db = Firestore.firestore()
                     db.collection("users").document(result!.user.uid).setData(

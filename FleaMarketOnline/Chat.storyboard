@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGR-Qn-F9s">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,7 +59,6 @@
                                             <outlet property="dateView" destination="F4X-Qx-oGA" id="T7c-7d-wfu"/>
                                             <outlet property="messageView" destination="xzk-mT-8uJ" id="H1r-Hc-Ywx"/>
                                             <outlet property="userNameView" destination="5r2-CI-Jw2" id="ZuO-q0-IbA"/>
-                                            <segue destination="zW2-to-Crr" kind="show" identifier="chatLogSegue" id="Acd-q2-Dhc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -82,6 +81,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="OEP-FB-705" id="1u7-gb-WzA"/>
+                        <segue destination="zW2-to-Crr" kind="show" identifier="chatLogSegue" id="LfC-UR-h5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dj4-tt-x3L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -108,7 +108,7 @@
                                         <rect key="frame" x="329" y="5" width="36" height="30"/>
                                         <state key="normal" title="Send"/>
                                         <connections>
-                                            <action selector="sendMessage:" destination="zW2-to-Crr" eventType="touchUpInside" id="JGc-bZ-bMg"/>
+                                            <action selector="sendMessage:" destination="zW2-to-Crr" eventType="touchUpInside" id="6WO-Br-61b"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CKS-y8-zd6">
@@ -141,8 +141,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Uwt-Je-SNu"/>
                     <connections>
-                        <outlet property="messageInput" destination="CKS-y8-zd6" id="xG4-cj-YOq"/>
-                        <outlet property="sendContainerView" destination="2Ek-Ps-rfv" id="PAL-QN-2Xd"/>
+                        <outlet property="messageInput" destination="CKS-y8-zd6" id="YbU-MB-Dy3"/>
+                        <outlet property="sendContainerView" destination="2Ek-Ps-rfv" id="hzb-FX-0UL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7h-uD-zRs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

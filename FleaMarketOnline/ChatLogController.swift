@@ -10,14 +10,22 @@ import UIKit
 import Firebase
 class ChatLogController: UIViewController, UITextViewDelegate {
 
-    @IBOutlet var messageInput: UITextView!
+
     @IBOutlet var sendContainerView: UIView!
-    var user:User?
+    @IBOutlet var messageInput: UITextView!
+  //  var toId:String?
+    var userName:String?
+    var message: Message?
+
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        navigationItem.title = user?.name
+        super.viewDidLoad()
+
+
+        if message?.name != nil {
+            navigationItem.title = message?.name
+           }
         messageInput.delegate = self
         sendContainerView.layer.borderWidth = 0.3
          let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -25,8 +33,12 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+
     
     
+    
+    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -49,11 +61,24 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBAction func sendMessage(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-        let toId = user!.id!
+       // let toId = user!.id!
+        let toId = self.message!.toId!
+        let toUser = self.message!.name!
+        print(toUser)
         let timestamp = Int(NSDate().timeIntervalSince1970)
-        let fromId = Auth.auth().currentUser?.uid
-        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId ?? "-M4kxE_Os9UtUQV5LY8S", "timestamp":timestamp] as [String : Any]
-        childRef.updateChildValues(values)
+        var fromId = Auth.auth().currentUser?.uid
+        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId ?? "-M4joH77M1MuPS7j9w0r", "timestamp":timestamp, "toUser":toUser] as [String : Any]
+       // childRef.updateChildValues(values)
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error!)
+                return
+            }
+        fromId = "-M4joH77M1MuPS7j9w0r"
+        let userMessagesRef = Database.database().reference().child("user-messages").child(fromId!)
+        let messageId = childRef.key
+            userMessagesRef.updateChildValues(["1":messageId!])
+        }
         messageInput.text=""
         
     }

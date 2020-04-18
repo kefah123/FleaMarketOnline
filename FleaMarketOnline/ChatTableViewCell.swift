@@ -16,7 +16,6 @@ class ChatTableViewCell: UITableViewCell {
     
     func setUser(user: User){
         userNameView.text = user.name
-        dateView.text = user.date
         messageView.text = user.email
     }
     func setMessage(message:Message,name:String,date:NSDate){
@@ -25,8 +24,11 @@ class ChatTableViewCell: UITableViewCell {
         userNameView.text = name
         dateView.text = dateFormatter.string(from: date as Date)
         messageView.text = message.text
-        dateView.textColor = UIColor.lightGray
-        dateView.font = UIFont.systemFont(ofSize: 13)
+        dateView.textColor = UIColor.darkGray
+        dateView.font = UIFont.systemFont(ofSize: 15)
+        messageView.textColor = UIColor.darkGray
+        messageView.font = UIFont.systemFont(ofSize:14)
+        userNameView.font = UIFont.systemFont(ofSize:18)
     }
     
 

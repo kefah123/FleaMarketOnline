@@ -14,6 +14,13 @@ class ChatViewController: UIViewController {
     var allUsers = [User]()
     var ref = Database.database().reference()
     var messages = [Message]()
+    var messagesDict = [String:Message]()
+    var message: Message?
+    var toId:String?
+    var selectedUser:User?
+
+
+    
 
     
     override func viewDidLoad() {
@@ -43,8 +50,6 @@ class ChatViewController: UIViewController {
             user.name = dictionary["name"] as? String ?? ""
             user.email = dictionary["email"] as? String ?? ""
             self.allUsers.append(user)
-            
-          //  print(user.name ?? "User instance is nil", user.email ?? "User instance is nil")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -60,9 +65,16 @@ class ChatViewController: UIViewController {
                 message.fromId = dictionary["fromId"] as? String ?? ""
                 message.text = dictionary["text"] as? String ?? ""
                 message.timestamp = dictionary["timestamp"] as? Int ?? 0
-                message.toId = dictionary["fromId"] as? String ?? ""
-                self.messages.append(message)
-                
+                message.toId = dictionary["toId"] as? String ?? ""
+                message.name = dictionary["toUser"] as? String ?? ""
+              
+                if let toId = message.toId {
+                self.messagesDict[toId] = message
+                    self.messages = Array(self.messagesDict.values)
+                    self.messages.sort { (message1, message2) -> Bool in
+                        return message1.timestamp! > message2.timestamp!
+                    }
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -89,6 +101,17 @@ class ChatViewController: UIViewController {
         let loginController = LoginViewController()
         present(loginController, animated: true, completion: nil)
     }
+    
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "chatLogSegue" {
+        let nextViewController = segue.destination as! ChatLogController
+        //nextViewController.toId = self.toId
+            nextViewController.userName = self.message!.name
+        nextViewController.message = self.message
+        }
+
+}
 }
 //Displaying number of cells and setting content of cells
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
@@ -97,6 +120,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
        // let user = allUsers[indexPath.row]
@@ -111,21 +135,19 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             })
         }
-     
-
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    switch segue.identifier {
-    case "chatLogSegue"?:
-    if let row = tableView.indexPathForSelectedRow?.row {
-        let selectedUser = allUsers[row]
-        let nextViewController = segue.destination as! ChatLogController
-        nextViewController.user = selectedUser
-    } default:
-    preconditionFailure("Unexpected segue identifier.") }
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        message = messages[indexPath.row]
+        //self.toId = message.toId
+        performSegue(withIdentifier: "chatLogSegue", sender: nil)
+        
+        }
 }
 
-}
+  
+
+
+
+

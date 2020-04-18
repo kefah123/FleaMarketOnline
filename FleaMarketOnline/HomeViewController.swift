@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var postData = [[String]]()
 
@@ -16,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
+            
         self.tableView.reloadData()
         super.viewDidLoad()
         tableView.delegate = self
@@ -47,6 +50,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let Storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
         vc.getName = postData[indexPath.row][0]
+        vc.getSeller = postData[indexPath.row][1]
+        vc.getPrice = postData[indexPath.row][2]
+        vc.getSB = postData[indexPath.row][3]
+        vc.getContect = postData[indexPath.row][4]
+        vc.getDescibption = postData[indexPath.row][5]
         print(postData[indexPath.row][0])
         self.navigationController?.pushViewController(vc, animated: true)
     }

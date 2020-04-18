@@ -11,8 +11,10 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
-class SignUpViewController: UIViewController {
 
+class SignUpViewController: UIViewController {
+    var ref:DatabaseReference?
+    var dataStore = UserDefaults.standard
     @IBOutlet weak var firstNameTextfield: UITextField!
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -24,7 +26,12 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
+        firstNameTextfield.resignFirstResponder()
+        lastNameTextfield.resignFirstResponder()
+        emailTextfield.resignFirstResponder()
+        passwordTextfield.resignFirstResponder()
+   
         // Do any additional setup after loading the view.
         setUpElements()
     }
@@ -38,17 +45,7 @@ class SignUpViewController: UIViewController {
         Utilities.styleFilledButton(signUpButton)
         
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    //validation, check everything in the text field is in good types
-    //or it will return errors meesags
     func validateFields() -> String?{
         //check if all fields are filled
         if (firstNameTextfield.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -61,7 +58,7 @@ class SignUpViewController: UIViewController {
         //check if all password is secure
         let cleanPw = passwordTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if Utilities.isPasswordValid(cleanPw) == false {
-            return "Please make sure your password be at least 8 characters with a special character and a number "
+            return "Password should be at least 8 characters with a special character and a number "
         }
         return nil
     }
@@ -86,10 +83,20 @@ class SignUpViewController: UIViewController {
                     self.errorLabel.text = ""
                     self.errorLabel.alpha = 1
                 }else{
+                    //make a copy of user to the firebase realtime database
+                    var ref:DatabaseReference?
+                    ref = Database.database().reference()
+
+                    ref?.child("users").child(result!.user.uid).setValue(
+                        ["firstName" : firstName,
+                         "lastName" : lastName,
+                         "email" : email,
+                         "password" : password
+                        ])
                     //create an instance for new user
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(
-                        data: ["firstname":firstName,
+                    db.collection("users").document(result!.user.uid).setData(
+                        ["firstname":firstName,
                                "lastname":lastName,
                                "email":email,
                                "password":password,
@@ -107,9 +114,18 @@ class SignUpViewController: UIViewController {
             self.transitions()
         }
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func transitions(){
+        self.navigationController?.popViewController(animated: true)
+//        let status = UserDefaults.standard.value(forKey: "status")as! String
+//        if status == "compose"{
+//            let sb = UIStoryboard(name: "Home", bundle:nil)
+//            let vc = sb.instantiateViewController(identifier: "home") as? HomeViewController
+//            view.window?.rootViewController = vc
+//        }
         
     }
     

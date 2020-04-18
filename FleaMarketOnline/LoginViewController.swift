@@ -22,6 +22,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+      
+        emailTextField.resignFirstResponder()
+        passwordTextfield.resignFirstResponder()
         // Do any additional setup after loading the view.
     }
     func setUpElements(){
@@ -32,15 +35,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func loginTapped(_ sender: Any) {
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -54,5 +49,16 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
         }
+        transitions()
+        
     }
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+        
+        func transitions(){
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+    
 }

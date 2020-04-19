@@ -9,38 +9,77 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class ProfileViewController: UIViewController {
-        
-    @IBOutlet weak var nameField: UITextField!
+class ProfileViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var HelloLabel: UILabel!
+    
     
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
-    
+    var secureSwitch = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLoggedInUserStatus()
-//        ref = Database.database().reference()
-//        let uid = Auth.auth().currentUser?.uid
-//        ref!.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-//          // Get user value
-//          let value = snapshot.value as? NSDictionary
-//          let name = value?["name"] as? String ?? ""
-//          let email = value?["email"] as? String ?? ""
-//            self.nameField.text = name
-//            self.emailField.text = email
-//
-//        })
+        ref = Database.database().reference()
+        let uid = Auth.auth().currentUser?.uid
+        ref!.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+
+            let value = snapshot.value as? NSDictionary
+            let firstName = value?["firstName"] as? String ?? ""
+            let lastName = value?["lastName"] as? String ?? ""
+            let email = value?["email"] as? String ?? ""
+            let password = value?["password"] as? String ?? ""
+
+            self.firstNameField.text = firstName
+            self.lastNameField.text = lastName
+            self.emailField.text = email
+            self.passwordField.text = password
+            self.passwordField.isSecureTextEntry = self.secureSwitch
+            self.HelloLabel.text = "Hello, " + firstName + " " + lastName
+        })
+        
+    }
+
+    @IBAction func firstNameEditingButton(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        self.ref!.child("users/\(String(describing: uid!))/firstName").setValue(firstNameField.text)
     }
     
-    @IBAction func nameEditingButton(_ sender: Any) {
+    @IBAction func lastNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
-        self.ref!.child("users/\(String(describing: uid))/name").setValue(nameField.text)
+        self.ref!.child("users/\(String(describing: uid!))/lastName").setValue(lastNameField.text)
+    }
+    @IBAction func emailEditingButton(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        self.ref!.child("users/\(String(describing: uid!))/email").setValue(emailField.text)
     }
     
-    @IBAction func emailEditingButton(_ sender: Any) {
+    @IBAction func passwordSecureButton(_ sender: UIButton) {
+        if(secureSwitch == true) {
+            passwordField.isSecureTextEntry = false
+        } else {
+            passwordField.isSecureTextEntry = true
+        }
+        secureSwitch = !secureSwitch
+    }
+    
+    @IBAction func passwordEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
-        self.ref!.child("users/\(String(describing: uid))/email").setValue(emailField.text)
+        self.ref!.child("users/\(String(describing: uid!))/password").setValue(passwordField.text)
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     

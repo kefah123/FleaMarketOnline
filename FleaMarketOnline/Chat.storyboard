@@ -147,7 +147,7 @@
                                                     <rect key="frame" x="192" y="0.0" width="175" height="109"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ib-hM-6G0">
-                                                            <rect key="frame" x="8" y="8" width="157" height="93"/>
+                                                            <rect key="frame" x="8" y="8" width="159" height="93"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -156,11 +156,11 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="0ib-hM-6G0" firstAttribute="leading" secondItem="EIU-Fq-Kil" secondAttribute="leadingMargin" id="7kt-oW-tPf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="0ib-hM-6G0" secondAttribute="trailing" constant="10" id="8tI-xR-JCq"/>
                                                         <constraint firstAttribute="width" constant="175" id="Jsf-LV-fIv"/>
-                                                        <constraint firstItem="0ib-hM-6G0" firstAttribute="bottom" secondItem="EIU-Fq-Kil" secondAttribute="bottomMargin" id="a1t-5X-fdm"/>
-                                                        <constraint firstItem="0ib-hM-6G0" firstAttribute="top" secondItem="EIU-Fq-Kil" secondAttribute="topMargin" id="m9L-aY-G8G"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0ib-hM-6G0" secondAttribute="bottom" constant="8" id="Pgm-9g-i4i"/>
+                                                        <constraint firstItem="0ib-hM-6G0" firstAttribute="leading" secondItem="EIU-Fq-Kil" secondAttribute="leading" constant="8" id="dMi-tG-DFq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0ib-hM-6G0" secondAttribute="trailing" constant="8" id="eFx-Cv-p5a"/>
+                                                        <constraint firstItem="0ib-hM-6G0" firstAttribute="top" secondItem="EIU-Fq-Kil" secondAttribute="top" constant="8" id="qik-j6-NpX"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -173,6 +173,7 @@
                                         <size key="customSize" width="375" height="109"/>
                                         <connections>
                                             <outlet property="bubbleView" destination="EIU-Fq-Kil" id="jSZ-xm-gIf"/>
+                                            <outlet property="bubbleViewTrailingConstraint" destination="aKN-li-Xbh" id="ovh-b0-qYF"/>
                                             <outlet property="bubbleViewWidthConstraint" destination="Jsf-LV-fIv" id="VNK-UZ-bX7"/>
                                             <outlet property="messageCell" destination="0ib-hM-6G0" id="1Jq-7Z-elm"/>
                                         </connections>

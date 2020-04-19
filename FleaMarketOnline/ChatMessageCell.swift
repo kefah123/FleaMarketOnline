@@ -11,6 +11,8 @@ import UIKit
 
 class ChatMessageCell:UICollectionViewCell {
     
+
+    @IBOutlet var bubbleViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var messageCell: UITextView!
     
     @IBOutlet var bubbleView: UIView!
@@ -22,6 +24,8 @@ class ChatMessageCell:UICollectionViewCell {
     let grayMessage = UIColor(red:0.82,green:0.82,blue:0.82,alpha:0.6)
     func setMessageCell(message:Message,bubbleAnchor:CGFloat, to:Bool){
         if to {
+            bubbleViewLeadingConstraint.isActive = false
+            bubbleViewTrailingConstraint.isActive = true
             messageCell.text = message.text
             messageCell.textColor = .white
             messageCell.backgroundColor = UIColor.clear
@@ -30,6 +34,9 @@ class ChatMessageCell:UICollectionViewCell {
             bubbleView.layer.cornerRadius = 16
             bubbleView.layer.masksToBounds = true
         } else {
+            bubbleViewLeadingConstraint.isActive = true
+            bubbleViewTrailingConstraint?.isActive = false
+            bubbleViewLeadingConstraint.constant = 8
             messageCell.text = message.text
             messageCell.textColor = .black
             messageCell.backgroundColor = UIColor.clear
@@ -37,8 +44,8 @@ class ChatMessageCell:UICollectionViewCell {
             bubbleViewWidthConstraint.constant = bubbleAnchor
             bubbleView.layer.cornerRadius = 16
             bubbleView.layer.masksToBounds = true
-            bubbleViewTrailingConstraint.constant = 100
             
+                        
         }
     }
 }

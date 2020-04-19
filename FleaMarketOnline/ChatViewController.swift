@@ -19,6 +19,7 @@ class ChatViewController: UIViewController {
     var toId:String?
     var selectedUser:User?
     var fromIdArray = Set<String>()
+    var timer: Timer?
     
 
 
@@ -34,9 +35,9 @@ class ChatViewController: UIViewController {
    
     }
     override func viewWillAppear(_ animated: Bool) {
-    if let index = self.tableView.indexPathForSelectedRow{
+    if let index = self.tableView.indexPathForSelectedRow {
         self.tableView.deselectRow(at: index, animated: true)
-    }
+        }
     }
     
 
@@ -85,12 +86,19 @@ class ChatViewController: UIViewController {
                         }
                         
                     }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    self.timer?.invalidate()
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
+                    self.handleReloadTable()
+                  
                 }
             }, withCancel: nil)
         }, withCancel: nil)
+    }
+    
+    @objc func handleReloadTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     

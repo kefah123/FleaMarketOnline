@@ -37,25 +37,45 @@ class HomeCellViewController: UIViewController {
 
     @IBAction func addToCartAction(_ sender: Any) {
         var ref: DatabaseReference?
-        var databaseHandle:DatabaseHandle?
+        let databaseHandle:DatabaseHandle?
         ref = Database.database().reference()
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+            let key = snapshot.key
             let post = snapshot.value as? [String]
-            print(post)
-//            if let actualPost = post{
-//                print(actualPost[6])
-//                if actualPost[6] == "true"{
-//                    self.postData.append(actualPost)
-//                    self.cartTableView.reloadData()
-//                }
-//
-//            }
-//               }){ (error) in
-//               print(error.localizedDescription)
+            if post?[0] == self.getName &&
+                post?[1] == self.getSeller &&
+                post?[2] == self.getPrice &&
+                post?[3] == self.getSB &&
+                post?[4] == self.getContect &&
+                post?[5] == self.getDescibption {
+                ref!.child("Posts/\(key)/6").setValue("True")
+                //dismiss
+                self.navigationController?.popViewController(animated: true)
+        
+            }
         })
     }
     
     @IBAction func buyItNowAction(_ sender: Any) {
+        var ref: DatabaseReference?
+        let databaseHandle:DatabaseHandle?
+        ref = Database.database().reference()
+        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+            let key = snapshot.key
+            let post = snapshot.value as? [String]
+            if post?[0] == self.getName &&
+                post?[1] == self.getSeller &&
+                post?[2] == self.getPrice &&
+                post?[3] == self.getSB &&
+                post?[4] == self.getContect &&
+                post?[5] == self.getDescibption {
+                ref!.child("Posts/\(key)/7").setValue("True")
+                //dismiss
+                self.navigationController?.popViewController(animated: true)
+        
+            }
+        })
+        
     }
     
 }

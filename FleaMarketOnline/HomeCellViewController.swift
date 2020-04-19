@@ -81,7 +81,7 @@ class HomeCellViewController: UIViewController {
     
     @IBAction func chatAction(_ sender: UIButton) {
         let sb = UIStoryboard(name: "Chat", bundle:nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let vc = sb.instantiateViewController(withIdentifier: "ChatLogController") as! ChatLogController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

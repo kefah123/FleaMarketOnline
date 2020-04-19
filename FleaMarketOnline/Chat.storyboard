@@ -126,7 +126,7 @@
                                     <constraint firstItem="Pev-kg-OEh" firstAttribute="leading" secondItem="CKS-y8-zd6" secondAttribute="trailing" constant="2" id="xBR-6W-Ir6"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-K8-NVk">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="chatLogController" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-K8-NVk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="594"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oBF-ZD-zcd">

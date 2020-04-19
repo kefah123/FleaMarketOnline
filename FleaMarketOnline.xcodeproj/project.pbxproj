@@ -40,6 +40,7 @@
 		EED6079323EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED6079223EF42F900DF5CD2 /* GoogleService-Info.plist */; };
 		EED6079423EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED6079223EF42F900DF5CD2 /* GoogleService-Info.plist */; };
 		EED6079523EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED6079223EF42F900DF5CD2 /* GoogleService-Info.plist */; };
+		EEE67755244C28DD00225E23 /* messagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE67754244C28DD00225E23 /* messagesViewCell.swift */; };
 		EF786A512444237500CA99BE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF786A502444237500CA99BE /* ProfileViewController.swift */; };
 		EFE03BC0240606C400CBEADC /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE03BBF240606C400CBEADC /* Profile.storyboard */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		EED6078423EF3F8900DF5CD2 /* FleaMarketOnlineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleaMarketOnlineUITests.swift; sourceTree = "<group>"; };
 		EED6078623EF3F8900DF5CD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED6079223EF42F900DF5CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EEE67754244C28DD00225E23 /* messagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messagesViewCell.swift; sourceTree = "<group>"; };
 		EF786A502444237500CA99BE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFE03BBF240606C400CBEADC /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +209,7 @@
 				EFE03BBF240606C400CBEADC /* Profile.storyboard */,
 				EE982A6E2411217800A7C3A1 /* ChatViewController.swift */,
 				EE982A702411520300A7C3A1 /* ChatTableViewCell.swift */,
+				EEE67754244C28DD00225E23 /* messagesViewCell.swift */,
 				EEB565A02406C4FC001B0D8D /* Chat.storyboard */,
 				EEB75B24242C561C007F6573 /* ChatLogController.swift */,
 				EED6077023EF3F8900DF5CD2 /* Info.plist */,
@@ -509,6 +512,7 @@
 				5F4F30EC2421664F001578A1 /* CartItemStore.swift in Sources */,
 				5F1020D023FEE3A50093D31A /* SignUpViewController.swift in Sources */,
 				EE982A6F2411217800A7C3A1 /* ChatViewController.swift in Sources */,
+				EEE67755244C28DD00225E23 /* messagesViewCell.swift in Sources */,
 				EE982A712411520300A7C3A1 /* ChatTableViewCell.swift in Sources */,
 				5FB88DCA240411AD0041FC73 /* HomeViewController.swift in Sources */,
 				5F4F30EA24214BEA001578A1 /* ComposeViewController.swift in Sources */,

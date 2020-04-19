@@ -122,7 +122,6 @@ class ChatViewController: UIViewController {
                 nextViewController.userName = self.message!.fromName
             }
         nextViewController.message = self.message
-          //  }
 }
 }
 }
@@ -137,7 +136,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
         if let id = message.chatPartnerId() {
-     //       if id != Auth.auth().currentUser?.uid || id != "-M4joH77M1MuPS7j9w0r"
             let ref = Database.database().reference().child("users").child(id)
             ref.observeSingleEvent(of: .value, with: {(snapshot) in
                 if let dictionary = snapshot.value as? NSDictionary {

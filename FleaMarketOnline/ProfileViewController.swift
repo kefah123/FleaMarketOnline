@@ -23,26 +23,40 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var secureSwitch = true
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        checkLoggedInUserStatus()
-        ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
-        ref!.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-          // Get user value
+    
+       if Auth.auth().currentUser != nil {
+                print("you are signed in")
+                
+                ref = Database.database().reference()
+                let uid = Auth.auth().currentUser?.uid
+                ref?.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
 
-            let value = snapshot.value as? NSDictionary
-            let firstName = value?["firstName"] as? String ?? ""
-            let lastName = value?["lastName"] as? String ?? ""
-            let email = value?["email"] as? String ?? ""
-            let password = value?["password"] as? String ?? ""
+                let value = snapshot.value as? NSDictionary
+                let firstName = value?["firstName"] as? String ?? ""
+                let lastName = value?["lastName"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let password = value?["password"] as? String ?? ""
 
-            self.firstNameField.text = firstName
-            self.lastNameField.text = lastName
-            self.emailField.text = email
-            self.passwordField.text = password
-            self.passwordField.isSecureTextEntry = self.secureSwitch
-            self.HelloLabel.text = "Hello, " + firstName + " " + lastName
+                self.firstNameField.text = firstName
+                self.lastNameField.text = lastName
+                self.emailField.text = email
+                self.passwordField.text = password
+                self.passwordField.isSecureTextEntry = self.secureSwitch
+                self.HelloLabel.text = "Hello, " + firstName + " " + lastName
         })
+        
+              } else {
+                print("you are not  signed in")
+                  let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+                  let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                  self.navigationController?.pushViewController(vc, animated: true)
+              }
+        
+        super.viewDidLoad()
+        
+        
+
         
     }
 
@@ -82,20 +96,35 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    
-    fileprivate func checkLoggedInUserStatus(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
         
-        if Auth.auth().currentUser == nil{
-            DispatchQueue.main.async {
-                print("you are not  signed in")
-                let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-
-                let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-
-                self.navigationController?.pushViewController(vc, animated: true)
+    }
+    fileprivate func checkLoggedInUserStatus(){
+              if Auth.auth().currentUser != nil {
+                print("you are signed in")
                 return
-            }
-        }
+        
+              } else {
+                print("you are not  signed in")
+                  let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+                  let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                  self.navigationController?.pushViewController(vc, animated: true)
+
+                return
+              }
+//        if Auth.auth().currentUser == nil{
+//            DispatchQueue.main.async {
+//                print("you are not  signed in")
+//                let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+//
+//                let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                return
+//            }
+//        }
     }
 }
 

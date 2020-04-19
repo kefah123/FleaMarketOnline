@@ -30,6 +30,7 @@ class ChatViewController: UIViewController {
         messages.removeAll()
         messagesDict.removeAll()
         observeUserMessages()
+        
    
     }
     override func viewWillAppear(_ animated: Bool) {

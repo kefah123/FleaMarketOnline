@@ -18,11 +18,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         
-            
+        
         self.tableView.reloadData()
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        //save the name of current view controller
+        UserDefaults.standard.set("Home", forKey: "currentViewController")
         ref = Database.database().reference()
         //read data from data base
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: {(snapshot) in

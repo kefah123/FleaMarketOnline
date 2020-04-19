@@ -11,21 +11,21 @@ import Firebase
 class ChatLogController: UIViewController, UITextViewDelegate {
 
 
+    @IBOutlet weak var messagesView: UICollectionView!
     @IBOutlet var sendContainerView: UIView!
     @IBOutlet var messageInput: UITextView!
-  //  var toId:String?
     var userName:String?
     var message: Message?
+
 
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-
         if userName != nil {
             navigationItem.title = userName
            }
+
         messageInput.delegate = self
         sendContainerView.layer.borderWidth = 0.3
          let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -34,7 +34,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    
+
     
     
     
@@ -83,6 +83,19 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         }
         messageInput.text=""
         
+    }
+    
+
+}
+extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        cell.backgroundColor = UIColor.blue
+        return cell
     }
     
 

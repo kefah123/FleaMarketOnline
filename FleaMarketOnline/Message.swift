@@ -23,11 +23,5 @@ class Message: NSObject {
                 return fromId
         }
     }
-    func verifyPartnerId() -> String? {
-        if fromId != Auth.auth().currentUser?.uid || fromId != "-M4joH77M1MuPS7j9w0r" {
-            return fromId
-        } else {
-            return toId
-        }
-    }
+    
 }

@@ -27,8 +27,8 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // messages.removeAll()
-       // messagesDict.removeAll()
+        messages.removeAll()
+        messagesDict.removeAll()
         observeUserMessages()
    
     }
@@ -122,8 +122,8 @@ class ChatViewController: UIViewController {
                 nextViewController.userName = self.message!.fromName
             }
         nextViewController.message = self.message
-}
-}
+        }
+    }
 }
 //Displaying number of cells and setting content of cells
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
@@ -152,8 +152,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         message = messages[indexPath.row]
-
-        //self.toId = message.toId
         performSegue(withIdentifier: "chatLogSegue", sender: nil)
         
         }

@@ -14,17 +14,19 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var messagesView: UICollectionView!
     @IBOutlet var sendContainerView: UIView!
     @IBOutlet var messageInput: UITextView!
-    var userName:String?
     var message: Message?
-
-
-
+    var messages = [Message]()
+    var userName:String? {
+        didSet {
+            navigationItem.title = userName
+            observeChatLog()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        if userName != nil {
-            navigationItem.title = userName
-           }
 
         messageInput.delegate = self
         sendContainerView.layer.borderWidth = 0.3
@@ -32,12 +34,40 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         view.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        messagesView?.alwaysBounceVertical=true
     }
-
-
     
-    
-    
+    func observeChatLog() {
+       // guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uid = "-M4joH77M1MuPS7j9w0r"
+        let userMessagesRef = Database.database().reference().child("user-messages").child(uid)
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            let messageId = snapshot.key
+                  let messagesRef = Database.database().reference().child("messages").child(messageId)
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? NSDictionary else {
+                return
+                }
+                let message = Message()
+                message.fromId = dictionary["fromId"] as? String ?? ""
+                message.text = dictionary["text"] as? String ?? ""
+                message.timestamp = dictionary["timestamp"] as? Int ?? 0
+                message.toId = dictionary["toId"] as? String ?? ""
+                message.toName = dictionary["toUser"] as? String ?? ""
+                message.fromName = dictionary["fromUser"] as? String ?? ""
+                if message.chatPartnerId() == self.message!.toId {
+                self.messages.append(message)
+                DispatchQueue.main.async {
+                    self.messagesView.reloadData()
+                    }
+                }
+         
+              
+            }, withCancel: nil)
+        }, withCancel: nil)
+        
+  
+    }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -87,15 +117,20 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     
 
 }
-extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return messages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        cell.backgroundColor = UIColor.blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
+        let message = messages[indexPath.row]
+        cell.setMessageCell(message:message)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 80)
     }
     
 

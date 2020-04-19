@@ -12,12 +12,14 @@ import Firebase
 class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var allUsers = [User]()
-    var ref = Database.database().reference()
     var messages = [Message]()
     var messagesDict = [String:Message]()
     var message: Message?
+    var messageName: String?
     var toId:String?
     var selectedUser:User?
+    var fromIdArray = Set<String>()
+    
 
 
     
@@ -25,20 +27,15 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //allUsers = createUsers()
-        fetchUser()
-        observeMessages()
+       // messages.removeAll()
+       // messagesDict.removeAll()
+        observeUserMessages()
+   
     }
-    
-    func createUsers() -> [User] {
-        var tempUsers = [User]()
-        tempUsers.append(User(random: true))
-        tempUsers.append(User(random: true))
-        tempUsers.append(User(random: true))
-        let userRef = ref.child("users").childByAutoId()
-        let values = ["name": tempUsers[2].name!,"email":tempUsers[2].email!]
-            userRef.updateChildValues(values)
-        return tempUsers
+    override func viewWillAppear(_ animated: Bool) {
+    if let index = self.tableView.indexPathForSelectedRow{
+        self.tableView.deselectRow(at: index, animated: true)
+    }
     }
     
 
@@ -56,33 +53,46 @@ class ChatViewController: UIViewController {
         }
     }, withCancel: nil)
 }
-    
-    func observeMessages() {
-        let ref = Database.database().reference().child("messages")
+    func observeUserMessages() {
+        var uid: String?
+ 
+        if Auth.auth().currentUser?.uid != nil {
+            uid = Auth.auth().currentUser?.uid
+        } else {
+            uid = "-M4joH77M1MuPS7j9w0r"
+        }
+        let ref = Database.database().reference().child("user-messages").child(uid!)
         ref.observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? NSDictionary {
-            let message = Message()
-                message.fromId = dictionary["fromId"] as? String ?? ""
-                message.text = dictionary["text"] as? String ?? ""
-                message.timestamp = dictionary["timestamp"] as? Int ?? 0
-                message.toId = dictionary["toId"] as? String ?? ""
-                message.name = dictionary["toUser"] as? String ?? ""
-              
-                if let toId = message.toId {
-                self.messagesDict[toId] = message
-                    self.messages = Array(self.messagesDict.values)
-                    self.messages.sort { (message1, message2) -> Bool in
-                        return message1.timestamp! > message2.timestamp!
+            let messageId = snapshot.key
+
+            let messagesRef = Database.database().reference().child("messages").child(messageId)
+            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? NSDictionary {
+                let message = Message()
+                    message.fromId = dictionary["fromId"] as? String ?? ""
+                    message.text = dictionary["text"] as? String ?? ""
+                    message.timestamp = dictionary["timestamp"] as? Int ?? 0
+                    message.toId = dictionary["toId"] as? String ?? ""
+                    message.toName = dictionary["toUser"] as? String ?? ""
+                    message.fromName = dictionary["fromUser"] as? String ?? ""
+                    if let id = message.chatPartnerId() {
+                    self.messagesDict[id] = message
+                        
+                        self.messages = Array(self.messagesDict.values)
+                        self.messages.sort { (message1, message2) -> Bool in
+                            return message1.timestamp! > message2.timestamp!
+                        }
+                        
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                     }
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+            }, withCancel: nil)
         }, withCancel: nil)
     }
-    
 
+    
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil,
@@ -106,11 +116,14 @@ class ChatViewController: UIViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chatLogSegue" {
         let nextViewController = segue.destination as! ChatLogController
-        //nextViewController.toId = self.toId
-            nextViewController.userName = self.message!.name
+            if message?.chatPartnerId() == message?.toId {
+                nextViewController.userName = message?.toName
+            } else {
+                nextViewController.userName = self.message!.fromName
+            }
         nextViewController.message = self.message
-        }
-
+          //  }
+}
 }
 }
 //Displaying number of cells and setting content of cells
@@ -123,23 +136,25 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
-       // let user = allUsers[indexPath.row]
-      //  cell.setUser(user:user)
-        if let toId = message.toId {
-            let ref = Database.database().reference().child("users").child(toId)
+        if let id = message.chatPartnerId() {
+     //       if id != Auth.auth().currentUser?.uid || id != "-M4joH77M1MuPS7j9w0r"
+            let ref = Database.database().reference().child("users").child(id)
             ref.observeSingleEvent(of: .value, with: {(snapshot) in
                 if let dictionary = snapshot.value as? NSDictionary {
                    let name = dictionary["name"] as? String ?? ""
                     let timestampDate = NSDate(timeIntervalSince1970: TimeInterval(message.timestamp ?? 0))
+                    
                 cell.setMessage(message:message,name:name,date:timestampDate)
                 }
             })
-        }
+            self.fromIdArray.insert(id)
+                }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         message = messages[indexPath.row]
+
         //self.toId = message.toId
         performSegue(withIdentifier: "chatLogSegue", sender: nil)
         

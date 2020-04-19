@@ -23,8 +23,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
 
-        if message?.name != nil {
-            navigationItem.title = message?.name
+        if userName != nil {
+            navigationItem.title = userName
            }
         messageInput.delegate = self
         sendContainerView.layer.borderWidth = 0.3
@@ -62,12 +62,12 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
        // let toId = user!.id!
-        let toId = self.message!.toId!
-        let toUser = self.message!.name!
-        print(toUser)
+        let toId = message!.toId!
+        let toUser = message!.toName!
+        let fromUser = message!.fromName!
         let timestamp = Int(NSDate().timeIntervalSince1970)
         var fromId = Auth.auth().currentUser?.uid
-        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId ?? "-M4joH77M1MuPS7j9w0r", "timestamp":timestamp, "toUser":toUser] as [String : Any]
+        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId ?? "-M4joH77M1MuPS7j9w0r", "timestamp":timestamp, "toUser":toUser, "fromUser":fromUser] as [String : Any]
        // childRef.updateChildValues(values)
         childRef.updateChildValues(values) { (error, ref) in
             if error != nil {
@@ -78,6 +78,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         let userMessagesRef = Database.database().reference().child("user-messages").child(fromId!)
         let messageId = childRef.key
             userMessagesRef.updateChildValues([messageId!:1])
+        let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId)
+            recipientUserMessagesRef.updateChildValues([messageId!:1])
         }
         messageInput.text=""
         

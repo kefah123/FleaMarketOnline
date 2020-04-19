@@ -124,6 +124,10 @@ class ChatViewController: UIViewController {
         nextViewController.message = self.message
         }
     }
+    /*
+    func sendPurchasedMessage(){
+        let ref = Database.database().reference().child("Posts")
+    }*/
 }
 //Displaying number of cells and setting content of cells
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {

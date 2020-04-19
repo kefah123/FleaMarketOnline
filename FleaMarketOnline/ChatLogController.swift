@@ -114,6 +114,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         messageInput.text=""
         
     }
+
     
 
 }
@@ -125,13 +126,34 @@ extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
         let message = messages[indexPath.row]
-        cell.setMessageCell(message:message)
+        var bubbleAnchor: CGFloat = 200
+        if let text = messages[indexPath.row].text {
+           bubbleAnchor =  getFrameSize(text: text).width + 25
+        }
+        if message.fromId == Auth.auth().currentUser?.uid || message.fromId == "-M4joH77M1MuPS7j9w0r" {
+            cell.setMessageCell(message:message,bubbleAnchor:bubbleAnchor,to:true)
+        } else {
+            cell.setMessageCell(message:message,bubbleAnchor:bubbleAnchor,to:false)
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        var height: CGFloat = 80
+        if let text = messages[indexPath.row].text {
+            height = getFrameSize(text: text).height + 18
+        }
+        return CGSize(width: view.frame.width, height: height)
+    }
+    func getFrameSize(text:String) -> CGRect {
+        let size = CGSize(width: 175, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string:text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        messagesView?.collectionViewLayout.invalidateLayout()
+    }
 
 }

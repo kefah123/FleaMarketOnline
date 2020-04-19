@@ -20,6 +20,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     var ref:DatabaseReference?
     override func viewDidLoad() {
+        super.viewDidLoad()
         ref = Database.database().reference()
         if Auth.auth().currentUser != nil {
           print("you are signed in")
@@ -34,7 +35,7 @@ class ComposeViewController: UIViewController {
           return
         }
         
-        super.viewDidLoad()
+        
        
         // Do any additional setup after loading the view.
     }
@@ -53,11 +54,13 @@ class ComposeViewController: UIViewController {
             valueArr.append(sbTF.text!)
             valueArr.append(contectTF.text!)
             valueArr.append(descriptionTF.text!)
-            valueArr.append("false")
-            valueArr.append("false")
+            valueArr.append("False")
+            valueArr.append("False")
             print(valueArr)
-
-            ref?.child("Posts").childByAutoId().setValue(valueArr)
+            let itemID = ref?.childByAutoId().key!
+            ref?.child("Posts").child(itemID!).setValue(valueArr)
+            //create a new copy collection of user post, it will collect all post from that user
+            ref?.child("User-posts").child(uid!).child(itemID!).setValue(valueArr)
           //dismiss
           self.navigationController?.popViewController(animated: true)
         } else {

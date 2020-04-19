@@ -32,6 +32,7 @@ class HomeCellViewController: UIViewController {
         subjectLB.text! = getSB
         contactLB.text! =  getContect
         descriptionLB.text! =  getDescibption
+        let currentViewControllName = UserDefaults.standard.value(forKey: "currentViewController")
     }
     
 

@@ -17,6 +17,7 @@ class ChatMessageCell:UICollectionViewCell {
 
     @IBOutlet var bubbleViewWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet var bubbleViewTrailingConstraint: NSLayoutConstraint!
     let blueMessage = UIColor(red: 0, green: 0.53, blue: 0.97, alpha: 0.8)
     let grayMessage = UIColor(red:0.82,green:0.82,blue:0.82,alpha:0.6)
     func setMessageCell(message:Message,bubbleAnchor:CGFloat, to:Bool){
@@ -36,6 +37,7 @@ class ChatMessageCell:UICollectionViewCell {
             bubbleViewWidthConstraint.constant = bubbleAnchor
             bubbleView.layer.cornerRadius = 16
             bubbleView.layer.masksToBounds = true
+            bubbleViewTrailingConstraint.constant = 100
             
         }
     }

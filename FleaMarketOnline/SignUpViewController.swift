@@ -120,13 +120,7 @@ class SignUpViewController: UIViewController {
     
     func transitions(){
         self.navigationController?.popViewController(animated: true)
-//        let status = UserDefaults.standard.value(forKey: "status")as! String
-//        if status == "compose"{
-//            let sb = UIStoryboard(name: "Home", bundle:nil)
-//            let vc = sb.instantiateViewController(identifier: "home") as? HomeViewController
-//            view.window?.rootViewController = vc
-//        }
-        
+
     }
     
 }

@@ -88,6 +88,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         self.ref!.child("users/\(String(describing: uid!))/password").setValue(passwordField.text)
         
     }
+    
+    @IBAction func signOutAction(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+        print("you are not  signed in")
+        let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.navigationController?.pushViewController(vc, animated: true)   
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -114,17 +128,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
 
                 return
               }
-//        if Auth.auth().currentUser == nil{
-//            DispatchQueue.main.async {
-//                print("you are not  signed in")
-//                let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-//
-//                let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//
-//                self.navigationController?.pushViewController(vc, animated: true)
-//                return
-//            }
-//        }
+
+        
+        
     }
 }
 

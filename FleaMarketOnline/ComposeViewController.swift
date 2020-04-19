@@ -20,6 +20,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     var ref:DatabaseReference?
     override func viewDidLoad() {
+        super.viewDidLoad()
         ref = Database.database().reference()
         if Auth.auth().currentUser != nil {
           print("you are signed in")
@@ -34,7 +35,7 @@ class ComposeViewController: UIViewController {
           return
         }
         
-        super.viewDidLoad()
+        
        
         // Do any additional setup after loading the view.
     }

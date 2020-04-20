@@ -17,10 +17,17 @@ class Message: NSObject {
     var fromName: String?
     
     func chatPartnerId() -> String? {
-        if fromId == Auth.auth().currentUser?.uid || fromId == "-M4joH77M1MuPS7j9w0r" {
+        if fromId == Auth.auth().currentUser?.uid {
                 return toId
         } else {
                 return fromId
+        }
+    }
+    func verifyPartnerId() -> String? {
+        if toId == Auth.auth().currentUser?.uid {
+                return fromId
+        } else {
+                return toId
         }
     }
     

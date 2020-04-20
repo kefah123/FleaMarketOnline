@@ -20,6 +20,7 @@ class ChatViewController: UIViewController {
     var selectedUser:User?
     var fromIdArray = Set<String>()
     var timer: Timer?
+    var dataStore = UserDefaults.standard
     
 
 
@@ -30,23 +31,39 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         messages.removeAll()
         messagesDict.removeAll()
-        observeUserMessages()
+       
+        if checkLogInStatus() {
+            observeUserMessages()
+        }
         
    
     }
     override func viewWillAppear(_ animated: Bool) {
-    if let index = self.tableView.indexPathForSelectedRow {
-        self.tableView.deselectRow(at: index, animated: true)
+        if let index = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: index, animated: true)
         }
     }
-    
+    func checkLogInStatus() -> Bool{
+        if Auth.auth().currentUser != nil {
+            print("you are signed in")
+            return true
+        } else {
+            print("you are not  signed in")
+            dataStore.set("compose", forKey: "status")
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            return false
+        }
+
+    }
 
     func fetchUser() {
     Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
         if let dictionary = snapshot.value as? NSDictionary {
             let user = User()
             user.id = snapshot.key
-            user.name = dictionary["name"] as? String ?? ""
+            user.name = dictionary["firstName"] as? String ?? ""
             user.email = dictionary["email"] as? String ?? ""
             self.allUsers.append(user)
             DispatchQueue.main.async {
@@ -57,71 +74,46 @@ class ChatViewController: UIViewController {
 }
     func observeUserMessages() {
         var uid: String?
- 
         if Auth.auth().currentUser?.uid != nil {
             uid = Auth.auth().currentUser?.uid
-        } else {
-            uid = "-M4joH77M1MuPS7j9w0r"
         }
         let ref = Database.database().reference().child("user-messages").child(uid!)
         ref.observe(.childAdded, with: { (snapshot) in
-            let messageId = snapshot.key
-
-            let messagesRef = Database.database().reference().child("messages").child(messageId)
-            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? NSDictionary {
-                let message = Message()
-                    message.fromId = dictionary["fromId"] as? String ?? ""
-                    message.text = dictionary["text"] as? String ?? ""
-                    message.timestamp = dictionary["timestamp"] as? Int ?? 0
-                    message.toId = dictionary["toId"] as? String ?? ""
-                    message.toName = dictionary["toUser"] as? String ?? ""
-                    message.fromName = dictionary["fromUser"] as? String ?? ""
-                    if let id = message.chatPartnerId() {
-                    self.messagesDict[id] = message
-                        
-                        self.messages = Array(self.messagesDict.values)
-                        self.messages.sort { (message1, message2) -> Bool in
-                            return message1.timestamp! > message2.timestamp!
+            let userId = snapshot.key
+            Database.database().reference().child("user-messages").child(uid!).child(userId).observe(.childAdded, with: { (snapshot) in
+                let messageId = snapshot.key
+                let messagesRef = Database.database().reference().child("messages").child(messageId)
+                messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? NSDictionary {
+                    let message = Message()
+                        message.fromId = dictionary["fromId"] as? String ?? ""
+                        message.text = dictionary["text"] as? String ?? ""
+                        message.timestamp = dictionary["timestamp"] as? Int ?? 0
+                        message.toId = dictionary["toId"] as? String ?? ""
+                        message.toName = dictionary["toUser"] as? String ?? ""
+                        message.fromName = dictionary["fromUser"] as? String ?? ""
+                        if let id = message.chatPartnerId() {
+                            self.messagesDict[id] = message
                         }
-                        
                     }
-                    self.timer?.invalidate()
-                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
-                    self.handleReloadTable()
-                  
-                }
+                    self.reloadTableData()
+                }, withCancel: nil)
             }, withCancel: nil)
         }, withCancel: nil)
     }
+    func reloadTableData() {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
+    }
     
     @objc func handleReloadTable() {
+        self.messages = Array(self.messagesDict.values)
+        self.messages.sort { (message1, message2) -> Bool in return message1.timestamp! > message2.timestamp! }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 
-    
-    func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser?.uid == nil {
-            perform(#selector(handleLogout), with: nil,
-                            afterDelay: 0)
-        } else {
-            Database.database().reference().child("users")
-        }
-    }
-    
-    @objc func handleLogout() {
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError as NSError {
-            print("Error signing out: %@", logoutError)
-        }
-        let loginController = LoginViewController()
-        present(loginController, animated: true, completion: nil)
-    }
-    
-    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chatLogSegue" {
         let nextViewController = segue.destination as! ChatLogController
@@ -152,7 +144,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             let ref = Database.database().reference().child("users").child(id)
             ref.observeSingleEvent(of: .value, with: {(snapshot) in
                 if let dictionary = snapshot.value as? NSDictionary {
-                   let name = dictionary["name"] as? String ?? ""
+                   let name = dictionary["firstName"] as? String ?? ""
                     let timestampDate = NSDate(timeIntervalSince1970: TimeInterval(message.timestamp ?? 0))
                     
                 cell.setMessage(message:message,name:name,date:timestampDate)

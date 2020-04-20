@@ -14,33 +14,48 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var messagesView: UICollectionView!
     @IBOutlet var sendContainerView: UIView!
     @IBOutlet var messageInput: UITextView!
+    var dataStore = UserDefaults.standard
     var message: Message?
     var messages = [Message]()
-    var userName:String? {
-        didSet {
-            navigationItem.title = userName
-            observeChatLog()
-        }
-    }
+    var userName:String?
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        if checkLogInStatus() {
+            navigationItem.title = userName
+            observeChatLog()
+            messageInput.delegate = self
+            sendContainerView.layer.borderWidth = 0.3
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            
+            view.addGestureRecognizer(tap)
+           
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            
+            messagesView?.alwaysBounceVertical=true
+        }
+    }
+    func checkLogInStatus() -> Bool{
+        if Auth.auth().currentUser != nil {
+            print("you are signed in")
+            return true
+        } else {
+            print("you are not signed in")
+            dataStore.set("compose", forKey: "status")
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            return false
+        }
 
-        messageInput.delegate = self
-        sendContainerView.layer.borderWidth = 0.3
-         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        messagesView?.alwaysBounceVertical=true
     }
     
     func observeChatLog() {
-       // guard let uid = Auth.auth().currentUser?.uid else { return }
-        let uid = "-M4joH77M1MuPS7j9w0r"
-        let userMessagesRef = Database.database().reference().child("user-messages").child(uid)
+        guard let uid = Auth.auth().currentUser?.uid, let id = message?.verifyPartnerId() else { return }
+        let userMessagesRef = Database.database().reference().child("user-messages").child(uid).child(id)
         userMessagesRef.observe(.childAdded, with: { (snapshot) in
             let messageId = snapshot.key
                   let messagesRef = Database.database().reference().child("messages").child(messageId)
@@ -48,6 +63,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
                 guard let dictionary = snapshot.value as? NSDictionary else {
                 return
                 }
+                
                 let message = Message()
                 message.fromId = dictionary["fromId"] as? String ?? ""
                 message.text = dictionary["text"] as? String ?? ""
@@ -55,14 +71,12 @@ class ChatLogController: UIViewController, UITextViewDelegate {
                 message.toId = dictionary["toId"] as? String ?? ""
                 message.toName = dictionary["toUser"] as? String ?? ""
                 message.fromName = dictionary["fromUser"] as? String ?? ""
-                if message.chatPartnerId() == self.message!.toId {
+                
+               
                 self.messages.append(message)
                 DispatchQueue.main.async {
                     self.messagesView.reloadData()
-                    }
                 }
-         
-              
             }, withCancel: nil)
         }, withCancel: nil)
         
@@ -91,33 +105,28 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBAction func sendMessage(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-       // let toId = user!.id!
-        let toId = message!.toId!
+        
+        let toId = message!.verifyPartnerId()!
         let toUser = message!.toName!
         let fromUser = message!.fromName!
         let timestamp = Int(NSDate().timeIntervalSince1970)
-        var fromId = Auth.auth().currentUser?.uid
-        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId ?? "-M4joH77M1MuPS7j9w0r", "timestamp":timestamp, "toUser":toUser, "fromUser":fromUser] as [String : Any]
-       // childRef.updateChildValues(values)
+        let fromId = Auth.auth().currentUser?.uid
+        let values = ["text":messageInput.text!,"toId":toId, "fromId":fromId!, "timestamp":timestamp, "toUser":toUser, "fromUser":fromUser] as [String : Any]
         childRef.updateChildValues(values) { (error, ref) in
             if error != nil {
                 print(error!)
                 return
             }
-        fromId = "-M4joH77M1MuPS7j9w0r"
-        let userMessagesRef = Database.database().reference().child("user-messages").child(fromId!)
+            let userMessagesRef = Database.database().reference().child("user-messages").child(fromId!).child(toId)
         let messageId = childRef.key
             userMessagesRef.updateChildValues([messageId!:1])
-        let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId)
+            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId!)
             recipientUserMessagesRef.updateChildValues([messageId!:1])
         }
         messageInput.text=""
-        
     }
-
-    
-
 }
+
 extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
@@ -130,7 +139,8 @@ extension ChatLogController: UICollectionViewDataSource, UICollectionViewDelegat
         if let text = messages[indexPath.row].text {
            bubbleAnchor =  getFrameSize(text: text).width + 25
         }
-        if message.fromId == Auth.auth().currentUser?.uid || message.fromId == "-M4joH77M1MuPS7j9w0r" {
+    
+        if message.fromId == Auth.auth().currentUser?.uid {
             cell.setMessageCell(message:message,bubbleAnchor:bubbleAnchor,to:true)
         } else {
             cell.setMessageCell(message:message,bubbleAnchor:bubbleAnchor,to:false)

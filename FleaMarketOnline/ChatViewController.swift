@@ -18,7 +18,6 @@ class ChatViewController: UIViewController {
     var messageName: String?
     var toId:String?
     var selectedUser:User?
-    var fromIdArray = Set<String>()
     var timer: Timer?
     var dataStore = UserDefaults.standard
     
@@ -150,7 +149,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.setMessage(message:message,name:name,date:timestampDate)
                 }
             })
-            self.fromIdArray.insert(id)
                 }
         return cell
     }

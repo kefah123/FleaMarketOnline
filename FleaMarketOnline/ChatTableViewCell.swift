@@ -20,7 +20,11 @@ class ChatTableViewCell: UITableViewCell {
     }
     func setMessage(message:Message,name:String,date:NSDate){
         let dateFormatter = DateFormatter()
+        if Calendar.current.isDateInToday(date as Date) {
         dateFormatter.dateFormat = "hh:mm a"
+        } else {
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+        }
         userNameView.text = name
         dateView.text = dateFormatter.string(from: date as Date)
         messageView.text = message.text

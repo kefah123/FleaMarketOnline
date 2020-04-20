@@ -105,7 +105,6 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBAction func sendMessage(_ sender: UIButton) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
-        
         let toId = message!.verifyPartnerId()!
         let toUser = message!.toName!
         let fromUser = message!.fromName!

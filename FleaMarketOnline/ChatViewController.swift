@@ -34,6 +34,8 @@ class ChatViewController: UIViewController {
         if checkLogInStatus() {
             observeUserMessages()
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(sendPurchasedMessage(n:)), name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
+        checkIfItemPurchased()
         
    
     }
@@ -124,10 +126,52 @@ class ChatViewController: UIViewController {
         nextViewController.message = self.message
         }
     }
-    /*
-    func sendPurchasedMessage(){
-        let ref = Database.database().reference().child("Posts")
-    }*/
+    
+    @objc func sendPurchasedMessage(n:NSNotification){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let toId = uid
+        let toUser = ""
+        let fromUser = "System"
+        let timestamp = Int(NSDate().timeIntervalSince1970)
+        let fromId = "SystemSystemSystem"
+        let values = ["text":"Your item has been sold!","toId":toId, "fromId":fromId, "timestamp":timestamp, "toUser":toUser, "fromUser":fromUser] as [String : Any]
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
+        let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId!:1])
+            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
+            recipientUserMessagesRef.updateChildValues([messageId!:1])
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    func checkIfItemPurchased() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child("User-posts").child(uid)
+        ref.observe(.childAdded, with: { (snapshot) in
+           // print(snapshot.value)
+            if let array = snapshot.value as? [String] {
+                let index: Int = 7
+                if let _ = array[exist:index] {
+                let purchasedOrNot = array[index]
+                    if purchasedOrNot == "True" {
+                        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
+                    }
+            }
+            }
+            
+        }, withCancel: nil)
+
+    }
 }
 //Displaying number of cells and setting content of cells
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
@@ -159,7 +203,11 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         
         }
 }
-
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (exist index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
   
 
 

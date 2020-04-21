@@ -125,40 +125,40 @@ class ChatViewController: UIViewController {
         let fromUser = "System"
         let timestamp = Int(NSDate().timeIntervalSince1970)
         let fromId = "SystemSystemSystem"
-        print("function snapshot")
-        print(firstName)
-        let values = ["text":"Your item " + itemName!+" has been sold to:"+self.firstName+" "+self.lastName+"!",
-            "toId":toId,
-            "fromId":fromId,
-            "timestamp":timestamp,
-            "toUser":toUser,
-            "fromUser":fromUser] as [String : Any]
-        childRef.updateChildValues(values) { (error, ref) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
-        let messageId = childRef.key
-            userMessagesRef.updateChildValues([messageId!:1])
-            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
-            recipientUserMessagesRef.updateChildValues([messageId!:1])
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        setUserName {
+            let values = ["text":"Your item '" + self.itemName!+"' has been sold to: "+self.firstName+" "+self.lastName+"!",
+                       "toId":toId,
+                       "fromId":fromId,
+                       "timestamp":timestamp,
+                       "toUser":toUser,
+                       "fromUser":fromUser] as [String : Any]
+                   childRef.updateChildValues(values) { (error, ref) in
+                       if error != nil {
+                           print(error!)
+                           return
+                       }
+                       let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
+                   let messageId = childRef.key
+                       userMessagesRef.updateChildValues([messageId!:1])
+                       let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
+                       recipientUserMessagesRef.updateChildValues([messageId!:1])
+                       DispatchQueue.main.async {
+                           self.tableView.reloadData()
+                       }
+        }
         }
         
     }
-    func setUserName(){
+    func setUserName(completion: @escaping () -> Void){
         let userRef = Database.database().reference().child("users").child(self.buyerID!)
         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let dictionary = snapshot.value as? NSDictionary {
                 self.firstName = dictionary["firstName"] as? String ?? ""
                 self.lastName = dictionary["lastName"] as? String ?? ""
+                completion()
             }
         }, withCancel: nil)
-        print("post closure snapshot:")
-        print(self.firstName)
+
         
     }
     
@@ -174,7 +174,6 @@ class ChatViewController: UIViewController {
                         self.itemName = array[0]
                         self.buyerID  = array[8]
                         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
-                        
                     }
             }
             }

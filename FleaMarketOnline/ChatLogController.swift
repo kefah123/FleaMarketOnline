@@ -18,6 +18,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     var message: Message?
     var messages = [Message]()
     var userName:String?
+    var timer: Timer?
     
     
     override func viewDidLoad() {
@@ -78,15 +79,27 @@ class ChatLogController: UIViewController, UITextViewDelegate {
                 
                
                 self.messages.append(message)
-                DispatchQueue.main.async {
-    
+                self.reloadTableData()
+               /* DispatchQueue.main.async {
                     self.messagesView.reloadData()
                     self.messagesView!.scrollToItem(at: IndexPath(item: self.messages.count-1, section: 0), at: UICollectionView.ScrollPosition.bottom, animated: false)
-                }
+                }*/
             }, withCancel: nil)
         }, withCancel: nil)
-        
+ 
   
+    }
+    func reloadTableData() {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
+    }
+    
+    @objc func handleReloadTable() {
+        DispatchQueue.main.async {
+            self.messagesView.reloadData()
+            self.messagesView!.scrollToItem(at: IndexPath(item: self.messages.count-1, section: 0), at: UICollectionView.ScrollPosition.bottom, animated: false)
+            
+        }
     }
 
     @objc func dismissKeyboard() {

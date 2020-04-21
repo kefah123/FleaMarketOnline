@@ -17,6 +17,7 @@ class HomeCellViewController: UIViewController {
     var getSB = String()
     var getContect = String()
     var getDescibption = String()
+    var message = Message()
     
     
     @IBOutlet weak var nameLB: UILabel!
@@ -119,7 +120,33 @@ class HomeCellViewController: UIViewController {
     @IBAction func chatAction(_ sender: UIButton) {
         let sb = UIStoryboard(name: "Chat", bundle:nil)
         let vc = sb.instantiateViewController(withIdentifier: "ChatLogController") as! ChatLogController
+        setMessageDetails {
+        vc.message = self.message
+        vc.userName = self.message.toName
         self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
+    
+    func setMessageDetails(completion: @escaping () -> Void){
+    guard let fromId = Auth.auth().currentUser?.uid else {return}
+    let posterRef = Database.database().reference().child("users").child(self.getSeller)
+    let userRef = Database.database().reference().child("users").child(fromId)
+    userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        if let dictionary = snapshot.value as? NSDictionary {
+            posterRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let posterDict = snapshot.value as? NSDictionary {
+                    self.message.fromName = dictionary["firstName"] as? String ?? ""
+                    self.message.fromId = fromId
+                    self.message.toId = self.getSeller
+                    self.message.toName = posterDict["firstName"] as? String ?? ""
+                    completion()
+                }
+            }, withCancel: nil)
+            
+        }
+    }, withCancel: nil)
+    
+}
+    
     
 }

@@ -39,7 +39,7 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(sendPurchasedMessage(n:)), name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
         checkIfItemPurchased()
         
-   
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
     override func viewWillAppear(_ animated: Bool) {
         if let index = self.tableView.indexPathForSelectedRow {
@@ -89,6 +89,10 @@ class ChatViewController: UIViewController {
                     self.reloadTableData()
                 }, withCancel: nil)
             }, withCancel: nil)
+        }, withCancel: nil)
+        ref.observe(.childRemoved, with: { (snapshot) in
+            self.messagesDict.removeValue(forKey: snapshot.key)
+            self.reloadTableData()
         }, withCancel: nil)
     }
     func reloadTableData() {
@@ -211,7 +215,27 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         performSegue(withIdentifier: "chatLogSegue", sender: nil)
         
         }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let message = self.messages[indexPath.row]
+        if let chatPartnerId = message.chatPartnerId() {
+            Database.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue { (error, ref) in
+                if error != nil {
+                    print("Could not delete message")
+                    return
+                }
+                self.messagesDict.removeValue(forKey: chatPartnerId)
+                self.reloadTableData()
+                
+            }
+        }
+    }
+    
 }
+
 extension Collection where Indices.Iterator.Element == Index {
     subscript (exist index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil

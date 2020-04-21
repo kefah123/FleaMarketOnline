@@ -21,34 +21,19 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     var useForUpdate = [[String]]()
     var ref: DatabaseReference?
     var databaseHandle:DatabaseHandle?
+    var firstInit  = true
 
     @IBOutlet weak var cartTableView: UITableView!
     override func viewDidLoad() {
+        
         print("cart test")
-        //self.tableView.reloadData()
+        self.cartTableView.reloadData()
         super.viewDidLoad()
         cartTableView.delegate = self
         cartTableView.dataSource = self
         //Set the firebase reference
         ref = Database.database().reference()
-        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? [String]
-            //print(post!)
-            if let actualPost = post{
-                //print(actualPost[6])
-                if actualPost[6] == "True"{
-                    //self.postData.append(actualPost)
-                    self.useForUpdate.append(actualPost)
-                    self.postData = self.useForUpdate
-                    print(self.postData)
-                    print("update\(self.postData)")
-                    self.cartTableView.reloadData()
-                }
-                
-            }
-               }){ (error) in
-                print(error.localizedDescription)
-        }
+        
         
     }
     @IBAction func toggleEditingMode(_ sender: UIButton){
@@ -124,6 +109,66 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         print(postData[indexPath.row][0])
         self.navigationController?.pushViewController(vc, animated: true)
     }
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete{
+                // ask user to confirm
+                
+                let title = "Delete?"
+                let message = "Are you sure you want to delete this item?"
+                let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                ac.addAction(cancelAction)
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                    // remove the item from the store
+                   
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                })
+                
+                ac.addAction(deleteAction)
+                // put up the controller as a modal view
+              
+                present(ac, animated: true, completion: nil)
+                
+    //            vg.remove(at: indexPath.item)
+    //            tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+            }
+        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (firstInit){
+            
+        }else{
+            useForUpdate = []
+        }
+        
+        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+            self.firstInit = false
+                    let post = snapshot.value as? [String]
+                    //print(post!)
+                    if let actualPost = post{
+                        //print(actualPost[6])
+                        if actualPost[6] == "True"{
+                            //self.postData.append(actualPost)
+                            self.useForUpdate.append(actualPost)
+                            self.postData = self.useForUpdate
+                            print(self.postData)
+                            print("update\(self.postData)")
+        //                    DispatchQueue.main.async {
+        //                         self.cartTableView.reloadData()
+        //                    }
+                           
+                        }
+                        
+                    }
+                       }){ (error) in
+                        print(error.localizedDescription)
+                }
+        DispatchQueue.main.async { self.cartTableView.reloadData() }
+        
+    }
+
 //    func tableView(_ View:UITableView,commit editingStyle: UITableViewCell.EditingStyle,forRowAt indexPath: IndexPath){
 //        //If the table view is asking to commit a delete command...
 //        if editingStyle == .delete{

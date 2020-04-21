@@ -41,21 +41,37 @@ class HomeCellViewController: UIViewController {
         var ref: DatabaseReference?
         let databaseHandle:DatabaseHandle?
         ref = Database.database().reference()
-        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-            let key = snapshot.key
-            let post = snapshot.value as? [String]
-            if post?[0] == self.getName &&
-                post?[1] == self.getSeller &&
-                post?[2] == self.getPrice &&
-                post?[3] == self.getSB &&
-                post?[4] == self.getContect &&
-                post?[5] == self.getDescibption {
-                ref!.child("Posts/\(key)/6").setValue("True")
-                //dismiss
-                self.navigationController?.popViewController(animated: true)
+        if Auth.auth().currentUser != nil {
+                print("you are signed in")
+           databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+                let key = snapshot.key
+                let post = snapshot.value as? [String]
+                if post?[0] == self.getName &&
+                    post?[1] == self.getSeller &&
+                    post?[2] == self.getPrice &&
+                    post?[3] == self.getSB &&
+                    post?[4] == self.getContect &&
+                    post?[5] == self.getDescibption {
+                    ref!.child("Posts/\(key)/6").setValue("True")
+                    ref!.child("User-cart").child(Auth.auth().currentUser!.uid).setValue(
+                        ["itemID" : key
+                        ])
+                    print("added to cart")
+                    self.navigationController?.popViewController(animated: true)
+            
+                }
+            })
         
-            }
-        })
+        } else {
+                print("you are not  signed in")
+
+                let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+           
+
+         }
+
     }
     
     @IBAction func buyItNowAction(_ sender: Any) {

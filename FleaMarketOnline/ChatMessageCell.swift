@@ -21,7 +21,7 @@ class ChatMessageCell:UICollectionViewCell {
     
     @IBOutlet var bubbleViewTrailingConstraint: NSLayoutConstraint!
     let blueMessage = UIColor(red: 0, green: 0.53, blue: 0.97, alpha: 0.8)
-    let grayMessage = UIColor(red:0.82,green:0.82,blue:0.82,alpha:0.6)
+    let grayMessage = UIColor(red:0.862,green:0.862,blue:0.862,alpha:0.55)
     func setMessageCell(message:Message,bubbleAnchor:CGFloat, to:Bool){
         if to {
             bubbleViewLeadingConstraint.isActive = false

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,20 +18,21 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var HelloLabel: UILabel!
     
-    
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
     var secureSwitch = true
-
+    
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
     
        if Auth.auth().currentUser != nil {
             print("you are signed in")
-
             ref = Database.database().reference()
             let uid = Auth.auth().currentUser?.uid
+            // TO-DO: change it to cloud database
             ref?.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
+                // Get user value from real-time database
                 let value = snapshot.value as? NSDictionary
                 let firstName = value?["firstName"] as? String ?? ""
                 let lastName = value?["lastName"] as? String ?? ""
@@ -60,15 +62,35 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBAction func firstNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
         self.ref!.child("users/\(String(describing: uid!))/firstName").setValue(firstNameField.text)
+        
+        let userRef = db.collection("users").document(uid!)
+        userRef.updateData([
+            "firstname": self.firstNameField.text!
+        ])
+ 
     }
     
     @IBAction func lastNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
         self.ref!.child("users/\(String(describing: uid!))/lastName").setValue(lastNameField.text)
+        
+        
+        let userRef = db.collection("users").document(uid!)
+        userRef.updateData([
+            "lastname": self.lastNameField.text!
+        ])
+        
+    
     }
     @IBAction func emailEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
         self.ref!.child("users/\(String(describing: uid!))/email").setValue(emailField.text)
+        
+        let userRef = db.collection("users").document(uid!)
+        userRef.updateData([
+            "email": self.emailField.text!
+        ])
+        
     }
     
     @IBAction func passwordSecureButton(_ sender: UIButton) {
@@ -84,6 +106,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         let uid = Auth.auth().currentUser?.uid
         self.ref!.child("users/\(String(describing: uid!))/password").setValue(passwordField.text)
         
+        let userRef = db.collection("users").document(uid!)
+        userRef.updateData([
+            "password": self.passwordField.text!
+        ])
+
     }
     
     @IBAction func signOutAction(_ sender: UIButton) {

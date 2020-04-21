@@ -22,8 +22,10 @@ class ChatViewController: UIViewController {
     var dataStore = UserDefaults.standard
     var itemName : String?
     var buyerID  : String?
+    var firstName = ""
+    var lastName = ""
+    typealias FinishedDownload = () -> ()
 
-    
 
     
     override func viewDidLoad() {
@@ -59,20 +61,7 @@ class ChatViewController: UIViewController {
 
     }
 
-    func fetchUser() {
-    Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-        if let dictionary = snapshot.value as? NSDictionary {
-            let user = User()
-            user.id = snapshot.key
-            user.name = dictionary["firstName"] as? String ?? ""
-            user.email = dictionary["email"] as? String ?? ""
-            self.allUsers.append(user)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }, withCancel: nil)
-}
+    
     func observeUserMessages() {
         var uid: String?
         if Auth.auth().currentUser?.uid != nil {
@@ -136,13 +125,9 @@ class ChatViewController: UIViewController {
         let fromUser = "System"
         let timestamp = Int(NSDate().timeIntervalSince1970)
         let fromId = "SystemSystemSystem"
-        var databaseHandle:DatabaseHandle?
-        var firstName = ""
-        databaseHandle = Database.database().reference().child("users").child(buyerID!).observe(.childAdded, with: { (snapshot) in
-       
-
-        })
-        let values = ["text":"Your item " + itemName!+" has been sold!",
+        print("function snapshot")
+        print(firstName)
+        let values = ["text":"Your item " + itemName!+" has been sold to:"+self.firstName+" "+self.lastName+"!",
             "toId":toId,
             "fromId":fromId,
             "timestamp":timestamp,
@@ -164,19 +149,32 @@ class ChatViewController: UIViewController {
         }
         
     }
+    func setUserName(){
+        let userRef = Database.database().reference().child("users").child(self.buyerID!)
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? NSDictionary {
+                self.firstName = dictionary["firstName"] as? String ?? ""
+                self.lastName = dictionary["lastName"] as? String ?? ""
+            }
+        }, withCancel: nil)
+        print("post closure snapshot:")
+        print(self.firstName)
+        
+    }
     
     func checkIfItemPurchased() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("User-posts").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             if let array = snapshot.value as? [String] {
-                let index: Int = 8
+                let index: Int = 7
                 if let _ = array[exist:index] {
                 let purchasedOrNot = array[index]
                     if purchasedOrNot == "True" {
                         self.itemName = array[0]
                         self.buyerID  = array[8]
                         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
+                        
                     }
             }
             }

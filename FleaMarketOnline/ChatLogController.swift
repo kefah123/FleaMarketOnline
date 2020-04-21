@@ -37,12 +37,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
             messagesView?.alwaysBounceVertical=true
         }
-    }/*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.messagesView.scrollToItem(at:IndexPath(item: indexNumber, section: sectionNumber), at: .right, animated: false)
-        self.messagesView!.scrollToItemAtIndexPath(indexForTheLast, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: false)
-    }*/
+    }
+    
     func checkLogInStatus() -> Bool{
         if Auth.auth().currentUser != nil {
             print("you are signed in")
@@ -80,14 +76,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
                
                 self.messages.append(message)
                 self.reloadTableData()
-               /* DispatchQueue.main.async {
-                    self.messagesView.reloadData()
-                    self.messagesView!.scrollToItem(at: IndexPath(item: self.messages.count-1, section: 0), at: UICollectionView.ScrollPosition.bottom, animated: false)
-                }*/
             }, withCancel: nil)
         }, withCancel: nil)
- 
-  
     }
     func reloadTableData() {
         self.timer?.invalidate()

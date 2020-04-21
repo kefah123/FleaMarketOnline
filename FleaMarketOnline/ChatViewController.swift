@@ -24,7 +24,7 @@ class ChatViewController: UIViewController {
     var buyerID  : String?
     var firstName = ""
     var lastName = ""
-    typealias FinishedDownload = () -> ()
+
 
 
     

@@ -20,8 +20,8 @@ class ChatViewController: UIViewController {
     var selectedUser:User?
     var timer: Timer?
     var dataStore = UserDefaults.standard
-    
-
+    var itemName : String?
+    var buyerID  : String?
 
     
 
@@ -136,7 +136,18 @@ class ChatViewController: UIViewController {
         let fromUser = "System"
         let timestamp = Int(NSDate().timeIntervalSince1970)
         let fromId = "SystemSystemSystem"
-        let values = ["text":"Your item has been sold!","toId":toId, "fromId":fromId, "timestamp":timestamp, "toUser":toUser, "fromUser":fromUser] as [String : Any]
+        var databaseHandle:DatabaseHandle?
+        var firstName = ""
+        databaseHandle = Database.database().reference().child("users").child(buyerID!).observe(.childAdded, with: { (snapshot) in
+       
+
+        })
+        let values = ["text":"Your item " + itemName!+" has been sold!",
+            "toId":toId,
+            "fromId":fromId,
+            "timestamp":timestamp,
+            "toUser":toUser,
+            "fromUser":fromUser] as [String : Any]
         childRef.updateChildValues(values) { (error, ref) in
             if error != nil {
                 print(error!)
@@ -159,10 +170,12 @@ class ChatViewController: UIViewController {
         let ref = Database.database().reference().child("User-posts").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             if let array = snapshot.value as? [String] {
-                let index: Int = 7
+                let index: Int = 8
                 if let _ = array[exist:index] {
                 let purchasedOrNot = array[index]
                     if purchasedOrNot == "True" {
+                        self.itemName = array[0]
+                        self.buyerID  = array[8]
                         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
                     }
             }

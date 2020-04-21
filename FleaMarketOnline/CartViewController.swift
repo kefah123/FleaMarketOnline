@@ -37,6 +37,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
     }
     @IBAction func toggleEditingMode(_ sender: UIButton){
+        self.cartTableView.isEditing = !self.cartTableView.isEditing
         if isEditing{
             //Change txt of button to inform user of state
             sender.setTitle("Edit", for: .normal)

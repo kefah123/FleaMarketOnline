@@ -18,6 +18,7 @@ class HomeCellViewController: UIViewController {
     var getContect = String()
     var getDescibption = String()
     
+    
     @IBOutlet weak var nameLB: UILabel!
     @IBOutlet weak var sellerLB: UILabel!
     @IBOutlet weak var priceLB: UILabel!
@@ -59,7 +60,7 @@ class HomeCellViewController: UIViewController {
     
     @IBAction func buyItNowAction(_ sender: Any) {
         var ref: DatabaseReference?
-        let databaseHandle:DatabaseHandle?
+        var databaseHandle:DatabaseHandle?
         ref = Database.database().reference()
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
             let key = snapshot.key
@@ -71,6 +72,26 @@ class HomeCellViewController: UIViewController {
                 post?[4] == self.getContect &&
                 post?[5] == self.getDescibption {
                 ref!.child("Posts/\(key)/7").setValue("True")
+                //dismiss
+                self.navigationController?.popViewController(animated: true)
+        
+            }
+        })
+        
+        let buyerUserId = Auth.auth().currentUser?.uid
+        databaseHandle = ref?.child("User-posts").child(getSeller).observe(.childAdded, with: { (snapshot) in
+            let key = snapshot.key
+            let post = snapshot.value as? [String]
+            if post?[0] == self.getName &&
+                post?[1] == self.getSeller &&
+                post?[2] == self.getPrice &&
+                post?[3] == self.getSB &&
+                post?[4] == self.getContect &&
+                post?[5] == self.getDescibption {
+                ref!.child("User-posts/\(self.getSeller)/\(key)/8").setValue(buyerUserId!)
+                ref!.child("User-posts/\(self.getSeller)/\(key)/7").setValue("True")
+                
+                
                 //dismiss
                 self.navigationController?.popViewController(animated: true)
         

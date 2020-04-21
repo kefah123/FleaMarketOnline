@@ -158,7 +158,6 @@ class ChatViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let ref = Database.database().reference().child("User-posts").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
-           // print(snapshot.value)
             if let array = snapshot.value as? [String] {
                 let index: Int = 7
                 if let _ = array[exist:index] {

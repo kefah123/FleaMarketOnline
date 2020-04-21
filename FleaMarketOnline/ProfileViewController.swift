@@ -25,13 +25,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
     
        if Auth.auth().currentUser != nil {
-                print("you are signed in")
-                
-                ref = Database.database().reference()
-                let uid = Auth.auth().currentUser?.uid
-                ref?.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
+            print("you are signed in")
 
+            ref = Database.database().reference()
+            let uid = Auth.auth().currentUser?.uid
+            ref?.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
                 let value = snapshot.value as? NSDictionary
                 let firstName = value?["firstName"] as? String ?? ""
                 let lastName = value?["lastName"] as? String ?? ""
@@ -46,19 +45,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 self.HelloLabel.text = "Hello, " + firstName + " " + lastName
         })
         
-              } else {
-                print("you are not  signed in")
-                  let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-                  let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                  self.navigationController?.pushViewController(vc, animated: true)
-              }
+      } else {
+            print("you are not  signed in")
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+      }
         
         super.viewDidLoad()
         
-        
-
-        
     }
+    
 
     @IBAction func firstNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid

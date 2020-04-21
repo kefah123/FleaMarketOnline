@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lh7-2N-8Fc">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lh7-2N-8Fc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="Lh7-2N-8Fc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNS-qn-2YZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -29,19 +29,29 @@
             <objects>
                 <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tvY-jH-98W" customClass="HomeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vdf-KN-SGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sjd-vm-MD6">
-                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="DFc-aj-Fd7">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="7j9-yy-jrq"/>
+                                    <constraint firstAttribute="height" constant="44" id="HqJ-73-LWi"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sjd-vm-MD6">
+                                <rect key="frame" x="0.0" y="89" width="375" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="681" id="hlg-Qf-Ki4"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HomeCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="bwI-mR-jMe">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bwI-mR-jMe" id="Ltk-jU-1y5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -51,13 +61,15 @@
                                     <outlet property="delegate" destination="tvY-jH-98W" id="iac-UL-i7w"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="DFc-aj-Fd7">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DFc-aj-Fd7" firstAttribute="centerX" secondItem="Vdf-KN-SGk" secondAttribute="centerX" id="3Gi-Xb-jBH"/>
+                            <constraint firstItem="DFc-aj-Fd7" firstAttribute="top" secondItem="y0o-R6-46P" secondAttribute="top" id="Bn5-Nu-kqc"/>
+                            <constraint firstItem="sjd-vm-MD6" firstAttribute="top" secondItem="DFc-aj-Fd7" secondAttribute="bottom" constant="1" id="Ds0-at-Eqa"/>
+                            <constraint firstItem="DFc-aj-Fd7" firstAttribute="leading" secondItem="sjd-vm-MD6" secondAttribute="leading" id="JYs-P1-chR"/>
+                            <constraint firstItem="DFc-aj-Fd7" firstAttribute="trailing" secondItem="sjd-vm-MD6" secondAttribute="trailing" id="ea3-pM-1Bb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y0o-R6-46P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="doc.text.fill" catalog="system" id="4EO-8k-RVB"/>
@@ -76,47 +88,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-FP-NfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176.81159420289856" y="112.5"/>
+            <point key="canvasLocation" x="176.80000000000001" y="111.99400299850076"/>
         </scene>
         <!--Home Cell View Controller-->
         <scene sceneID="TYg-yg-PsU">
             <objects>
                 <viewController storyboardIdentifier="HomeCellViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JEj-UE-FQQ" customClass="HomeCellViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L3Y-HR-KsZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-tq-5ge">
-                                <rect key="frame" x="20" y="44" width="374" height="500.5"/>
+                                <rect key="frame" x="20" y="0.0" width="335" height="422"/>
                                 <subviews>
                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bEu-FZ-c5L">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-C6-azO">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-C6-azO">
+                                                <rect key="frame" x="0.0" y="0.0" width="92" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="fin-cs-73a"/>
+                                                    <constraint firstAttribute="width" constant="92" id="fin-cs-73a"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIR-Bc-eQw">
-                                                <rect key="frame" x="108" y="0.0" width="266" height="80"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="vUY-EN-m9o"/>
+                                            <constraint firstAttribute="height" constant="60" id="vUY-EN-m9o"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7N-7m-J4W">
-                                        <rect key="frame" x="0.0" y="80" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="60" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-kv-GIr">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-kv-GIr">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="ndI-pY-TcB"/>
                                                 </constraints>
@@ -125,7 +137,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sellerValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnm-AS-3lQ">
-                                                <rect key="frame" x="100" y="0.0" width="174" height="80"/>
+                                                <rect key="frame" x="100" y="0.0" width="174" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="174" id="5Dd-9g-vvW"/>
                                                 </constraints>
@@ -134,7 +146,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01q-4F-z9d">
-                                                <rect key="frame" x="274" y="0.0" width="100" height="80"/>
+                                                <rect key="frame" x="274" y="0.0" width="61" height="60"/>
                                                 <state key="normal" image="message.fill" catalog="system">
                                                     <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -144,15 +156,15 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="rVb-Mc-WY1"/>
+                                            <constraint firstAttribute="height" constant="60" id="rVb-Mc-WY1"/>
                                             <constraint firstAttribute="trailing" secondItem="01q-4F-z9d" secondAttribute="trailing" id="rke-eK-sFp"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9e-ec-MTU">
-                                        <rect key="frame" x="0.0" y="160" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="120" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price :  $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-zW-nyf">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-zW-nyf">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="1KI-xb-9SF"/>
                                                 </constraints>
@@ -161,21 +173,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="priceValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-MH-oXP">
-                                                <rect key="frame" x="100" y="0.0" width="274" height="80"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="WXo-17-gu5"/>
+                                            <constraint firstAttribute="height" constant="60" id="WXo-17-gu5"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7P-vd-00D">
-                                        <rect key="frame" x="0.0" y="240" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="180" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject/usage:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg5-wl-Ep4">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject/usage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg5-wl-Ep4">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="DEW-r0-W9C"/>
                                                 </constraints>
@@ -184,21 +196,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sbValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udD-Y0-O9Y">
-                                                <rect key="frame" x="100" y="0.0" width="274" height="80"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="csP-0J-mYX"/>
+                                            <constraint firstAttribute="height" constant="60" id="csP-0J-mYX"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOG-KQ-gwe">
-                                        <rect key="frame" x="0.0" y="320" width="374" height="80"/>
+                                        <rect key="frame" x="0.0" y="240" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-xU-Oog">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-xU-Oog">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="yEd-r1-uCU"/>
                                                 </constraints>
@@ -207,21 +219,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contactValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiT-2q-rmQ">
-                                                <rect key="frame" x="100" y="0.0" width="274" height="80"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="8Rz-oX-chr"/>
+                                            <constraint firstAttribute="height" constant="60" id="8Rz-oX-chr"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICJ-ob-0C0">
-                                        <rect key="frame" x="0.0" y="400" width="374" height="20.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICJ-ob-0C0">
+                                        <rect key="frame" x="0.0" y="300" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cf-b9-oyF">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cf-b9-oyF">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="PoM-NW-g8M"/>
                                                 </constraints>
@@ -230,34 +242,34 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="750-3P-aCE">
-                                                <rect key="frame" x="100" y="0.0" width="274" height="20.5"/>
+                                                <rect key="frame" x="100" y="0.0" width="235" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="JpJ-YY-Xpo"/>
+                                            <constraint firstAttribute="height" constant="60" id="JpJ-YY-Xpo"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-W3-QZI">
-                                        <rect key="frame" x="0.0" y="420.5" width="374" height="80"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-W3-QZI">
+                                        <rect key="frame" x="0.0" y="360" width="335" height="62"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                                <state key="normal" title="Buy it now "/>
+                                                <connections>
+                                                    <action selector="buyItNowAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="aUr-lp-tDR"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-5d-ZVP">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="80"/>
+                                                <rect key="frame" x="0.0" y="32" width="335" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="187" id="OYn-0y-bsx"/>
                                                 </constraints>
                                                 <state key="normal" title="Add to Cart "/>
                                                 <connections>
                                                     <action selector="addToCartAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="KeQ-ev-Ii2"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
-                                                <rect key="frame" x="187" y="0.0" width="187" height="80"/>
-                                                <state key="normal" title="Buy it now "/>
-                                                <connections>
-                                                    <action selector="buyItNowAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="aUr-lp-tDR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -270,8 +282,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="vzT-vO-IQg" firstAttribute="bottom" secondItem="gbX-tq-5ge" secondAttribute="bottom" constant="30" id="6X1-vp-o4A"/>
                             <constraint firstItem="gbX-tq-5ge" firstAttribute="leading" secondItem="vzT-vO-IQg" secondAttribute="leading" constant="20" id="6fw-Bz-4fr"/>
-                            <constraint firstItem="gbX-tq-5ge" firstAttribute="bottom" secondItem="vzT-vO-IQg" secondAttribute="bottom" id="OxA-dV-b0c"/>
                             <constraint firstItem="gbX-tq-5ge" firstAttribute="top" secondItem="vzT-vO-IQg" secondAttribute="top" id="nF4-30-oKv"/>
                             <constraint firstItem="vzT-vO-IQg" firstAttribute="trailing" secondItem="gbX-tq-5ge" secondAttribute="trailing" constant="20" id="ujC-4b-2DB"/>
                         </constraints>
@@ -288,41 +300,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-FG-P3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240.57971014492756" y="768.75"/>
+            <point key="canvasLocation" x="239.19999999999999" y="768.66566716641682"/>
         </scene>
         <!--Compose An item Now-->
         <scene sceneID="Csf-Gv-xbX">
             <objects>
                 <viewController storyboardIdentifier="compose" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YjX-Te-tng" customClass="ComposeViewController" customModule="FleaMarketOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yXh-aM-fWZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Js-2DC">
-                                <rect key="frame" x="20" y="88" width="414" height="170"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Js-2DC">
+                                <rect key="frame" x="20" y="59" width="335" height="250"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2px-zS-kM8">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject/Usage " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEZ-b2-M3C">
-                                        <rect key="frame" x="0.0" y="34" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="54" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price in $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yul-a8-zlW">
-                                        <rect key="frame" x="0.0" y="68" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="108" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contect information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fA-O2-hsP">
-                                        <rect key="frame" x="0.0" y="102" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="162" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJh-sg-Hgk">
-                                        <rect key="frame" x="0.0" y="136" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="216" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -332,8 +344,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Juf-Js-2DC" firstAttribute="leading" secondItem="FbO-CI-g2B" secondAttribute="leading" constant="20" id="8wv-qR-IpG"/>
-                            <constraint firstAttribute="trailing" secondItem="Juf-Js-2DC" secondAttribute="trailing" constant="-20" id="Fh3-4p-HsG"/>
-                            <constraint firstItem="Juf-Js-2DC" firstAttribute="top" secondItem="FbO-CI-g2B" secondAttribute="top" id="ZcR-nP-Th3"/>
+                            <constraint firstAttribute="trailing" secondItem="Juf-Js-2DC" secondAttribute="trailing" constant="20" id="Fh3-4p-HsG"/>
+                            <constraint firstItem="Juf-Js-2DC" firstAttribute="top" secondItem="FbO-CI-g2B" secondAttribute="top" constant="15" id="ZcR-nP-Th3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FbO-CI-g2B"/>
                     </view>
@@ -354,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ec4-Io-wyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486.9565217391305" y="124.55357142857142"/>
+            <point key="canvasLocation" x="1485.5999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
     <resources>

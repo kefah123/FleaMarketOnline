@@ -13,12 +13,13 @@ import FirebaseDatabase
 class HomeCellViewController: UIViewController {
     var getName = String()
     var getSeller = String()
+    
     var getPrice = String()
     var getSB = String()
     var getContect = String()
     var getDescibption = String()
     var message = Message()
-    
+
     
     @IBOutlet weak var nameLB: UILabel!
     @IBOutlet weak var sellerLB: UILabel!
@@ -28,8 +29,25 @@ class HomeCellViewController: UIViewController {
     @IBOutlet weak var descriptionLB: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         nameLB.text! = getName
-        sellerLB.text! = getSeller
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        var sellerFirstName = ""
+        var sellerLastName = ""
+        ref.child("users").child(getSeller).observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+          let value = snapshot.value as? NSDictionary
+          
+          sellerFirstName = value?["firstName"] as? String ?? ""
+          sellerLastName = value?["lastName"] as? String ?? ""
+            
+            self.sellerLB.text! = sellerFirstName  + " " + sellerLastName
+            
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+   
         priceLB.text! =  getPrice
         subjectLB.text! = getSB
         contactLB.text! =  getContect

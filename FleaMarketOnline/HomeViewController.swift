@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Post count : ",  postData.count)
+ 
         if searching {
             return searchData.count
         }

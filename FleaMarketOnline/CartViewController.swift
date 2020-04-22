@@ -113,16 +113,31 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete{
                 // ask user to confirm
-                
+                //let item = postData[indexPath.row]
                 let title = "Delete?"
-                let message = "Are you sure you want to delete this item?"
+                let message = "Are you sure you want to delete \(postData[indexPath.row][0])?"
                 let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 ac.addAction(cancelAction)
                 let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
                     // remove the item from the store
-                   
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    self.postData.remove(at:indexPath.row)
+                    self.useForUpdate[indexPath.row][6] = "False"
+                    self.ref = Database.database().reference()
+                    self.databaseHandle = self.ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+                    let key = snapshot.key
+                    let post = snapshot.value as? [String]
+                        if post?[0] == self.useForUpdate[indexPath.row][0] &&
+                            post?[1] == self.useForUpdate[indexPath.row][1] &&
+                            post?[2] == self.useForUpdate[indexPath.row][2] &&
+                            post?[3] == self.useForUpdate[indexPath.row][3] &&
+                            post?[4] == self.useForUpdate[indexPath.row][4] &&
+                            post?[5] == self.useForUpdate[indexPath.row][5] {
+                            self.ref!.child("Posts/\(key)/6").setValue("False")
+                            
+                        }
+                        })
+                    self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
                 
                 })
                 
@@ -170,12 +185,4 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
     }
 
-//    func tableView(_ View:UITableView,commit editingStyle: UITableViewCell.EditingStyle,forRowAt indexPath: IndexPath){
-//        //If the table view is asking to commit a delete command...
-//        if editingStyle == .delete{
-//            var item = postData[indexPath.row]
-//
-//            item[6] = "False"
-//        }
-//    }
 }

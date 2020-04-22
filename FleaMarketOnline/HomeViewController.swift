@@ -11,7 +11,9 @@ import FirebaseDatabase
 import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var postData = [[String]]()
-
+    var searchData = [[String]]()
+    var searching = false
+    @IBOutlet weak var searchBar: UISearchBar!
     var ref: DatabaseReference?
     var databaseHandle:DatabaseHandle?
     @IBOutlet weak var tableView: UITableView!
@@ -37,15 +39,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Post count : ",  postData.count)
+        if searching {
+            return searchData.count
+        }
         return postData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
-        print(postData[indexPath.row])
-        cell.textLabel?.text = postData[indexPath.row][0]
+        if searching {
+            cell.textLabel?.text = searchData[indexPath.row][0]
+        }else{
+            cell.textLabel?.text = postData[indexPath.row][0]
+        }
+         return cell
         
-        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let Storyboard = UIStoryboard(name: "Home", bundle: nil)
@@ -62,4 +70,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
 
+}
+extension HomeViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchData = postData.filter({
+            item in
+            return item[0].localizedCaseInsensitiveContains(searchText)
+            
+        })
+        searching = true
+        self.tableView.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        self.tableView.reloadData()
+    }
 }

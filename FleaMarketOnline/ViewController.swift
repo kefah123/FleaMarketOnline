@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController, LoginResultDelegate {
+class ViewController: UIViewController, LoginResultDelegate,SignUpResultDelegate{
 
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -34,8 +34,8 @@ class ViewController: UIViewController, LoginResultDelegate {
             loginViewController.delegate = self
             
         case "showSignup"?:
-            let loginViewController = segue.destination as! SignUpViewController
-            loginViewController.delegate = self as? SignUpResultDelegate
+            let signUpViewController = segue.destination as! SignUpViewController
+            signUpViewController.delegate = self 
         default:
             // some other segue
             print("some other segue")
@@ -51,7 +51,7 @@ class ViewController: UIViewController, LoginResultDelegate {
         }
     }
     func signUpSuccessful(_ success: Bool) {
-       
+       print (success)
         if success {
             print("signUp was successful")
             self.navigationController?.popViewController(animated: true)

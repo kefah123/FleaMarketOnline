@@ -11,7 +11,14 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
+
+protocol LoginResultDelegate: AnyObject {
+    func loginSuccessful(_: Bool)
+}
+
 class LoginViewController: UIViewController {
+    weak var delegate: LoginResultDelegate? = nil
+    var signInOK = false
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
@@ -43,13 +50,17 @@ class LoginViewController: UIViewController {
         //sign in user
         Auth.auth().signIn(withEmail: email, password: password){
             (result,error) in
+            print("closure for signIn()")
             if error != nil{
                 //cannot sign in
                 self.errorLabel.text =  error!.localizedDescription
                 self.errorLabel.alpha = 1
+            } else {
+                self.signInOK = true
             }
+            self.transitions()
         }
-        transitions()
+
         
     }
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -57,6 +68,8 @@ class LoginViewController: UIViewController {
         }
         
         func transitions(){
+            print("transitions()")
+            delegate?.loginSuccessful(self.signInOK)
             self.navigationController?.popViewController(animated: true)
             
         }

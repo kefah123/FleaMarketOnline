@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LoginResultDelegate {
 
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -19,10 +19,44 @@ class ViewController: UIViewController {
         let ref = Database.database().reference();
         ref.child("id/name").setValue("key")
         setElement()
+        
     }
     func setElement(){
         Utilities.styleFilledButton(logInButton)
         Utilities.styleFilledButton(signUpButton)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if the triggered segue is the "showItem" segue
+        switch segue.identifier {
+        case "showLogin"?:
+            let loginViewController = segue.destination as! LoginViewController
+            loginViewController.delegate = self
+            
+        case "showSignup"?:
+            let loginViewController = segue.destination as! SignUpViewController
+            loginViewController.delegate = self as? SignUpResultDelegate
+        default:
+            // some other segue
+            print("some other segue")
+        }
+    }
+    
+    func loginSuccessful(_ success: Bool) {
+        if success {
+            print("login was successful")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            print("login failed")
+        }
+    }
+    func signUpSuccessful(_ success: Bool) {
+       
+        if success {
+            print("signUp was successful")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            print("signUp failed")
+        }
+    }
 }

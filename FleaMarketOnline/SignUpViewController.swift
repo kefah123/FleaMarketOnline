@@ -12,9 +12,15 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 
+protocol SignUpResultDelegate: AnyObject {
+    func signUpSuccessful(_: Bool)
+}
+
 class SignUpViewController: UIViewController {
     var ref:DatabaseReference?
     var dataStore = UserDefaults.standard
+    weak var delegate: SignUpResultDelegate? = nil
+    var signUpOK = false
     @IBOutlet weak var firstNameTextfield: UITextField!
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
@@ -82,8 +88,10 @@ class SignUpViewController: UIViewController {
                     print(error!)
                     self.errorLabel.text = ""
                     self.errorLabel.alpha = 1
+                    
                 }else{
                     //make a copy of user to the firebase realtime database
+                    self.signUpOK = true
                     var ref:DatabaseReference?
                     ref = Database.database().reference()
 
@@ -108,10 +116,11 @@ class SignUpViewController: UIViewController {
                             }
                     }
                 
+                }
+                // transfer to next view
+                self.transitions()
             }
-            }
-            // transfer to next view
-            self.transitions()
+           
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -119,7 +128,12 @@ class SignUpViewController: UIViewController {
     }
     
     func transitions(){
-        self.navigationController?.popViewController(animated: true)
+          
+            print("transitions()")
+            delegate?.signUpSuccessful(self.signUpOK)
+            self.navigationController?.popViewController(animated: true)
+            
+      
 
     }
     

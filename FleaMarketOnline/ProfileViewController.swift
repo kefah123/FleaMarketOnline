@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                     self.passwordField.isSecureTextEntry = self.secureSwitch
                     self.HelloLabel.text = self.Hello
                     self.logOutField.setTitle(self.logOut, for: .normal)
+                    self.logOutField.setTitleColor(.red, for: .normal)
 
                 } else {
                     print("Document does not exist in cache")

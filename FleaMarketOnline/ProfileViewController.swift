@@ -16,7 +16,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+
     @IBOutlet weak var HelloLabel: UILabel!
+    
     
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
@@ -27,9 +29,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var email: String = ""
     var password: String = ""
     
-    @IBOutlet weak var helloLB: UILabel!
-    @IBOutlet weak var buttonText: UIButton!
+
     
+   
     let db = Firestore.firestore()
     
     override func viewDidLoad() {

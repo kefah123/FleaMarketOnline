@@ -218,10 +218,9 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="ZH1-LI-7bM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonText" destination="SGd-ga-tVk" id="7dw-R5-cw8"/>
+                        <outlet property="HelloLabel" destination="Iv2-HR-061" id="bun-26-ytw"/>
                         <outlet property="emailField" destination="PeX-69-w3d" id="rhi-Ww-lu8"/>
                         <outlet property="firstNameField" destination="x5u-Ky-VGT" id="a7i-lG-60n"/>
-                        <outlet property="helloLB" destination="Iv2-HR-061" id="UkE-AH-lfq"/>
                         <outlet property="lastNameField" destination="F98-gH-5NT" id="51G-3h-Cro"/>
                         <outlet property="passwordField" destination="wle-yw-B7E" id="BgR-Lv-ZUx"/>
                         <outlet property="welcome" destination="lHz-k7-amO" id="MBC-oL-ica"/>

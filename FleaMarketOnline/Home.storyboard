@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -103,15 +102,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-tq-5ge">
-                                <rect key="frame" x="20" y="0.0" width="335" height="637"/>
+                                <rect key="frame" x="20" y="0.0" width="335" height="422"/>
                                 <subviews>
-                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bEu-FZ-c5L">
+                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEu-FZ-c5L">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-C6-azO">
-                                                <rect key="frame" x="0.0" y="0.0" width="92" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meS-C6-azO">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="92" id="fin-cs-73a"/>
+                                                    <constraint firstAttribute="width" constant="100" id="fin-cs-73a"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -131,7 +130,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7N-7m-J4W">
                                         <rect key="frame" x="0.0" y="60" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-kv-GIr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-kv-GIr">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="ndI-pY-TcB"/>
@@ -167,7 +166,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9e-ec-MTU">
                                         <rect key="frame" x="0.0" y="120" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-zW-nyf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-zW-nyf">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="1KI-xb-9SF"/>
@@ -190,7 +189,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7P-vd-00D">
                                         <rect key="frame" x="0.0" y="180" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject/usage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg5-wl-Ep4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject/usage" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg5-wl-Ep4">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="DEW-r0-W9C"/>
@@ -213,7 +212,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOG-KQ-gwe">
                                         <rect key="frame" x="0.0" y="240" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-xU-Oog">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-xU-Oog">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="yEd-r1-uCU"/>
@@ -236,7 +235,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICJ-ob-0C0">
                                         <rect key="frame" x="0.0" y="300" width="335" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cf-b9-oyF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cf-b9-oyF">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="PoM-NW-g8M"/>
@@ -257,17 +256,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-W3-QZI">
-                                        <rect key="frame" x="0.0" y="360" width="335" height="277"/>
+                                        <rect key="frame" x="0.0" y="360" width="335" height="62"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="245"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                                 <state key="normal" title="Buy it now "/>
                                                 <connections>
                                                     <action selector="buyItNowAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="aUr-lp-tDR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-5d-ZVP">
-                                                <rect key="frame" x="0.0" y="247" width="335" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-5d-ZVP">
+                                                <rect key="frame" x="0.0" y="32" width="335" height="30"/>
                                                 <state key="normal" title="Add to Cart "/>
                                                 <connections>
                                                     <action selector="addToCartAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="KeQ-ev-Ii2"/>
@@ -292,11 +291,17 @@
                     </view>
                     <connections>
                         <outlet property="contactLB" destination="DiT-2q-rmQ" id="l9u-cL-RzL"/>
+                        <outlet property="contactTitle" destination="Gtp-xU-Oog" id="TfU-bZ-Xhk"/>
                         <outlet property="descriptionLB" destination="750-3P-aCE" id="UGA-Vm-fs1"/>
+                        <outlet property="descriptionTitle" destination="6cf-b9-oyF" id="RU7-k5-Wj5"/>
                         <outlet property="nameLB" destination="aIR-Bc-eQw" id="vgv-5S-TFT"/>
+                        <outlet property="nameTitle" destination="meS-C6-azO" id="zpM-TV-oVr"/>
                         <outlet property="priceLB" destination="Gu2-MH-oXP" id="urz-tN-zRc"/>
+                        <outlet property="priceTitle" destination="ZSk-zW-nyf" id="FIF-0q-wet"/>
                         <outlet property="sellerLB" destination="nnm-AS-3lQ" id="HAS-dm-d9h"/>
+                        <outlet property="sellerTitle" destination="2Fw-kv-GIr" id="VPS-We-hTx"/>
                         <outlet property="subjectLB" destination="udD-Y0-O9Y" id="bye-Cw-Psh"/>
+                        <outlet property="subjectTitle" destination="tg5-wl-Ep4" id="65S-hk-13O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9no-FG-P3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

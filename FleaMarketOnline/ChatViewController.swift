@@ -32,7 +32,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         messages.removeAll()
         messagesDict.removeAll()
-       
+  
         if checkLogInStatus() {
             observeUserMessages()
         }
@@ -45,6 +45,7 @@ class ChatViewController: UIViewController {
         if let index = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: index, animated: true)
         }
+        self.tableView.reloadData()
     }
     func checkLogInStatus() -> Bool{
         if Auth.auth().currentUser != nil {

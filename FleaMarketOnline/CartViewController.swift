@@ -46,6 +46,28 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
           return
         }
+        let cartRef = Database.database().reference().child("User-cart").child(uid!)
+        cartRef.observe(.childAdded, with: { (snapshot) in
+                var post = [String]()
+                if let dictionary = snapshot.value as? NSDictionary {
+                    let  key = snapshot.key
+                    post.append( dictionary["Name"] as? String ?? "")
+                    post.append( dictionary["Price"] as? String ?? "")
+                    post.append( dictionary["Subject"] as? String ?? "")
+                    post.append( dictionary["Contact"] as? String ?? "")
+                    post.append( dictionary["Description"] as? String ?? "")
+                    post.append(dictionary["Seller"] as? String ?? "")
+                    post.append(dictionary["ItemID"] as? String ?? "")
+                    
+                    self.postData.append(post)
+                    self.cartTableView.reloadData()
+                    
+                       
+                 }
+         }, withCancel: nil)
+
+
+       
     }
     @IBAction func toggleEditingMode(_ sender: UIButton){
         self.cartTableView.isEditing = !self.cartTableView.isEditing
@@ -96,15 +118,15 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         print("update\(useForUpdate)")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("cart count : ",  postData.count)
+        
         return postData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
-        print("cart items :",postData[indexPath.row])
-        //cell.textLabel?.text = postData[indexPath.row][0]
+        cell.textLabel?.text = postData[indexPath.row][0]
         return cell
+        
       }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let Storyboard = UIStoryboard(name: "Home", bundle: nil)
@@ -159,60 +181,22 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         ref = Database.database().reference()
         super.viewWillAppear(animated)
-        if (firstInit){
-            
-        }else{
-            useForUpdate = []
-            postData = []
-            userCartData = []
-            postIDSet = []
-        }
-        if uid != nil{
-            //get user cart item ID
-            databaseHandle = ref?.child("User-cart").child(uid!).observe(.childAdded, with: { (snapshot) in
-                let itemID = snapshot.value as? String
-                if let actualId = itemID{
-                    //print("actualID = \(actualId)")
-                    //below pass
-                    self.userCartData.append(actualId)
-                    //print(self.userCartData)
-                }
-                print("count userCartData: \(self.userCartData.count)")
-                self.databaseHandle = self.ref?.child("Posts").observe(.value, with: { (snapshot) in
-                    //let post = snapshot.value as? [String : AnyObject] ?? [:]
-                    if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                        for child in result {
-                            let postID = child.key as! String
-                            //print("postid \(postID)")
-                            self.postIDSet.append(postID)
-                            //self.cartTableView.reloadData()
-                        }
-                        }
-                        print("postIdSet: \(self.postIDSet)")
-                        for ID in self.userCartData{
-                            print("userCartData Id: \(ID)")
-                            for PostsID in self.postIDSet{
-                            if PostsID == ID{
-                                print("check")
-                                self.databaseHandle = self.ref?.child("Posts").child(ID).observe(.value, with: {(snapshot) in
-                                    let postItem = snapshot.value as! [String]
-                                    print("postItem: \(postItem)")
-                                    self.postData.append(postItem)
-                                    print("PostData \(self.postData)")
-                                    self.cartTableView.reloadData()
-                                        
-                            })
-                        }
-                                
-                        }
-                        }
-                  })
-            })
-        }
-
 
         DispatchQueue.main.async { self.cartTableView.reloadData() }
         
+        
     }
+    
+    func setCart(completion: @escaping () -> Void){
+        self.userCartData = [String]()
+           let userRef = Database.database().reference().child("User-cart").child(self.uid!)
+           userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+               if let dictionary = snapshot.value as? NSDictionary {
+                   self.userCartData.append(dictionary["itemID"] as? String ?? "")
+                   completion()
+             }
+            }, withCancel: nil)
+           print("count userCartData: \(self.userCartData.count)")
+       }
 
 }

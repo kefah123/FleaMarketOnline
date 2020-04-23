@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     let db = Firestore.firestore()
+//    ref = Database.database().reference()....
     
     override func viewDidLoad() {
 
@@ -50,10 +51,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     func fetchData() {
         // access data from Cloud Firestore
-        ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
-        
         if Auth.auth().currentUser != nil {
+            let uid = Auth.auth().currentUser?.uid
+
             let docRef = db.collection("users").document(uid!)
 
             docRef.getDocument(source: .cache) { (document, error) in

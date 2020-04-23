@@ -16,9 +16,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
     @IBOutlet weak var HelloLabel: UILabel!
-    
     
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
@@ -29,13 +27,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var email: String = ""
     var password: String = ""
     
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 1d6b79c... profile label
     
-   
     let db = Firestore.firestore()
+//    ref = Database.database().reference()
     
     override func viewDidLoad() {
 
@@ -57,10 +51,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     func fetchData() {
         // access data from Cloud Firestore
-        ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
-        
         if Auth.auth().currentUser != nil {
+            let uid = Auth.auth().currentUser?.uid
+
             let docRef = db.collection("users").document(uid!)
 
             docRef.getDocument(source: .cache) { (document, error) in

@@ -22,42 +22,60 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var databaseHandle:DatabaseHandle?
     var secureSwitch = true
     
+    var firstName: String = ""
+    var lastName: String = ""
+    var email: String = ""
+    var password: String = ""
+    
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
-    
-       if Auth.auth().currentUser != nil {
-            print("you are signed in")
-            ref = Database.database().reference()
-            let uid = Auth.auth().currentUser?.uid
-            // TO-DO: change it to cloud database
-            ref?.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value from real-time database
-                let value = snapshot.value as? NSDictionary
-                let firstName = value?["firstName"] as? String ?? ""
-                let lastName = value?["lastName"] as? String ?? ""
-                let email = value?["email"] as? String ?? ""
-                let password = value?["password"] as? String ?? ""
 
-                self.firstNameField.text = firstName
-                self.lastNameField.text = lastName
-                self.emailField.text = email
-                self.passwordField.text = password
-                self.passwordField.isSecureTextEntry = self.secureSwitch
-                self.HelloLabel.text = "Hello, " + firstName + " " + lastName
-        })
-        
-      } else {
-            print("you are not  signed in")
-            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-      }
-        
         super.viewDidLoad()
-        
+
+         if Auth.auth().currentUser != nil {
+          
+              print("you are signed in")
+              fetchData()
+          
+        } else {
+              print("you are not  signed in")
+              let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+              let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+              self.navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
     
+    func fetchData() {
+        // access data from Cloud Firestore
+        ref = Database.database().reference()
+        let uid = Auth.auth().currentUser?.uid
+        
+        if Auth.auth().currentUser != nil {
+            let docRef = db.collection("users").document(uid!)
+
+            docRef.getDocument(source: .cache) { (document, error) in
+                if let document = document {
+                    self.firstName = document.get("firstname") as? String ?? ""
+                    self.lastName = document.get("lastname") as? String ?? ""
+                    self.email = document.get("email") as? String ?? ""
+                    self.password = document.get("password") as? String ?? ""
+                    // filled in each textfiled
+                    self.firstNameField.text = self.firstName
+                    self.lastNameField.text = self.lastName
+                    self.emailField.text = self.email
+                    self.passwordField.text = self.password
+                    self.passwordField.isSecureTextEntry = self.secureSwitch
+                    self.HelloLabel.text = "Hello, " + self.firstName + " " + self.lastName
+
+                } else {
+                    print("Document does not exist in cache")
+                }
+            }
+        }
+}
 
     @IBAction func firstNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
@@ -120,24 +138,26 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
           print ("Error signing out: %@", signOutError)
         }
         print("you are not  signed in")
+
         let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
         let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         self.navigationController?.pushViewController(vc, animated: true)   
     }
     
-    
+    // keyboard functions
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
         self.loadView()
-     
+        fetchData()
         
     }
     fileprivate func checkLoggedInUserStatus(){
@@ -154,8 +174,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 return
               }
 
-        
-        
     }
 }
 

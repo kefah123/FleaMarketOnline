@@ -29,7 +29,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var email: String = ""
     var password: String = ""
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 1d6b79c... profile label
     
    
     let db = Firestore.firestore()
@@ -39,12 +42,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
          if Auth.auth().currentUser != nil {
-            
+          
               print("you are signed in")
               fetchData()
           
         } else {
-              
               print("you are not  signed in")
               let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
               let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController

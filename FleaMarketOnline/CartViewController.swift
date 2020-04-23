@@ -19,22 +19,33 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     //UITableViewDelegate, UITableViewDataSource
     var postData = [[String]]()
     var useForUpdate = [[String]]()
+    var userCartData = [String]()
+    var postIDSet = [String]()
     var ref: DatabaseReference?
     var databaseHandle:DatabaseHandle?
     var firstInit  = true
-
+    var uid = Auth.auth().currentUser?.uid
     @IBOutlet weak var cartTableView: UITableView!
     override func viewDidLoad() {
-        
         print("cart test")
-        self.cartTableView.reloadData()
-        super.viewDidLoad()
-        cartTableView.delegate = self
-        cartTableView.dataSource = self
-        //Set the firebase reference
-        ref = Database.database().reference()
-        
-        
+        if Auth.auth().currentUser != nil{
+//            var userName = Auth.auth().currentUser
+//            print("user:\(userName)")
+            print("logined:\(uid)")
+            self.cartTableView.reloadData()
+            super.viewDidLoad()
+            cartTableView.delegate = self
+            cartTableView.dataSource = self
+            //Set the firebase reference
+            ref = Database.database().reference()
+        }else {
+          print("you are not  signed in")
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+
+          return
+        }
     }
     @IBAction func toggleEditingMode(_ sender: UIButton){
         self.cartTableView.isEditing = !self.cartTableView.isEditing
@@ -52,6 +63,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             setEditing(true, animated: true)
         }
     }
+    //check out done
     @IBAction func checkOut(_ sender: UIButton){
         ref = Database.database().reference()
         print (postData.count)
@@ -65,7 +77,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             let Storyboard = UIStoryboard(name: "Home", bundle: nil)
             let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
             ref = Database.database().reference()
-            databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
+            databaseHandle = ref?.child("User-posts").observe(.childAdded, with: { (snapshot) in
             let key = snapshot.key
             let post = snapshot.value as? [String]
                 if post?[0] == self.useForUpdate[i][0] &&
@@ -74,9 +86,9 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     post?[3] == self.useForUpdate[i][3] &&
                     post?[4] == self.useForUpdate[i][4] &&
                     post?[5] == self.useForUpdate[i][5] {
-                    self.ref!.child("Posts/\(key)/6").setValue("False")
+                    //self.ref!.child("Posts/\(key)/6").setValue("False")
                     self.ref!.child("Posts/\(key)/7").setValue("True")
-                    
+                    self.ref!.child("Posts/\(key)/8").setValue(self.uid)
                 }
                 })
         }
@@ -91,10 +103,6 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
         print("cart items :",postData[indexPath.row])
-        if postData[indexPath.row][6] == "True"{
-            print("yes")
-            cell.textLabel?.text = postData[indexPath.row][0]
-        }
         //cell.textLabel?.text = postData[indexPath.row][0]
         return cell
       }
@@ -107,9 +115,10 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         vc.getSB = postData[indexPath.row][3]
         vc.getContect = postData[indexPath.row][4]
         vc.getDescibption = postData[indexPath.row][5]
-        print(postData[indexPath.row][0])
+        //print(postData[indexPath.row][0])
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    //remove from cart
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete{
                 // ask user to confirm
@@ -145,42 +154,63 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 // put up the controller as a modal view
               
                 present(ac, animated: true, completion: nil)
-                
-    //            vg.remove(at: indexPath.item)
-    //            tableView.deleteRows(at: [indexPath], with: .automatic)
-                
             }
         }
     override func viewWillAppear(_ animated: Bool) {
+        ref = Database.database().reference()
         super.viewWillAppear(animated)
         if (firstInit){
             
         }else{
             useForUpdate = []
+            postData = []
+            userCartData = []
+            postIDSet = []
         }
-        
-        databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-            self.firstInit = false
-                    let post = snapshot.value as? [String]
-                    //print(post!)
-                    if let actualPost = post{
-                        //print(actualPost[6])
-                        if actualPost[6] == "True"{
-                            //self.postData.append(actualPost)
-                            self.useForUpdate.append(actualPost)
-                            self.postData = self.useForUpdate
-                            print(self.postData)
-                            print("update\(self.postData)")
-        //                    DispatchQueue.main.async {
-        //                         self.cartTableView.reloadData()
-        //                    }
-                           
-                        }
-                        
-                    }
-                       }){ (error) in
-                        print(error.localizedDescription)
+        if uid != nil{
+            //get user cart item ID
+            databaseHandle = ref?.child("User-cart").child(uid!).observe(.childAdded, with: { (snapshot) in
+                let itemID = snapshot.value as? String
+                if let actualId = itemID{
+                    //print("actualID = \(actualId)")
+                    //below pass
+                    self.userCartData.append(actualId)
+                    //print(self.userCartData)
                 }
+                print("count userCartData: \(self.userCartData.count)")
+                self.databaseHandle = self.ref?.child("Posts").observe(.value, with: { (snapshot) in
+                    //let post = snapshot.value as? [String : AnyObject] ?? [:]
+                    if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                        for child in result {
+                            let postID = child.key as! String
+                            //print("postid \(postID)")
+                            self.postIDSet.append(postID)
+                            //self.cartTableView.reloadData()
+                        }
+                        }
+                        print("postIdSet: \(self.postIDSet)")
+                        for ID in self.userCartData{
+                            print("userCartData Id: \(ID)")
+                            for PostsID in self.postIDSet{
+                            if PostsID == ID{
+                                print("check")
+                                self.databaseHandle = self.ref?.child("Posts").child(ID).observe(.value, with: {(snapshot) in
+                                    let postItem = snapshot.value as! [String]
+                                    print("postItem: \(postItem)")
+                                    self.postData.append(postItem)
+                                    print("PostData \(self.postData)")
+                                    self.cartTableView.reloadData()
+                                        
+                            })
+                        }
+                                
+                        }
+                        }
+                  })
+            })
+        }
+
+
         DispatchQueue.main.async { self.cartTableView.reloadData() }
         
     }

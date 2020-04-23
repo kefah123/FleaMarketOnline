@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var HelloLabel: UILabel!
+    @IBOutlet weak var logOutField: UIButton!
     
     var ref:DatabaseReference?
     var databaseHandle:DatabaseHandle?
@@ -26,8 +27,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var lastName: String = ""
     var email: String = ""
     var password: String = ""
-    
-    
+    var Hello: String = "Welcome"
+    var logOut: String = "Log Out"
+
     let db = Firestore.firestore()
 //    ref = Database.database().reference()....
     
@@ -62,13 +64,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                     self.lastName = document.get("lastname") as? String ?? ""
                     self.email = document.get("email") as? String ?? ""
                     self.password = document.get("password") as? String ?? ""
+                    self.Hello = "Hello, " + self.firstName + " " + self.lastName
                     // filled in each textfiled
                     self.firstNameField.text = self.firstName
                     self.lastNameField.text = self.lastName
                     self.emailField.text = self.email
                     self.passwordField.text = self.password
                     self.passwordField.isSecureTextEntry = self.secureSwitch
-                    self.HelloLabel.text = "Hello, " + self.firstName + " " + self.lastName
+                    self.HelloLabel.text = self.Hello
+                    self.logOutField.setTitle(self.logOut, for: .normal)
 
                 } else {
                     print("Document does not exist in cache")

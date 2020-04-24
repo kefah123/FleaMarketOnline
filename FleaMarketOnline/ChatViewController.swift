@@ -30,38 +30,33 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        messages.removeAll()
-        messagesDict.removeAll()
-  
-        if checkLogInStatus() {
-            observeUserMessages()
-        }
         NotificationCenter.default.addObserver(self, selector: #selector(sendPurchasedMessage(n:)), name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
-        checkIfItemPurchased()
-        
         tableView.allowsMultipleSelectionDuringEditing = true
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        if let index = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: index, animated: true)
-        }
-        self.tableView.reloadData()
-    }
-    func checkLogInStatus() -> Bool{
-        if Auth.auth().currentUser != nil {
-            print("you are signed in")
-            return true
-        } else {
+        if Auth.auth().currentUser?.uid == nil {
             print("you are not  signed in")
-            dataStore.set("compose", forKey: "status")
             let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
             let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.navigationController?.pushViewController(vc, animated: true)
-            return false
         }
-
+            
+       
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+         if Auth.auth().currentUser?.uid != nil {
+            observeUserMessages()
+            print("you are signed in")
+            checkIfItemPurchased()
+            if let index = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: index, animated: true)
+            }
+         } else {
+            messages.removeAll()
+            messagesDict.removeAll()
+            self.tableView.reloadData()
+            print("you are not signed in")
+        }
+    }
+   
     
     func observeUserMessages() {
         var uid: String?

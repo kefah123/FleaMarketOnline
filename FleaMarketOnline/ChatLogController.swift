@@ -14,7 +14,6 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var messagesView: UICollectionView!
     @IBOutlet var sendContainerView: UIView!
     @IBOutlet var messageInput: UITextView!
-    var dataStore = UserDefaults.standard
     var message: Message?
     var messages = [Message]()
     var userName:String?
@@ -23,36 +22,29 @@ class ChatLogController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if checkLogInStatus() {
+        messageInput.delegate = self
+        sendContainerView.layer.borderWidth = 0.3
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            
+        view.addGestureRecognizer(tap)
+           
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        messagesView?.alwaysBounceVertical=true
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if Auth.auth().currentUser?.uid != nil {
             navigationItem.title = userName
             observeChatLog()
-            messageInput.delegate = self
-            sendContainerView.layer.borderWidth = 0.3
-            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-            
-            view.addGestureRecognizer(tap)
-           
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-            messagesView?.alwaysBounceVertical=true
+        } else {
+            navigationItem.title = ""
+            messages.removeAll()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
-    func checkLogInStatus() -> Bool{
-        if Auth.auth().currentUser != nil {
-            print("you are signed in")
-            return true
-        } else {
-            print("you are not signed in")
-            dataStore.set("compose", forKey: "status")
-            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-            return false
-        }
-
-    }
     
     func observeChatLog() {
         guard let uid = Auth.auth().currentUser?.uid, let id = message?.verifyPartnerId() else { return }
@@ -79,6 +71,7 @@ class ChatLogController: UIViewController, UITextViewDelegate {
             }, withCancel: nil)
         }, withCancel: nil)
     }
+    
     func reloadTableData() {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)

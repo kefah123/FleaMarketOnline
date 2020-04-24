@@ -31,7 +31,8 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         if Auth.auth().currentUser != nil{
 //            var userName = Auth.auth().currentUser
 //            print("user:\(userName)")
-            print("logined:\(uid)")
+            print("logined:\(uid!)")
+            postData = []
             self.cartTableView.reloadData()
             super.viewDidLoad()
             cartTableView.delegate = self
@@ -51,15 +52,16 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 var post = [String]()
                 if let dictionary = snapshot.value as? NSDictionary {
                     let  key = snapshot.key
-                    post.append( dictionary["Name"] as? String ?? "")
-                    post.append( dictionary["Price"] as? String ?? "")
-                    post.append( dictionary["Subject"] as? String ?? "")
-                    post.append( dictionary["Contact"] as? String ?? "")
-                    post.append( dictionary["Description"] as? String ?? "")
+                    post.append(dictionary["Name"] as? String ?? "")
+                    post.append(dictionary["Price"] as? String ?? "")
+                    post.append(dictionary["Subject"] as? String ?? "")
+                    post.append(dictionary["Contact"] as? String ?? "")
+                    post.append(dictionary["Description"] as? String ?? "")
                     post.append(dictionary["Seller"] as? String ?? "")
-                    post.append(dictionary["ItemID"] as? String ?? "")
-                    
+                    //post.append(dictionary["ItemID"] as? String ?? "")
+                    post.append(key)
                     self.postData.append(post)
+                    print("postData: ",self.postData )
                     self.cartTableView.reloadData()
                     
                        
@@ -85,34 +87,35 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             setEditing(true, animated: true)
         }
     }
-    //check out done
+    //check out
     @IBAction func checkOut(_ sender: UIButton){
         ref = Database.database().reference()
         print (postData.count)
         for i in 0..<postData.count{
-            print ("\(postData.count) ++ i = \(i)" )
-            postData[0][6]="False"
-            postData[0][7] = "True"
-            postData.remove(at: 0)
+            print ("\(i)....\(postData.count)" )
+            //print("User-posts/\(self.postData[i][5])/\(self.postData[i][6])/7")
+            var sellerId = self.postData[0][5]
+            var itemId = self.postData[0][6]
+            print("sellerId",sellerId)
             self.cartTableView.reloadData()
             //update database
             let Storyboard = UIStoryboard(name: "Home", bundle: nil)
             let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
             ref = Database.database().reference()
-            databaseHandle = ref?.child("User-posts").observe(.childAdded, with: { (snapshot) in
+            databaseHandle = ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
             let key = snapshot.key
-            let post = snapshot.value as? [String]
-                if post?[0] == self.useForUpdate[i][0] &&
-                    post?[1] == self.useForUpdate[i][1] &&
-                    post?[2] == self.useForUpdate[i][2] &&
-                    post?[3] == self.useForUpdate[i][3] &&
-                    post?[4] == self.useForUpdate[i][4] &&
-                    post?[5] == self.useForUpdate[i][5] {
-                    //self.ref!.child("Posts/\(key)/6").setValue("False")
-                    self.ref!.child("Posts/\(key)/7").setValue("True")
-                    self.ref!.child("Posts/\(key)/8").setValue(self.uid)
+                print("key",key)
+                print("itemId",itemId)
+                if key == itemId {
+                    self.ref!.child("User-posts/\(sellerId)/\(key)/7").setValue("True")
+                    self.ref!.child("User-posts/\(sellerId)/\(key)/8").setValue(self.uid)
+                    self.ref!.child("User-cart/\(self.uid!)/\(itemId)").removeValue()
+
                 }
                 })
+            postData.remove(at: 0)
+            print("postData",postData)
+            self.cartTableView.reloadData()
         }
         print("post\(postData)")
         print("update\(useForUpdate)")
@@ -152,22 +155,14 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 ac.addAction(cancelAction)
                 let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
                     // remove the item from the store
-                    self.postData.remove(at:indexPath.row)
-                    self.useForUpdate[indexPath.row][6] = "False"
+                    //self.postData.remove(at:indexPath.row)
                     self.ref = Database.database().reference()
-                    self.databaseHandle = self.ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
-                    let key = snapshot.key
-                    let post = snapshot.value as? [String]
-                        if post?[0] == self.useForUpdate[indexPath.row][0] &&
-                            post?[1] == self.useForUpdate[indexPath.row][1] &&
-                            post?[2] == self.useForUpdate[indexPath.row][2] &&
-                            post?[3] == self.useForUpdate[indexPath.row][3] &&
-                            post?[4] == self.useForUpdate[indexPath.row][4] &&
-                            post?[5] == self.useForUpdate[indexPath.row][5] {
-                            self.ref!.child("Posts/\(key)/6").setValue("False")
-                            
-                        }
-                        })
+                    self.ref = self.ref?.child("User-cart").child(self.uid!).child(self.postData[indexPath.row][6])
+                    self.ref!.removeValue()
+
+                    // remove the item from the store
+                    self.postData.remove(at:indexPath.row)
+                    //remove from the tableview
                     self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
                 
                 })

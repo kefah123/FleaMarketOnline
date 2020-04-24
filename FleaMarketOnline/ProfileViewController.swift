@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
 
             let docRef = db.collection("users").document(uid!)
 
-            docRef.getDocument(source: .cache) { (document, error) in
+            docRef.getDocument{ (document, error) in
                 if let document = document {
                     self.firstName = document.get("firstname") as? String ?? ""
                     self.lastName = document.get("lastname") as? String ?? ""

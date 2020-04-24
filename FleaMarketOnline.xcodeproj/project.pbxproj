@@ -21,6 +21,7 @@
 		5FB88DCC240412E90041FC73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCB240412E90041FC73 /* LoginViewController.swift */; };
 		5FB88DCE2404BD3C0041FC73 /* ut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB88DCD2404BD3C0041FC73 /* ut.swift */; };
 		5FDA1089245298E70029B429 /* HomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDA1088245298E70029B429 /* HomePageCell.swift */; };
+		5FDA109924539D520029B429 /* source.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5FDA109824539D510029B429 /* source.gif */; };
 		7F9492B45568F532460098D9 /* Pods_FleaMarketOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2621BD0678E0E1B74711F9AD /* Pods_FleaMarketOnline.framework */; };
 		90A5467AC191D9A0941BAACD /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */; };
 		A5286DF363293B7773810EB6 /* Pods_FleaMarketOnlineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */; };
@@ -82,6 +83,7 @@
 		5FB88DCB240412E90041FC73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5FB88DCD2404BD3C0041FC73 /* ut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ut.swift; sourceTree = "<group>"; };
 		5FDA1088245298E70029B429 /* HomePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCell.swift; sourceTree = "<group>"; };
+		5FDA109824539D510029B429 /* source.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = source.gif; sourceTree = "<group>"; };
 		6D3CF6564B0505295890CC97 /* Pods_FleaMarketOnlineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleaMarketOnlineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988FE090E1D241C874BA4CAD /* Pods-FleaMarketOnlineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleaMarketOnlineTests.debug.xcconfig"; path = "Target Support Files/Pods-FleaMarketOnlineTests/Pods-FleaMarketOnlineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA48888FC7A5F01B57A57834 /* Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleaMarketOnline_FleaMarketOnlineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				EED6076223EF3F8500DF5CD2 /* AppDelegate.swift */,
 				EED6076423EF3F8500DF5CD2 /* SceneDelegate.swift */,
 				EED6076623EF3F8500DF5CD2 /* ViewController.swift */,
+				5FDA109824539D510029B429 /* source.gif */,
 				EED6079223EF42F900DF5CD2 /* GoogleService-Info.plist */,
 				EED6076823EF3F8500DF5CD2 /* Main.storyboard */,
 				EED6076B23EF3F8900DF5CD2 /* Assets.xcassets */,
@@ -366,6 +369,7 @@
 				EED6076F23EF3F8900DF5CD2 /* LaunchScreen.storyboard in Resources */,
 				EED6079323EF42F900DF5CD2 /* GoogleService-Info.plist in Resources */,
 				EFE03BC0240606C400CBEADC /* Profile.storyboard in Resources */,
+				5FDA109924539D520029B429 /* source.gif in Resources */,
 				EED6076C23EF3F8900DF5CD2 /* Assets.xcassets in Resources */,
 				EED6076A23EF3F8500DF5CD2 /* Main.storyboard in Resources */,
 				5F4F30E424097752001578A1 /* Cart.storyboard in Resources */,

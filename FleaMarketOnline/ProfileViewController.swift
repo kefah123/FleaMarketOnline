@@ -35,9 +35,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
         ref = Database.database().reference()
-
-
          if Auth.auth().currentUser != nil {
           
               print("you are signed in")
@@ -166,7 +169,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.loadView()

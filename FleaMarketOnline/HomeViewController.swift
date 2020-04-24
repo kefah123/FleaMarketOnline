@@ -27,15 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         //save the name of current view controller
         UserDefaults.standard.set("Home", forKey: "currentViewController")
-        ref = Database.database().reference()
-        //read data from data base
-        databaseHandle = ref?.child("Posts").observe(.childAdded, with: {(snapshot) in
-            let post = snapshot.value as? [String]
-            if let actualPost = post{
-                self.postData.append(actualPost)
-                self.tableView.reloadData()
-            }
-        })
+
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  
@@ -66,6 +58,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         vc.getDescibption = postData[indexPath.row][5]
         print(postData[indexPath.row][0])
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        postData = [[String]]()
+        UserDefaults.standard.set("Home", forKey: "currentViewController")
+        ref = Database.database().reference()
+        //read data from data base
+        databaseHandle = ref?.child("Posts").observe(.childAdded, with: {(snapshot) in
+            let post = snapshot.value as? [String]
+            if let actualPost = post{
+                self.postData.append(actualPost)
+                self.tableView.reloadData()
+            }
+        })
+        self.tableView.reloadData()
+        
     }
     
 

@@ -20,6 +20,7 @@ class HomeCellViewController: UIViewController {
     var getDescibption = String()
     var message = Message()
 
+
     @IBOutlet weak var nameTitle: UILabel!
     @IBOutlet weak var sellerTitle: UILabel!
     @IBOutlet weak var priceTitle: UILabel!
@@ -119,31 +120,32 @@ class HomeCellViewController: UIViewController {
                 post?[4] == self.getContect &&
                 post?[5] == self.getDescibption {
                 ref!.child("Posts/\(key)/7").setValue("True")
-                //dismiss
-                self.navigationController?.popViewController(animated: true)
-        
-            }
-        })
-        
-        let buyerUserId = Auth.auth().currentUser?.uid
-        databaseHandle = ref?.child("User-posts").child(getSeller).observe(.childAdded, with: { (snapshot) in
-            let key = snapshot.key
-            let post = snapshot.value as? [String]
-            if post?[0] == self.getName &&
-                post?[1] == self.getSeller &&
-                post?[2] == self.getPrice &&
-                post?[3] == self.getSB &&
-                post?[4] == self.getContect &&
-                post?[5] == self.getDescibption {
+                let buyerUserId = Auth.auth().currentUser?.uid
                 ref!.child("User-posts/\(self.getSeller)/\(key)/8").setValue(buyerUserId!)
                 ref!.child("User-posts/\(self.getSeller)/\(key)/7").setValue("True")
                 
                 
-                //dismiss
-                self.navigationController?.popViewController(animated: true)
+                let title = "Confirm to buy \(self.getName)?"
+                let message = "Are you sure you want to delete this item?"
+                let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                ac.addAction(cancelAction)
+                let buyAction = UIAlertAction(title: "Buy", style: .destructive, handler: { (action) -> Void in
+                    // remove the item from the firebase Posts
+                    ref!.child("Posts/\(key)").setValue(nil)
+                    print("buy successful ")
+                    //dissmiss
+                    self.navigationController?.popViewController(animated: true)
+                })
+                ac.addAction(buyAction)
+                self.present(ac, animated: true, completion: nil)
+                
+            
         
             }
         })
+        
+        
         
     }
     
@@ -181,7 +183,7 @@ class HomeCellViewController: UIViewController {
         //define color
         let ironColor = UIColor(red:204/255, green:204/255, blue:204/255, alpha:1.0)
         nameTitle.backgroundColor = ironColor
-        nameTitle.layer.borderColor = UIColor.systemTeal.cgColor
+        nameTitle.layer.borderColor = ironColor.cgColor
         nameTitle.layer.borderWidth = 1.5
         nameTitle.layer.cornerRadius = 16
         nameTitle.clipsToBounds = true
@@ -191,31 +193,70 @@ class HomeCellViewController: UIViewController {
         
         sellerTitle.layer.borderColor = UIColor.darkGray.cgColor
         sellerTitle.layer.borderWidth = 1.5
+        sellerTitle.backgroundColor = ironColor
+        sellerTitle.layer.borderColor = ironColor.cgColor
+        sellerTitle.layer.cornerRadius = 16
+        sellerTitle.clipsToBounds = true
+        
         priceTitle.layer.borderColor = UIColor.darkGray.cgColor
         priceTitle.layer.borderWidth = 1.5
+        priceTitle.backgroundColor = ironColor
+        priceTitle.layer.borderColor = ironColor.cgColor
+        priceTitle.layer.cornerRadius = 16
+        priceTitle.clipsToBounds = true
+        
         subjectTitle.layer.borderColor = UIColor.darkGray.cgColor
         subjectTitle.layer.borderWidth = 1.5
+        subjectTitle.backgroundColor = ironColor
+        subjectTitle.layer.borderColor = ironColor.cgColor
+        subjectTitle.layer.cornerRadius = 16
+        subjectTitle.clipsToBounds = true
+        
         contactTitle.layer.borderColor = UIColor.darkGray.cgColor
         contactTitle.layer.borderWidth = 1.5
+        contactTitle.backgroundColor = ironColor
+        contactTitle.layer.borderColor = ironColor.cgColor
+        contactTitle.layer.cornerRadius = 16
+        contactTitle.clipsToBounds = true
+        
         descriptionTitle.layer.borderColor = UIColor.darkGray.cgColor
         descriptionTitle.layer.borderWidth = 1.5
+        descriptionTitle.backgroundColor = ironColor
+        descriptionTitle.layer.borderColor = ironColor.cgColor
+        descriptionTitle.layer.cornerRadius = 16
+        descriptionTitle.clipsToBounds = true
         
-        nameLB.layer.borderColor = UIColor.gray.cgColor
-        nameLB.layer.borderWidth = 1.0
-        nameLB.layer.shadowColor = UIColor.black.cgColor
-        nameLB.layer.shadowOpacity = 1.0;
-        nameLB.layer.shadowRadius = 5.0;
+//        nameLB.layer.borderColor = UIColor.gray.cgColor
+//        nameLB.layer.borderWidth = 0.2
+        nameLB.backgroundColor = UIColor.white
+        nameLB.layer.shadowColor = UIColor.lightGray.cgColor
+        nameLB.layer.shadowOpacity = 1;
+        nameLB.layer.shadowRadius = 2.0;
         
-        sellerLB.layer.borderColor = UIColor.gray.cgColor
-        sellerLB.layer.borderWidth = 1.0
-        priceLB.layer.borderColor = UIColor.gray.cgColor
-        priceLB.layer.borderWidth = 1.0
-        subjectLB.layer.borderColor = UIColor.gray.cgColor
-        subjectLB.layer.borderWidth = 1.0
-        contactLB.layer.borderColor = UIColor.gray.cgColor
-        contactLB.layer.borderWidth = 1.0
-        descriptionLB.layer.borderColor = UIColor.gray.cgColor
-        descriptionLB.layer.borderWidth = 1.0
+        sellerLB.backgroundColor = UIColor.white
+        sellerLB.layer.shadowColor = UIColor.lightGray.cgColor
+        sellerLB.layer.shadowOpacity = 1;
+        sellerLB.layer.shadowRadius = 2.0;
+        
+        priceLB.backgroundColor = UIColor.white
+        priceLB.layer.shadowColor = UIColor.lightGray.cgColor
+        priceLB.layer.shadowOpacity = 1;
+        priceLB.layer.shadowRadius = 2.0;
+        
+        subjectLB.backgroundColor = UIColor.white
+        subjectLB.layer.shadowColor = UIColor.lightGray.cgColor
+        subjectLB.layer.shadowOpacity = 1;
+        subjectLB.layer.shadowRadius = 2.0;
+        
+        contactLB.backgroundColor = UIColor.white
+        contactLB.layer.shadowColor = UIColor.lightGray.cgColor
+        contactLB.layer.shadowOpacity = 1;
+        contactLB.layer.shadowRadius = 2.0;
+        
+        descriptionLB.backgroundColor = UIColor.white
+        descriptionLB.layer.shadowColor = UIColor.lightGray.cgColor
+        descriptionLB.layer.shadowOpacity = 1;
+        descriptionLB.layer.shadowRadius = 2.0;
         
     }
     

@@ -20,6 +20,11 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     var ref:DatabaseReference?
     override func viewDidLoad() {
+        contectTF.resignFirstResponder()
+        descriptionTF.resignFirstResponder()
+        priceTF.resignFirstResponder()
+        sbTF.resignFirstResponder()
+        nameTF.resignFirstResponder()
         super.viewDidLoad()
         ref = Database.database().reference()
         if Auth.auth().currentUser != nil {
@@ -72,7 +77,9 @@ class ComposeViewController: UIViewController {
         }
 
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 
 }

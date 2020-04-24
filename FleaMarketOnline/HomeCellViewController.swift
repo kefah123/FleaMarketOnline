@@ -139,9 +139,6 @@ class HomeCellViewController: UIViewController {
                 })
                 ac.addAction(buyAction)
                 self.present(ac, animated: true, completion: nil)
-                
-            
-        
             }
         })
         

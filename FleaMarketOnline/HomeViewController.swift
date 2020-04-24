@@ -29,6 +29,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+       
+        
         //save the name of current view controller
         UserDefaults.standard.set("Home", forKey: "currentViewController")
 
@@ -42,11 +45,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! HomePageCell
+        
         if searching {
-            cell.textLabel?.text = searchData[indexPath.row][0]
+            cell.homePageCellName.text = searchData[indexPath.row][0]
+//            cell.homePageCellSeller.text = "by " + searchData[indexPath.row][1]
+            cell.homePageCellPrice.text = "$ " + searchData[indexPath.row][2]
+        Database.database().reference().child("users").child(searchData[indexPath.row][1]).observeSingleEvent(of: .value, with: { (snapshot) in
+              // Get user value
+              let value = snapshot.value as? NSDictionary
+              
+              let sellerFirstName = value?["firstName"] as? String ?? ""
+              let sellerLastName = value?["lastName"] as? String ?? ""
+                
+                cell.homePageCellSeller.text = "by "  + sellerFirstName  + " " + sellerLastName
+                
+              }) { (error) in
+                print(error.localizedDescription)
+            }
+//            cell.textLabel?.text = searchData[indexPath.row][0]
         }else{
-            cell.textLabel?.text = postData[indexPath.row][0]
+            cell.homePageCellName.text = postData[indexPath.row][0]
+            cell.homePageCellSeller.text = "by " + postData[indexPath.row][1]
+            cell.homePageCellPrice.text = "$ " + postData[indexPath.row][2]
+        Database.database().reference().child("users").child(postData[indexPath.row][1]).observeSingleEvent(of: .value, with: { (snapshot) in
+                  // Get user value
+                  let value = snapshot.value as? NSDictionary
+                  
+                  let sellerFirstName = value?["firstName"] as? String ?? ""
+                  let sellerLastName = value?["lastName"] as? String ?? ""
+                    
+                    cell.homePageCellSeller.text = "by "  + sellerFirstName  + " " + sellerLastName
+                    
+                  }) { (error) in
+                    print(error.localizedDescription)
+                }
+//            cell.textLabel?.text = postData[indexPath.row][0]
         }
          return cell
         
@@ -63,6 +97,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(postData[indexPath.row][0])
         self.navigationController?.pushViewController(vc, animated: true)
     }
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         postData = [[String]]()
@@ -77,6 +112,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
         self.tableView.reloadData()
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
         
     }
     
@@ -96,6 +136,7 @@ extension HomeViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
+        self.searchBar.endEditing(true)
         self.tableView.reloadData()
     }
 }

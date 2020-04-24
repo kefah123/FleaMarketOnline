@@ -13,8 +13,12 @@ import UIKit
 
 
 
-class HomeCell : UITableViewCell{
+class HomePageCell : UITableViewCell{
     
+    @IBOutlet weak var homePageCellName: UILabel!
+    
+    @IBOutlet weak var homePageCellSeller: UILabel!
+    @IBOutlet weak var homePageCellPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

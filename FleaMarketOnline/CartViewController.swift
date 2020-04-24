@@ -59,33 +59,46 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         let uid = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         print (postData.count)
-        for i in 0..<postData.count{
-            print ("\(i)....\(postData.count)" )
-            //print("User-posts/\(self.postData[i][5])/\(self.postData[i][6])/7")
-            var sellerId = self.postData[0][5]
-            var itemId = self.postData[0][6]
-            print("sellerId",sellerId)
-            self.cartTableView.reloadData()
-            //update database
-            let Storyboard = UIStoryboard(name: "Home", bundle: nil)
-            //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
-            ref = Database.database().reference()
-            databaseHandle = ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
-            let key = snapshot.key
-                print("key",key)
-                print("itemId",itemId)
-                if key == itemId {
-                    self.ref!.child("User-posts/\(sellerId)/\(key)/7").setValue("True")
-                    self.ref!.child("User-posts/\(sellerId)/\(key)/8").setValue(uid)
-                    self.ref!.child("User-cart/\(uid!)/\(itemId)").removeValue()
+        let title = "Check Out"
+        let message = "Do you confirm to check out ?"
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ac.addAction(cancelAction)
+        let buyAction = UIAlertAction(title: "Confirm", style: .destructive, handler: { (action) -> Void in
+            for i in 0..<self.postData.count{
+                print ("\(i)....\(self.postData.count)" )
+                //print("User-posts/\(self.postData[i][5])/\(self.postData[i][6])/7")
+                var sellerId = self.postData[0][5]
+                var itemId = self.postData[0][6]
+                print("sellerId",sellerId)
+                self.cartTableView.reloadData()
+                //update database
+                let Storyboard = UIStoryboard(name: "Home", bundle: nil)
+                //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
+                self.ref = Database.database().reference()
+                self.databaseHandle = self.ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
+                let key = snapshot.key
+                    print("key",key)
+                    print("itemId",itemId)
+                    if key == itemId {
+                        self.ref!.child("User-posts/\(sellerId)/\(key)/7").setValue("True")
+                        self.ref!.child("User-posts/\(sellerId)/\(key)/8").setValue(uid)
+                        self.ref!.child("User-cart/\(uid!)/\(itemId)").removeValue()
+                        self.ref!.child("Posts/\(itemId)").removeValue()
 
-                }
-                })
-            postData.remove(at: 0)
-            print("postData",postData)
-            self.cartTableView.reloadData()
-        }
-        print("post\(postData)")
+                    }
+                    })
+                self.postData.remove(at: 0)
+                print("postData",self.postData)
+                self.cartTableView.reloadData()
+            }
+            print("post\(self.postData)")
+            //dissmiss
+            self.navigationController?.popViewController(animated: true)
+        })
+        ac.addAction(buyAction)
+        self.present(ac, animated: true, completion: nil)
+
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

@@ -30,8 +30,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         print("cart test")
         UserDefaults.standard.set("Cart", forKey: "currentViewController")
         if Auth.auth().currentUser != nil{
-            print("ViewDidLoad: you are signed in")
-            fetchData()
+            //print("ViewDidLoad: you are signed in")
         }else {
               print("you are not signed in")
               let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)

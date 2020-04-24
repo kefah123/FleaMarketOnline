@@ -278,6 +278,15 @@ class HomeCellViewController: UIViewController {
         descriptionLB.layer.shadowOpacity = 1;
         descriptionLB.layer.shadowRadius = 2.0;
         
+        buyItNowButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        buyItNowButtonOutlet.layer.borderWidth = 1.5
+        buyItNowButtonOutlet.layer.cornerRadius = 16
+        
+       
+        addToCartButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        addToCartButtonOutlet.layer.borderWidth = 1.5
+        addToCartButtonOutlet.layer.cornerRadius = 16
+        
     }
     
     

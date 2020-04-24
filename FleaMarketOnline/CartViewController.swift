@@ -24,52 +24,19 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     var ref: DatabaseReference?
     var databaseHandle:DatabaseHandle?
     var firstInit  = true
-    var uid = Auth.auth().currentUser?.uid
     @IBOutlet weak var cartTableView: UITableView!
     override func viewDidLoad() {
+        super.viewDidLoad()
         print("cart test")
         if Auth.auth().currentUser != nil{
-//            var userName = Auth.auth().currentUser
-//            print("user:\(userName)")
-            print("logined:\(uid!)")
-            postData = []
-            self.cartTableView.reloadData()
-            super.viewDidLoad()
-            cartTableView.delegate = self
-            cartTableView.dataSource = self
-            //Set the firebase reference
-            ref = Database.database().reference()
+            print("ViewDidLoad: you are signed in")
+            fetchData()
         }else {
-          print("you are not  signed in")
-            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-
-          return
+              print("you are not signed in")
+              let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+              let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+              self.navigationController?.pushViewController(vc, animated: true)
         }
-        let cartRef = Database.database().reference().child("User-cart").child(uid!)
-        cartRef.observe(.childAdded, with: { (snapshot) in
-                var post = [String]()
-                if let dictionary = snapshot.value as? NSDictionary {
-                    let  key = snapshot.key
-                    post.append(dictionary["Name"] as? String ?? "")
-                    post.append(dictionary["Price"] as? String ?? "")
-                    post.append(dictionary["Subject"] as? String ?? "")
-                    post.append(dictionary["Contact"] as? String ?? "")
-                    post.append(dictionary["Description"] as? String ?? "")
-                    post.append(dictionary["Seller"] as? String ?? "")
-                    //post.append(dictionary["ItemID"] as? String ?? "")
-                    post.append(key)
-                    self.postData.append(post)
-                    print("postData: ",self.postData )
-                    self.cartTableView.reloadData()
-                    
-                       
-                 }
-         }, withCancel: nil)
-
-
-       
     }
     @IBAction func toggleEditingMode(_ sender: UIButton){
         self.cartTableView.isEditing = !self.cartTableView.isEditing
@@ -89,6 +56,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     //check out
     @IBAction func checkOut(_ sender: UIButton){
+        let uid = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         print (postData.count)
         for i in 0..<postData.count{
@@ -100,7 +68,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             self.cartTableView.reloadData()
             //update database
             let Storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
+            //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
             ref = Database.database().reference()
             databaseHandle = ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
             let key = snapshot.key
@@ -108,8 +76,8 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 print("itemId",itemId)
                 if key == itemId {
                     self.ref!.child("User-posts/\(sellerId)/\(key)/7").setValue("True")
-                    self.ref!.child("User-posts/\(sellerId)/\(key)/8").setValue(self.uid)
-                    self.ref!.child("User-cart/\(self.uid!)/\(itemId)").removeValue()
+                    self.ref!.child("User-posts/\(sellerId)/\(key)/8").setValue(uid)
+                    self.ref!.child("User-cart/\(uid!)/\(itemId)").removeValue()
 
                 }
                 })
@@ -118,7 +86,6 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             self.cartTableView.reloadData()
         }
         print("post\(postData)")
-        print("update\(useForUpdate)")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -145,7 +112,8 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     //remove from cart
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete{
+        let uid = Auth.auth().currentUser?.uid
+        if editingStyle == .delete{
                 // ask user to confirm
                 //let item = postData[indexPath.row]
                 let title = "Delete?"
@@ -157,7 +125,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     // remove the item from the store
                     //self.postData.remove(at:indexPath.row)
                     self.ref = Database.database().reference()
-                    self.ref = self.ref?.child("User-cart").child(self.uid!).child(self.postData[indexPath.row][6])
+                    self.ref = self.ref?.child("User-cart").child(uid!).child(self.postData[indexPath.row][6])
                     self.ref!.removeValue()
 
                     // remove the item from the store
@@ -174,17 +142,56 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             }
         }
     override func viewWillAppear(_ animated: Bool) {
-        ref = Database.database().reference()
-        super.viewWillAppear(animated)
-
+        //ref = Database.database().reference()
+        if (firstInit){
+            
+        }else{
+            postData = []
+        }
+        super.viewWillAppear(true)
+        self.loadView()
+        fetchData()
         DispatchQueue.main.async { self.cartTableView.reloadData() }
         
         
     }
-    
+    func fetchData(){
+        if Auth.auth().currentUser != nil{
+            let uid = Auth.auth().currentUser?.uid
+            print("logined:\(uid!)")
+            postData = []
+            self.cartTableView.reloadData()
+            super.viewDidLoad()
+            cartTableView.delegate = self
+            cartTableView.dataSource = self
+            //Set the firebase reference
+            ref = Database.database().reference()
+            let cartRef = Database.database().reference().child("User-cart").child(uid!)
+            cartRef.observe(.childAdded, with: { (snapshot) in
+                    var post = [String]()
+                    if let dictionary = snapshot.value as? NSDictionary {
+                        let  key = snapshot.key
+                        post.append(dictionary["Name"] as? String ?? "")
+                        post.append(dictionary["Price"] as? String ?? "")
+                        post.append(dictionary["Subject"] as? String ?? "")
+                        post.append(dictionary["Contact"] as? String ?? "")
+                        post.append(dictionary["Description"] as? String ?? "")
+                        post.append(dictionary["Seller"] as? String ?? "")
+                        //post.append(dictionary["ItemID"] as? String ?? "")
+                        post.append(key)
+                        self.postData.append(post)
+                        print("postData: ",self.postData )
+                        self.cartTableView.reloadData()
+                        }
+                }, withCancel: nil)
+        }else {
+            print("FechData: you are not signed in")
+                }
+    }
     func setCart(completion: @escaping () -> Void){
+        let uid = Auth.auth().currentUser?.uid
         self.userCartData = [String]()
-           let userRef = Database.database().reference().child("User-cart").child(self.uid!)
+           let userRef = Database.database().reference().child("User-cart").child(uid!)
            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                if let dictionary = snapshot.value as? NSDictionary {
                    self.userCartData.append(dictionary["itemID"] as? String ?? "")

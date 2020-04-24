@@ -174,6 +174,7 @@ class ChatViewController: UIViewController {
                         self.itemName = array[0]
                         self.buyerID  = array[8]
                         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
+                        Database.database().reference().child("User-posts").child(uid).child("\(snapshot.key)/7").setValue("nil")
                     }
             }
             }

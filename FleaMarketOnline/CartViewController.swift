@@ -94,8 +94,8 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         for i in 0..<postData.count{
             print ("\(i)....\(postData.count)" )
             //print("User-posts/\(self.postData[i][5])/\(self.postData[i][6])/7")
-            var sellerId = self.postData[i][5]
-            var itemId = self.postData[i][6]
+            var sellerId = self.postData[0][5]
+            var itemId = self.postData[0][6]
             print("sellerId",sellerId)
             self.cartTableView.reloadData()
             //update database

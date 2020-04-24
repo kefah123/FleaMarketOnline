@@ -20,7 +20,9 @@ class HomeCellViewController: UIViewController {
     var getDescibption = String()
     var message = Message()
 
-
+    @IBOutlet weak var buyItNowButtonOutlet: UIButton!
+    
+    @IBOutlet weak var addToCartButtonOutlet: UIButton!
     @IBOutlet weak var nameTitle: UILabel!
     @IBOutlet weak var sellerTitle: UILabel!
     @IBOutlet weak var priceTitle: UILabel!
@@ -58,7 +60,7 @@ class HomeCellViewController: UIViewController {
         subjectLB.text! = " " +  getSB
         contactLB.text! = " " +  getContect
         descriptionLB.text! = " " +  getDescibption
-        let currentViewControllName = UserDefaults.standard.value(forKey: "currentViewController")
+        buttonSetUp()
     }
     
 
@@ -182,6 +184,21 @@ class HomeCellViewController: UIViewController {
     }, withCancel: nil)
     
     }
+    func buttonSetUp(){
+        let currentViewControllName = UserDefaults.standard.value(forKey: "currentViewController") as! String
+        
+        //user cannot add or buy the item by them selves
+        if  getSeller == Auth.auth().currentUser?.uid {
+            buyItNowButtonOutlet.isHidden = true
+            addToCartButtonOutlet.isHidden = true
+        }
+        // user cannot add to cart when open the cell in cart view
+        if currentViewControllName == "Cart" {
+            
+            addToCartButtonOutlet.isHidden = true
+        }
+    }
+    
     func UISetUp (){
         //define color
         let ironColor = UIColor(red:204/255, green:204/255, blue:204/255, alpha:1.0)

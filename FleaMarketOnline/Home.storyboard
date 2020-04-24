@@ -324,6 +324,8 @@
                         <viewLayoutGuide key="safeArea" id="vzT-vO-IQg"/>
                     </view>
                     <connections>
+                        <outlet property="addToCartButtonOutlet" destination="a65-5d-ZVP" id="2Jt-O9-YwX"/>
+                        <outlet property="buyItNowButtonOutlet" destination="Nht-We-ZXm" id="FUK-hc-eu7"/>
                         <outlet property="contactLB" destination="DiT-2q-rmQ" id="l9u-cL-RzL"/>
                         <outlet property="contactTitle" destination="Gtp-xU-Oog" id="TfU-bZ-Xhk"/>
                         <outlet property="descriptionLB" destination="750-3P-aCE" id="UGA-Vm-fs1"/>

@@ -28,6 +28,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         print("cart test")
+        UserDefaults.standard.set("Cart", forKey: "currentViewController")
         if Auth.auth().currentUser != nil{
             print("ViewDidLoad: you are signed in")
             fetchData()
@@ -164,6 +165,7 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         super.viewWillAppear(true)
         self.loadView()
         fetchData()
+        UserDefaults.standard.set("Cart", forKey: "currentViewController")
         DispatchQueue.main.async { self.cartTableView.reloadData() }
         
         

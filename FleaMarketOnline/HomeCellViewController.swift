@@ -147,6 +147,12 @@ class HomeCellViewController: UIViewController {
     }
     
     @IBAction func chatAction(_ sender: UIButton) {
+        if Auth.auth().currentUser?.uid == nil {
+            print("you are not  signed in")
+            let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         let sb = UIStoryboard(name: "Chat", bundle:nil)
         let vc = sb.instantiateViewController(withIdentifier: "ChatLogController") as! ChatLogController
         setMessageDetails {

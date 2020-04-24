@@ -22,6 +22,7 @@ class HomeCellViewController: UIViewController {
     var databaseHandle:DatabaseHandle?
     @IBOutlet weak var buyItNowButtonOutlet: UIButton!
     
+    @IBOutlet weak var chatLB: UIButton!
     @IBOutlet weak var addToCartButtonOutlet: UIButton!
     @IBOutlet weak var nameTitle: UILabel!
     @IBOutlet weak var sellerTitle: UILabel!
@@ -201,50 +202,36 @@ class HomeCellViewController: UIViewController {
     
     func UISetUp (){
         //define color
-        let ironColor = UIColor(red:224/255, green:255/255, blue:255/255, alpha:1.0)
-        nameTitle.backgroundColor = ironColor
-        nameTitle.layer.borderColor = ironColor.cgColor
-        nameTitle.layer.borderWidth = 1.5
-        nameTitle.layer.cornerRadius = 16
-        nameTitle.clipsToBounds = true
-
+        let ironColor = UIColor.white
+        nameTitle.backgroundColor = UIColor.white
+        nameTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        nameTitle.layer.shadowOpacity = 1;
+        nameTitle.layer.shadowRadius = 2.0;
         
+        sellerTitle.backgroundColor = UIColor.white
+        sellerTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        sellerTitle.layer.shadowOpacity = 1;
+        sellerTitle.layer.shadowRadius = 2.0;
         
+        priceTitle.backgroundColor = UIColor.white
+        priceTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        priceTitle.layer.shadowOpacity = 1;
+        priceTitle.layer.shadowRadius = 2.0;
         
-        sellerTitle.layer.borderColor = UIColor.darkGray.cgColor
-        sellerTitle.layer.borderWidth = 1.5
-        sellerTitle.backgroundColor = ironColor
-        sellerTitle.layer.borderColor = ironColor.cgColor
-        sellerTitle.layer.cornerRadius = 16
-        sellerTitle.clipsToBounds = true
+        subjectTitle.backgroundColor = UIColor.white
+        subjectTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        subjectTitle.layer.shadowOpacity = 1;
+        subjectTitle.layer.shadowRadius = 2.0;
         
-        priceTitle.layer.borderColor = UIColor.darkGray.cgColor
-        priceTitle.layer.borderWidth = 1.5
-        priceTitle.backgroundColor = ironColor
-        priceTitle.layer.borderColor = ironColor.cgColor
-        priceTitle.layer.cornerRadius = 16
-        priceTitle.clipsToBounds = true
+        contactTitle.backgroundColor = UIColor.white
+        contactTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        contactTitle.layer.shadowOpacity = 1;
+        contactTitle.layer.shadowRadius = 2.0;
         
-        subjectTitle.layer.borderColor = UIColor.darkGray.cgColor
-        subjectTitle.layer.borderWidth = 1.5
-        subjectTitle.backgroundColor = ironColor
-        subjectTitle.layer.borderColor = ironColor.cgColor
-        subjectTitle.layer.cornerRadius = 16
-        subjectTitle.clipsToBounds = true
-        
-        contactTitle.layer.borderColor = UIColor.darkGray.cgColor
-        contactTitle.layer.borderWidth = 1.5
-        contactTitle.backgroundColor = ironColor
-        contactTitle.layer.borderColor = ironColor.cgColor
-        contactTitle.layer.cornerRadius = 16
-        contactTitle.clipsToBounds = true
-        
-        descriptionTitle.layer.borderColor = UIColor.darkGray.cgColor
-        descriptionTitle.layer.borderWidth = 1.5
-        descriptionTitle.backgroundColor = ironColor
-        descriptionTitle.layer.borderColor = ironColor.cgColor
-        descriptionTitle.layer.cornerRadius = 16
-        descriptionTitle.clipsToBounds = true
+        descriptionTitle.backgroundColor = UIColor.white
+        descriptionTitle.layer.shadowColor = UIColor.lightGray.cgColor
+        descriptionTitle.layer.shadowOpacity = 1;
+        descriptionTitle.layer.shadowRadius = 2.0;
         
 //        nameLB.layer.borderColor = UIColor.gray.cgColor
 //        nameLB.layer.borderWidth = 0.2
@@ -273,6 +260,11 @@ class HomeCellViewController: UIViewController {
         contactLB.layer.shadowOpacity = 1;
         contactLB.layer.shadowRadius = 2.0;
         
+        chatLB.backgroundColor = UIColor.white
+        chatLB.layer.shadowColor = UIColor.lightGray.cgColor
+        chatLB.layer.shadowOpacity = 1;
+        chatLB.layer.shadowRadius = 2.0;
+        
         descriptionLB.backgroundColor = UIColor.white
         descriptionLB.layer.shadowColor = UIColor.lightGray.cgColor
         descriptionLB.layer.shadowOpacity = 1;
@@ -286,6 +278,7 @@ class HomeCellViewController: UIViewController {
         addToCartButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
         addToCartButtonOutlet.layer.borderWidth = 1.5
         addToCartButtonOutlet.layer.cornerRadius = 16
+        
         
     }
     

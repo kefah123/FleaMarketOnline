@@ -57,7 +57,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N74-8I-WLD">
-                                                    <rect key="frame" x="15" y="3.5" width="194" height="24"/>
+                                                    <rect key="frame" x="15" y="7.5" width="194" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="194" id="N6W-92-1N2"/>
                                                     </constraints>
@@ -65,24 +65,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXM-sr-Qhy">
-                                                    <rect key="frame" x="240" y="0.0" width="135" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price                 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXM-sr-Qhy">
+                                                    <rect key="frame" x="250.5" y="20" width="114" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tro-1i-Rsm">
-                                                    <rect key="frame" x="15" y="29" width="167" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tro-1i-Rsm">
+                                                    <rect key="frame" x="16" y="40" width="31" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="JXM-sr-Qhy" firstAttribute="centerY" secondItem="Ltk-jU-1y5" secondAttribute="centerY" id="Qde-nN-GeS"/>
+                                                <constraint firstAttribute="trailing" secondItem="JXM-sr-Qhy" secondAttribute="trailing" constant="10.5" id="SDW-tl-xPX"/>
                                                 <constraint firstItem="N74-8I-WLD" firstAttribute="centerX" secondItem="Ltk-jU-1y5" secondAttribute="centerX" constant="-75.5" id="W5b-2U-GKp"/>
-                                                <constraint firstItem="N74-8I-WLD" firstAttribute="centerY" secondItem="Ltk-jU-1y5" secondAttribute="centerY" constant="-14.5" id="sbJ-bF-zTT"/>
+                                                <constraint firstItem="Tro-1i-Rsm" firstAttribute="leading" secondItem="Ltk-jU-1y5" secondAttribute="leading" constant="16" id="eaf-xD-5Mn"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tro-1i-Rsm" secondAttribute="bottom" constant="5.5" id="qGl-3D-JuU"/>
+                                                <constraint firstItem="N74-8I-WLD" firstAttribute="centerY" secondItem="Ltk-jU-1y5" secondAttribute="centerY" constant="-10.5" id="sbJ-bF-zTT"/>
+                                                <constraint firstItem="JXM-sr-Qhy" firstAttribute="centerX" secondItem="Ltk-jU-1y5" secondAttribute="centerX" constant="120" id="xBe-aD-LLP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -341,6 +344,7 @@
                     <connections>
                         <outlet property="addToCartButtonOutlet" destination="a65-5d-ZVP" id="2Jt-O9-YwX"/>
                         <outlet property="buyItNowButtonOutlet" destination="Nht-We-ZXm" id="FUK-hc-eu7"/>
+                        <outlet property="chatLB" destination="01q-4F-z9d" id="xvo-nq-LlM"/>
                         <outlet property="contactLB" destination="DiT-2q-rmQ" id="l9u-cL-RzL"/>
                         <outlet property="contactTitle" destination="Gtp-xU-Oog" id="TfU-bZ-Xhk"/>
                         <outlet property="descriptionLB" destination="750-3P-aCE" id="UGA-Vm-fs1"/>

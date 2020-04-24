@@ -69,13 +69,13 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             for i in 0..<self.postData.count{
                 print ("\(i)....\(self.postData.count)" )
                 //print("User-posts/\(self.postData[i][5])/\(self.postData[i][6])/7")
-                var sellerId = self.postData[0][5]
-                var itemId = self.postData[0][6]
+                let sellerId = self.postData[0][5]
+                let itemId = self.postData[0][6]
                 print("sellerId",sellerId)
                 self.cartTableView.reloadData()
                 //update database
-                let Storyboard = UIStoryboard(name: "Home", bundle: nil)
-                //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
+//                _ = UIStoryboard(name: "Home", bundle: nil)
+//                //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
                 self.ref = Database.database().reference()
                 self.databaseHandle = self.ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
                 let key = snapshot.key

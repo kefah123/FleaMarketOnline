@@ -19,7 +19,7 @@ class HomeCellViewController: UIViewController {
     var getContect = String()
     var getDescibption = String()
     var message = Message()
-
+    var databaseHandle:DatabaseHandle?
     @IBOutlet weak var buyItNowButtonOutlet: UIButton!
     
     @IBOutlet weak var addToCartButtonOutlet: UIButton!
@@ -66,7 +66,7 @@ class HomeCellViewController: UIViewController {
 
     @IBAction func addToCartAction(_ sender: Any) {
         var ref: DatabaseReference?
-        let databaseHandle:DatabaseHandle?
+      
         ref = Database.database().reference()
         if Auth.auth().currentUser != nil {
                 print("you are signed in")
@@ -110,7 +110,7 @@ class HomeCellViewController: UIViewController {
     
     @IBAction func buyItNowAction(_ sender: Any) {
         var ref: DatabaseReference?
-        var databaseHandle:DatabaseHandle?
+       
         ref = Database.database().reference()
         databaseHandle = ref?.child("Posts").observe(.childAdded, with: { (snapshot) in
             let key = snapshot.key
@@ -201,7 +201,7 @@ class HomeCellViewController: UIViewController {
     
     func UISetUp (){
         //define color
-        let ironColor = UIColor(red:204/255, green:204/255, blue:204/255, alpha:1.0)
+        let ironColor = UIColor(red:224/255, green:255/255, blue:255/255, alpha:1.0)
         nameTitle.backgroundColor = ironColor
         nameTitle.layer.borderColor = ironColor.cgColor
         nameTitle.layer.borderWidth = 1.5

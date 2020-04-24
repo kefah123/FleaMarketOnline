@@ -49,7 +49,7 @@ class ComposeViewController: UIViewController {
           print("you are signed in")
 
           let uid = Auth.auth().currentUser?.uid
-            let name = Auth.auth().currentUser?.displayName
+           
   
           //post data to database
           var valueArr = [String]()

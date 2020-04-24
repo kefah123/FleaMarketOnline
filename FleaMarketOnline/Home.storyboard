@@ -289,27 +289,42 @@
                                             <constraint firstAttribute="height" constant="60" id="JpJ-YY-Xpo"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-W3-QZI">
-                                        <rect key="frame" x="0.0" y="390" width="335" height="247"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-W3-QZI">
+                                        <rect key="frame" x="0.0" y="390" width="335" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="215"/>
-                                                <state key="normal" title="Buy it now "/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nht-We-ZXm">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="ClN-rD-BCF"/>
+                                                </constraints>
+                                                <state key="normal" title="Buy it now ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="buyItNowAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="aUr-lp-tDR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-5d-ZVP">
-                                                <rect key="frame" x="0.0" y="217" width="335" height="30"/>
-                                                <state key="normal" title="Add to Cart "/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a65-5d-ZVP">
+                                                <rect key="frame" x="0.0" y="55" width="335" height="45"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="imi-se-SWC"/>
+                                                </constraints>
+                                                <state key="normal" title="Add to Cart ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="addToCartAction:" destination="JEj-UE-FQQ" eventType="touchUpInside" id="KeQ-ev-Ii2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="kur-04-9tV"/>
+                                            <constraint firstAttribute="height" constant="100" id="kur-04-9tV"/>
                                         </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bv-ih-hrr">
+                                        <rect key="frame" x="0.0" y="495" width="335" height="142"/>
                                     </stackView>
                                 </subviews>
                             </stackView>

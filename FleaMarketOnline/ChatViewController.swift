@@ -32,6 +32,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(sendPurchasedMessage(n:)), name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
         tableView.allowsMultipleSelectionDuringEditing = true
+        
         if Auth.auth().currentUser?.uid == nil {
             print("you are not  signed in")
             let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
@@ -91,6 +92,8 @@ class ChatViewController: UIViewController {
             self.reloadTableData()
         }, withCancel: nil)
     }
+    
+    /* Delays reload of table to prevent synchronization bugs*/
     func reloadTableData() {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
@@ -149,6 +152,7 @@ class ChatViewController: UIViewController {
         }
         
     }
+    
     func setUserName(completion: @escaping () -> Void){
         let userRef = Database.database().reference().child("users").child(self.buyerID!)
         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -176,7 +180,7 @@ class ChatViewController: UIViewController {
                         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ItemPurchased"), object: nil)
                         Database.database().reference().child("User-posts").child(uid).child("\(snapshot.key)/7").setValue("nil")
                     }
-            }
+                }
             }
             
         }, withCancel: nil)
@@ -208,13 +212,14 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        message = messages[indexPath.row]
-        performSegue(withIdentifier: "chatLogSegue", sender: nil)
-        
+            message = messages[indexPath.row]
+            performSegue(withIdentifier: "chatLogSegue", sender: nil)
         }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+            return true
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let message = self.messages[indexPath.row]

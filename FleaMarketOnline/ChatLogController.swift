@@ -93,7 +93,8 @@ class ChatLogController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object:nil)
                 NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object:nil)
     }
-
+    
+/* Move screen up when keyboard appears */
     @objc func keyboardWillChange(notification: Notification) {
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return

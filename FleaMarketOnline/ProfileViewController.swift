@@ -28,16 +28,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     var email: String = ""
     var password: String = ""
     
+    
     let db = Firestore.firestore()
 //    ref = Database.database().reference()..
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        ref = Database.database().reference()
+
 
          if Auth.auth().currentUser != nil {
           
               print("you are signed in")
+            
               fetchData()
           
         } else {
@@ -47,6 +51,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
               self.navigationController?.pushViewController(vc, animated: true)
         }
 
+    }
+    
+    func fillFields () {
+        firstNameField.text = firstName
+        lastNameField.text = lastName
+        emailField.text = email
+        passwordField.text = password
     }
     
     func fetchData() {
@@ -81,8 +92,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func firstNameEditingButton(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
-        self.ref!.child("users/\(String(describing: uid!))/firstName").setValue(firstNameField.text)
-        
+        self.ref!.child("users/\(String(describing: uid!))/firstName").setValue(firstNameField.text!)
+
         let userRef = db.collection("users").document(uid!)
         userRef.updateData([
             "firstname": self.firstNameField.text!
@@ -159,6 +170,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.loadView()
+        
         fetchData()
         
     }

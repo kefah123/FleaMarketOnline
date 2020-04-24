@@ -25,19 +25,20 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     var databaseHandle:DatabaseHandle?
     var firstInit  = true
     @IBOutlet weak var cartTableView: UITableView!
+    
+    //init
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("cart test")
         UserDefaults.standard.set("Cart", forKey: "currentViewController")
         if Auth.auth().currentUser != nil{
-            //print("ViewDidLoad: you are signed in")
         }else {
-              print("you are not signed in")
               let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
               let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
               self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    //toggle edit mod
     @IBAction func toggleEditingMode(_ sender: UIButton){
         self.cartTableView.isEditing = !self.cartTableView.isEditing
         if isEditing{
@@ -72,9 +73,6 @@ class CartViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 let itemId = self.postData[0][6]
                 print("sellerId",sellerId)
                 self.cartTableView.reloadData()
-                //update database
-//                _ = UIStoryboard(name: "Home", bundle: nil)
-//                //let vc = Storyboard.instantiateViewController(withIdentifier: "HomeCellViewController") as! HomeCellViewController
                 self.ref = Database.database().reference()
                 self.databaseHandle = self.ref?.child("User-posts").child(sellerId).observe(.childAdded, with: { (snapshot) in
                 let key = snapshot.key

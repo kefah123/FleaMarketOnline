@@ -44,6 +44,7 @@ class ChatViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
          if Auth.auth().currentUser?.uid != nil {
+            messagesDict.removeAll()
             observeUserMessages()
             print("you are signed in")
             checkIfItemPurchased()
@@ -128,6 +129,7 @@ class ChatViewController: UIViewController {
         let fromUser = "System"
         let timestamp = Int(NSDate().timeIntervalSince1970)
         let fromId = "SystemSystemSystem"
+    
         setUserName {
             let values = ["text":"Your item '" + self.itemName!+"' has been sold to: "+self.firstName+" "+self.lastName+"!",
                        "toId":toId,
@@ -140,15 +142,16 @@ class ChatViewController: UIViewController {
                            print(error!)
                            return
                        }
-                       let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
-                   let messageId = childRef.key
+                    let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
+                    let messageId = childRef.key
                        userMessagesRef.updateChildValues([messageId!:1])
-                       let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
+                    let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
                        recipientUserMessagesRef.updateChildValues([messageId!:1])
-                       DispatchQueue.main.async {
-                           self.tableView.reloadData()
-                       }
-        }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+           
+                }
         }
         
     }

@@ -2,7 +2,7 @@
 //  ProfileViewController.swift
 //  FleaMarketOnline
 //
-//  Created by 吴亨俊 on 4/13/20.
+//  Created by Hengjun Wu on 4/13/20.
 //  Copyright © 2020 HEWZ. All rights reserved.
 //
 import UIKit
@@ -30,7 +30,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     let db = Firestore.firestore()
-//    ref = Database.database().reference()..
     
     override func viewDidLoad() {
 
@@ -42,8 +41,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         
         ref = Database.database().reference()
          if Auth.auth().currentUser != nil {
-          
-              print("you are signed in")
             
               fetchData()
           
@@ -181,16 +178,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     fileprivate func checkLoggedInUserStatus(){
               if Auth.auth().currentUser != nil {
-                print("you are signed in")
-                return
+                    return
         
               } else {
-                print("you are not  signed in")
-                  let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
-                  let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                  self.navigationController?.pushViewController(vc, animated: true)
+                    let sb = UIStoryboard(name: "LoginSignUp", bundle:nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
 
-                return
+                    return
               }
 
     }

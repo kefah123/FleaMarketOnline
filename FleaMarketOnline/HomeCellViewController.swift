@@ -202,7 +202,7 @@ class HomeCellViewController: UIViewController {
     
     func UISetUp (){
         //define color
-        let ironColor = UIColor.white
+      
         nameTitle.backgroundColor = UIColor.white
         nameTitle.layer.shadowColor = UIColor.lightGray.cgColor
         nameTitle.layer.shadowOpacity = 1;

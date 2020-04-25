@@ -1,1 +1,2 @@
 # FleaMarketOnline
+  FleaMarket Online is the trading space to let people sell and buy the items they want. In home page, people can see all items. They can add the item to cart or buy it now after signing in or signing up. Or they can send chat message to seller. In cart, people can check out or delete the items they want. In chat, they can send and receive message from other user or system. In profile, peole can manage their account. They can see their information and update it. Hope you have a good experience in FleaMarket Online !
